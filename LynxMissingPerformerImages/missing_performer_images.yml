@@ -1,0 +1,21 @@
+name: Lynx Missing Performer Images
+description: Review missing performer portraits using library images, installed performer scrapers, image links or uploads. Choose an image, then approve explicitly to save.
+version: 1.2.1
+ui:
+  javascript:
+    - missing_performer_images.js
+  css:
+    - missing_performer_images.css
+exec:
+  - python
+  - "{pluginDir}/missing_performer_images.py"
+interface: raw
+tasks:
+  - name: Preview Missing Performer Images
+    description: Dry run. Log the best available image for every performer missing a portrait.
+    defaultArgs:
+      mode: preview
+  - name: Assign Missing Performer Images
+    description: Assign the highest-ranked library image to each performer still missing a portrait. Runs across the library and does not use selections in the review page. Preview first.
+    defaultArgs:
+      mode: assign
