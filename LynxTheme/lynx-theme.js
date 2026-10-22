@@ -3737,16 +3737,10 @@ function watchForReinjection() {
     function scheduleUpdate() {
         window.clearTimeout(updateTimer);
 
-        /*
-         * Vänta tills React varit stilla i 100 ms innan Lynx kör
-         * sina uppdateringar.
-         */
+        /* Wait for 100 ms of React inactivity before running Lynx updates. */
         updateTimer = window.setTimeout(runUpdate, 75);
 
-        /*
-         * Om React fortsätter mutera sidan utan paus ser denna timer
-         * till att Lynx ändå uppdateras senast efter 500 ms.
-         */
+        /* If React keeps mutating the page, run an update within 500 ms. */
         if (maximumWaitTimer === null) {
             maximumWaitTimer = window.setTimeout(runUpdate, 500);
         }
@@ -4651,7 +4645,7 @@ if (tagInfo && tagInfo.length) {
                         var names = new Intl.DisplayNames(["en"], { type: "region" });
                         countryName = names.of(code) || code;
                     } catch (e) { /* fall back to the raw code */ }
-/* Klickbar landsflagga med landsnamn och zoomnivå 0 */
+/* Clickable country flag with the country name and zoom level 0. */
 var flagLink = flagEl.closest("a");
 
 if (flagLink && !flagLink.dataset.lynxCountryReady) {
@@ -4666,7 +4660,7 @@ if (flagLink && !flagLink.dataset.lynxCountryReady) {
     flagLink.setAttribute("target", "_blank");
     flagLink.setAttribute("rel", "noopener noreferrer");
 
-    /* Hindra klicket från att påverka själva kortet */
+    /* Prevent the click from triggering the card. */
     flagLink.addEventListener("mousedown", function (event) {
         event.stopPropagation();
     });
@@ -4683,11 +4677,7 @@ if (flagLink && !flagLink.dataset.lynxCountryReady) {
 
         var attempts = 0;
 
-        /*
-         * Stash accepterar inte zoom=0 som URL-parameter.
-         * Vänta därför tills zoomreglaget finns i den nya fliken
-         * och ställ sedan React-reglaget på nivå 0.
-         */
+        /* Stash does not accept zoom=0 as a URL parameter. Wait for the zoom control in the new tab, then set its React control to level 0. */
         var zoomTimer = window.setInterval(function () {
             attempts += 1;
 
@@ -4721,10 +4711,10 @@ if (flagLink && !flagLink.dataset.lynxCountryReady) {
                     window.clearInterval(zoomTimer);
                 }
             } catch (error) {
-                /* Fliken håller fortfarande på att laddas */
+                /* The tab is still loading. */
             }
 
-            /* Avsluta försöken efter cirka tio sekunder */
+            /* Stop retrying after approximately ten seconds. */
             if (attempts >= 100) {
                 window.clearInterval(zoomTimer);
             }
@@ -10301,10 +10291,7 @@ document.body.addEventListener("focusout", function (event) {
 
   let updateScheduled = false;
 
-  /*
-   * Mäter textens naturliga höjd utan line-clamp, padding
-   * eller en Read more-indikator.
-   */
+  /* Measure the natural text height without line clamping, padding or a Read more indicator. */
   function hasMoreThanTwoLines(description) {
     const computed = window.getComputedStyle(description);
 
@@ -10332,7 +10319,7 @@ document.body.addEventListener("focusout", function (event) {
 
     const naturalHeight = description.scrollHeight;
 
-    /* Återställ exakt de inline-regler som fanns innan mätningen */
+    /* Restore the exact inline styles that existed before measurement. */
     if (originalStyle === null) {
       description.removeAttribute("style");
     } else {
@@ -10409,7 +10396,7 @@ document.body.addEventListener("focusout", function (event) {
   }
 }());
 
-/* Lynx – popup endast när Read more hovras */
+/* Lynx: show the popup only while Read more is hovered. */
 (function () {
   "use strict";
 
@@ -10512,7 +10499,7 @@ document.body.addEventListener("focusout", function (event) {
   window.addEventListener("resize", hidePopup);
 }());
 
-/* Lynx – extra statistik på Group-kort */
+/* Lynx: additional statistics on group cards. */
 (function () {
   "use strict";
 
@@ -10762,7 +10749,7 @@ document.body.addEventListener("focusout", function (event) {
   );
 }());
 
-/* Lynx – Group performer-popup och dölj tomma räknare */
+/* Lynx: group performer popup and hidden empty counters. */
 (function () {
   "use strict";
 
@@ -10988,7 +10975,7 @@ function addPerformerPopup(card, performers) {
 }());
 
 
-/* Lynx – stabil bildpopup från Group-performerikonen */
+/* Lynx: stable portrait popup from the group performer icon. */
 (function () {
   "use strict";
 
@@ -11086,10 +11073,7 @@ function getPerformers(counter) {
       )
     );
 
-    /*
-     * Popupens nederkant överlappar ikonen med 6 px.
-     * Därför finns inget tomrum som får hover att brytas.
-     */
+    /* Overlap the icon by 6 px so a gap cannot interrupt hover. */
     let top = rect.top - height + 6;
 
     if (top < margin) {
@@ -11114,10 +11098,7 @@ function getPerformers(counter) {
 
     activeCounter = counter;
 
-    /*
-     * En kort avsiktlig fördröjning hindrar popupen
-     * från att blinka när musen bara passerar ikonen.
-     */
+    /* A short intentional delay prevents flashing when the pointer only passes over the icon. */
     showTimer = setTimeout(function () {
       if (activeCounter !== counter) return;
 
@@ -11238,12 +11219,7 @@ function getPerformers(counter) {
   );
 }());
 
-/* ================================================================
-   LYNXTHEME – riktiga hover-popups på Studio-kortens räknarikoner
-
-   Visar miniatyr + namn för scener, performers, bilder, gallerier
-   och groups. Data hämtas först vid hover och cachas därefter.
-   ================================================================ */
+/* Lynx Theme: thumbnail and name popups for studio-card scene, performer, image, gallery and group counters. Fetch on first hover and cache the results. */
 
 (function lynxStudioMediaPopups() {
   "use strict";
@@ -11673,7 +11649,7 @@ function getPerformers(counter) {
       Math.min(left, window.innerWidth - width - margin)
     );
 
-    /* Överlappa ikonen lite så att hover inte bryts i ett tomrum. */
+    /* Overlap the icon slightly to avoid interrupting hover. */
     let top = rect.top - height + 5;
 
     if (top < margin) {
@@ -11713,14 +11689,14 @@ function getPerformers(counter) {
 
     activeCounter = counter;
 
-    /* Dölj Stashs lilla standard-tooltip omedelbart. */
+    /* Hide the native Stash tooltip immediately. */
     counter.removeAttribute("title");
     const counterButton = counter.querySelector("button");
     if (counterButton) counterButton.removeAttribute("title");
 
     document.body.classList.add("lynx-studio-popup-open");
 
-    /* Gammalt popupinnehåll får aldrig ligga kvar och blinka. */
+    /* Never leave stale popup contents visible or flashing. */
     if (portal) portal.classList.remove("lynx-visible");
 
     showTimer = setTimeout(async function () {
@@ -11745,10 +11721,7 @@ function getPerformers(counter) {
 
         renderItems(result, kind, counter);
 
-        /*
-         * Popupen har nu sin slutliga storlek. Placera den innan den
-         * görs synlig, så den aldrig hoppar under muspekaren.
-         */
+        /* Position the popup at its final size before showing it, so it cannot move beneath the pointer. */
         positionPortal(counter);
         portal.classList.add("lynx-visible");
       } catch (error) {
@@ -11838,10 +11811,7 @@ function getPerformers(counter) {
   window.addEventListener("resize", hideImmediately);
 }());
 
-/* =========================================================
-   LYNX — UNDERTAGGAR PÅ TAGGSIDAN
-   Högst tre synliga rader + Expand/Collapse vid behov.
-   ========================================================= */
+/* Lynx: show up to three rows of subtags, with Expand/Collapse when needed. */
 
 (() => {
   "use strict";
@@ -12008,10 +11978,7 @@ function getPerformers(counter) {
   }
 })();
 
-/* ================================================================
-   LYNX – performer-popup på Images och Galleries
-   Visar performerbild + namn och ersätter Stashs text-popup.
-   ================================================================ */
+/* Lynx: performer portrait and name popups on Images and Galleries, replacing the native text popup. */
 
 (function lynxImageGalleryPerformerPopups() {
   "use strict";
@@ -12039,10 +12006,7 @@ function getPerformers(counter) {
 
     portal = document.createElement("div");
 
-    /*
-     * Återanvänder samma CSS som performer-popupen
-     * på Studios-sidan.
-     */
+    /* Reuse the performer-popup styles from the Studios page. */
     portal.className =
       "lynx-studio-media-popup " +
       "lynx-studio-media-popup--performer";
@@ -12316,11 +12280,7 @@ function getPerformers(counter) {
       )
     );
 
-    /*
-     * Popupen överlappar ikonen några pixlar.
-     * Då försvinner den inte när musen flyttas
-     * från ikonen till popupen.
-     */
+    /* Overlap the icon by a few pixels so moving into the popup does not close it. */
     let top =
       rect.top -
       height +
@@ -12357,10 +12317,7 @@ function getPerformers(counter) {
       );
     }
 
-    /*
-     * Denna klass används redan av temat
-     * för att dölja Stashs text-popup.
-     */
+    /* The theme already uses this class to hide the native Stash text popup. */
     document.body.classList.remove(
       "lynx-studio-popup-open"
     );
@@ -12394,9 +12351,7 @@ function getPerformers(counter) {
       button.removeAttribute("title");
     }
 
-    /*
-     * Dölj Stashs vanliga långsammare popup.
-     */
+    /* Hide the slower native Stash popup. */
     document.body.classList.add(
       "lynx-studio-popup-open"
     );
@@ -12407,9 +12362,7 @@ function getPerformers(counter) {
       );
     }
 
-    /*
-     * 10 ms öppningsfördröjning.
-     */
+    /* Open delay: 10 ms. */
     showTimer = setTimeout(
       async function () {
         if (activeCounter !== counter) {
@@ -12540,9 +12493,7 @@ function getPerformers(counter) {
         return;
       }
 
-      /*
-       * 20 ms stängningsfördröjning.
-       */
+      /* Close delay: 20 ms. */
       scheduleHide(20);
     }
   );
@@ -12781,9 +12732,7 @@ function getPerformers(counter) {
     let refreshQueued = false;
 
 
-    /* -----------------------------------------------------
-       Kontrollera om ett formfält faktiskt innehåller data
-       ----------------------------------------------------- */
+    /* Check whether a form field contains data. */
 
     function lynxFieldHasValue(row) {
 
@@ -12870,9 +12819,7 @@ function getPerformers(counter) {
         }
 
 
-        /* ---------------------------------------------
-           Bild / cover om en sådan finns i raden
-           --------------------------------------------- */
+        /* Image or cover, if one is present in the row. */
 
         if (
             row.querySelector(
@@ -12888,9 +12835,7 @@ function getPerformers(counter) {
 
 
 
-    /* -----------------------------------------------------
-       Är det verkligen ett redigeringsfält?
-       ----------------------------------------------------- */
+    /* Check whether this is an editable field. */
 
     function lynxIsFieldRow(row) {
 
@@ -12899,7 +12844,7 @@ function getPerformers(counter) {
         }
 
 
-        /* Måste ha en label */
+        /* A label is required. */
         const label =
             Array.from(row.children)
                 .find(el => el.tagName === "LABEL");
@@ -12909,8 +12854,7 @@ function getPerformers(counter) {
         }
 
 
-        /* Hoppa över Custom Fields.
-           Den har redan egen collapse-funktion i Stash. */
+        /* Skip Custom Fields, which already has its own collapse control in Stash. */
         if (
             row.closest(".custom-fields-input")
         ) {
@@ -12918,7 +12862,7 @@ function getPerformers(counter) {
         }
 
 
-        /* Måste innehålla någon faktisk editor */
+        /* Require an actual editor. */
         return !!row.querySelector(
             [
                 "input",
@@ -13016,10 +12960,7 @@ function getPerformers(counter) {
 
         if (hasValue) {
 
-            /*
-             * Fältet används.
-             * Visa det helt normalt.
-             */
+            /* The field has a value; display it normally. */
 
             row.classList.remove(
                 "lynx-unused-field",
@@ -13040,9 +12981,7 @@ function getPerformers(counter) {
         }
 
 
-        /*
-         * Fältet är tomt.
-         */
+        /* The field is empty. */
 
         row.classList.add(
             "lynx-unused-field"
@@ -13116,9 +13055,7 @@ function getPerformers(counter) {
 
 
 
-    /* -----------------------------------------------------
-       När användaren ändrar något
-       ----------------------------------------------------- */
+    /* When the user changes a value. */
 
     document.addEventListener(
         "input",
@@ -13159,10 +13096,7 @@ function getPerformers(counter) {
 
 
 
-    /* -----------------------------------------------------
-       React Select ändras ofta genom DOM-mutationer istället
-       för vanliga change-events.
-       ----------------------------------------------------- */
+    /* React Select often changes through DOM mutations rather than normal change events. */
 
 const observer = new MutationObserver(() => {
     if (!document.querySelector(EDIT_SELECTOR)) {
@@ -13182,7 +13116,7 @@ const observer = new MutationObserver(() => {
 
 
 
-    /* Första körningen */
+    /* Initial run. */
 
     lynxQueueRefresh();
 

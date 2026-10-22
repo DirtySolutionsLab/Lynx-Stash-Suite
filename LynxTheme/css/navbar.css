@@ -849,7 +849,7 @@ body.stash-liquid-glass nav .navbar-brand .refract-custom-logo {
   width: 82% !important;
   height: 82% !important;
 
-  /* Stäng av den vanliga alfamasken */
+  /* Disable the standard alpha mask. */
   mask-image: none !important;
   -webkit-mask-image: none !important;
   background-color: transparent !important;
@@ -861,7 +861,7 @@ body.stash-liquid-glass nav .navbar-brand .refract-custom-logo {
   background-position: center !important;
   background-size: contain !important;
 
-  /* Svart försvinner visuellt, vitt förblir tydligt */
+  /* Blend away black while keeping white visible. */
   mix-blend-mode: screen;
 
   border-radius: 50%;
