@@ -1,0 +1,1216 @@
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/plugin/LynxSceneCard/assets/fonts/poppins-300.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/plugin/LynxSceneCard/assets/fonts/poppins-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/plugin/LynxSceneCard/assets/fonts/poppins-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/plugin/LynxSceneCard/assets/fonts/poppins-700.woff2") format("woff2");
+}
+/* Root variables for consistent theming */
+:root {
+  --accent-color: var(--accent, #3c91e6);
+  --text-primary: #e5e5e5;
+  --text-muted: #ccc;
+  --bg-primary: #141418;
+  --bg-hover: #1a1d23;
+  --tag-bg: #444;
+  --tag-bg-hover: #555;
+  --max-title-width: 300px;
+  --max-studio-width: 120px;
+  /* New Variables for Popover */
+  --popover-bg: #2c2f33;
+  --popover-text: #ffffff;
+  --popover-border: #141418;
+  --popover-shadow: 0 4px 14px #141418;
+  /* Flex Gap for Popover Content */
+  --popover-flex-gap: 4px;
+  /* Additional Colors */
+}
+
+/* ------------------------------
+   Scene Card Base Styles
+-------------------------------- */
+.scene-card {
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  border: none;
+  text-align: left;
+}
+
+.scene-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Hide unwanted elements from original Stash UI */
+.scene-card .rating-banner,
+.scene-card .studio-overlay,
+.scene-card .tag-count,
+.scene-card .performer-count,
+.scene-card .other-copies,
+.scene-card .card-popovers,
+.scene-card hr,
+.scene-card .card-section-title,
+.scene-card .scene-specs-overlay,
+.scene-card .scene-interactive-speed-overlay {
+  display: none !important;
+}
+
+/* Hide hover scrubber and progress bar */
+.scene-card .progress-bar,
+.scene-card .hover-scrubber,
+.scene-card .hover-scrubber-indicator {
+  display: none !important;
+}
+
+.scene-card .video-section {
+  position: relative;
+}
+
+.scene-card-content {
+  overflow: visible;
+}
+
+/* ------------------------------
+   Scene Titles
+-------------------------------- */
+.scene-title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.scene-title {
+  color: #ffffff;
+  text-decoration: none;
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: var(--max-title-width);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
+
+.popover-content-container .scene-title {
+  margin-left: 10px;
+}
+
+.custom-popover .scene-title {
+  margin-left: 10px;
+}
+
+/* ------------------------------
+   Performers
+-------------------------------- */
+.scene-card .performers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+}
+
+.scene-card .performer-tag {
+  display: inline-block;
+  padding: 1px 8px; /* Increased horizontal padding for better click area */
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: var(--tag-bg);
+  transition: background 0.3s ease, transform 0.3s ease, border 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin-bottom: 5px;
+}
+
+.scene-card .performer-tag:hover {
+  background: var(--tag-bg-hover);
+  border: 1px solid var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Gender-based colors */
+.scene-card .performer-tag.FEMALE,
+.scene-card .performer-tag.TRANSGENDER_MALE {
+  background: #e64a8d;
+}
+
+.scene-card .performer-tag.MALE,
+.scene-card .performer-tag.TRANSGENDER_FEMALE {
+  background: #3c91e6;
+}
+
+.scene-card .performer-tag.INTERSEX,
+.scene-card .performer-tag.NONBINARY {
+  background: #9e58d2;
+}
+
+.performer-tag-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+.performer-tag-wrapper .performer-tag.FEMALE,
+.performer-tag-wrapper .performer-tag.TRANSGENDER_MALE {
+  background: #e64a8d;
+}
+
+.performer-tag-wrapper .performer-tag.MALE,
+.performer-tag-wrapper .performer-tag.TRANSGENDER_FEMALE {
+  background: #3c91e6;
+}
+
+.performer-tag-wrapper .performer-tag.INTERSEX,
+.performer-tag-wrapper .performer-tag.NONBINARY {
+  background: #9e58d2;
+}
+
+.performer-tag-wrapper .performer-tag {
+  display: inline-block;
+  padding: 1px 8px; /* Increased horizontal padding for better click area */
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: var(--tag-bg);
+  transition: background 0.3s ease, transform 0.3s ease, border 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin-bottom: 5px;
+}
+
+.performer-tag-wrapper .performer-tag:hover {
+  background: var(--tag-bg-hover);
+  border: 1px solid var(--accent-color);
+  transform: scale(1.05);
+}
+
+.performer-hover-image {
+  width: 120px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.performer-hover-profile {
+  flex: 0 0 120px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.performer-hover-name {
+  width: 100%;
+  color: var(--popover-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ------------------------------
+   Footer & Studio/Views/Date
+-------------------------------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-top: 1px solid #2c2f34;
+  padding-top: 8px;
+  margin-top: auto;
+  gap: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.footer .studio {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  position: relative;
+  max-width: var(--max-studio-width);
+}
+
+.footer .studio::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to left, var(--bg-hover) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.footer .studio:hover::before {
+  content: attr(data-full-text);
+  position: absolute;
+  left: 0;
+  top: -110%;
+  background: var(--bg-hover);
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  color: #fff;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer .studio:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer .studio a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer .studio a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.footer .views {
+  flex: 0 0 auto;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.footer .date {
+  flex: 1;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+}
+
+/* ------------------------------
+   Tag Chips & More Indicator
+-------------------------------- */
+.tag-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tag-chip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tag-chip {
+  background-color: #444;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex; /* Ensures proper alignment */
+  align-items: center;
+}
+
+.tag-chip:hover {
+  background-color: #555;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* More indicator for tags/performers */
+.more-indicator {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #444;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.more-indicator:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* ------------------------------
+   More List Popover
+-------------------------------- */
+.more-list-popover {
+  background-color: var(--popover-bg);
+  color: var(--popover-text);
+  border: 1px solid var(--popover-border);
+  border-radius: 8px;
+  padding: 12px; /* Increased padding for better spacing */
+  box-shadow: var(--popover-shadow);
+  max-width: 250px;
+  max-height: 400px; /* Increased max-height for more content */
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.more-list-popover-title {
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-align: center; /* Centered title for better aesthetics */
+}
+
+.more-list-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Added gap for spacing between tag chips */
+}
+
+.no-results {
+  color: #aaa;
+  text-align: center;
+  font-size: 12px;
+  padding: 8px;
+}
+
+/* ------------------------------
+   Resolution Row
+-------------------------------- */
+.tag-resolution-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ------------------------------
+   Combined Popover & Recommendations
+-------------------------------- */
+.custom-popover {
+  background-color: var(--popover-bg);
+  color: var(--popover-text);
+  border: 1px solid var(--popover-border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--popover-shadow);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--popover-flex-gap);
+  align-items: flex-start;
+}
+
+/* Performer and tag popovers intentionally have no Bootstrap arrow. */
+.custom-popover > .arrow,
+.custom-popover > .popover-arrow,
+.custom-popover > .arrow::before,
+.custom-popover > .arrow::after,
+.custom-popover > .popover-arrow::before,
+.custom-popover > .popover-arrow::after {
+  display: none !important;
+  content: none !important;
+}
+
+.popover-content-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--popover-flex-gap);
+  width: 100%;
+}
+
+.popover-flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--popover-flex-gap);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.recommendation-popover {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Increased gap for better spacing */
+}
+
+.recommended-scene-item {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Increased gap for better spacing */
+  padding: 6px;
+  border-radius: 8px;
+  background-color: var(--bg-hover);
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-left: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.related-scenes-popover .recommended-scene-item {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Increased gap for better spacing */
+  padding: 6px;
+  border-radius: 8px;
+  background-color: var(--bg-hover);
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-left: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.recommended-scene-item:hover {
+  background-color: var(--bg-primary);
+}
+
+.scene-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.scene-thumbnail-wrapper {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.scene-thumbnail {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease;
+}
+
+.video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.recommended-scene-item:hover .video-thumbnail {
+  opacity: 1;
+}
+
+.scene-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popover-title {
+  margin-left: 10px !important;
+}
+
+.popover-divider {
+  margin: 0 0 2px 0;
+  border: 1px dashed white;
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------
+   Action Buttons Styles
+-------------------------------- */
+.scene-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.action-button:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.favorite-button.favorited {
+  color: #e74c3c; /* Red color when favorited */
+}
+
+.favorite-button.favorited .fas.fa-heart {
+  color: #e74c3c;
+}
+
+/* ------------------------------
+   TagChipWithPopover Specific Styles
+-------------------------------- */
+.tag-chip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tag-chip {
+  background-color: #444;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex; /* Ensures proper alignment */
+  align-items: center;
+}
+
+.tag-chip:hover {
+  background-color: #555;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* ------------------------------
+   MoreListPopover Enhancements
+-------------------------------- */
+/* Ensures popover appears above other elements */
+.popover {
+  z-index: 1000;
+}
+
+/* Scrollbar Styling */
+.more-list-popover-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.more-list-popover-content::-webkit-scrollbar-track {
+  background: #2c2f33;
+}
+
+.more-list-popover-content::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.more-list-popover-content::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* ------------------------------
+   Responsive Design Enhancements
+-------------------------------- */
+@media (max-width: 768px) {
+  .custom-popover {
+    width: 90vw;
+    max-width: 90vw;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .popover-flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .performer-hover-image {
+    width: 60px;
+    height: 90px;
+  }
+  .performer-hover-profile {
+    flex-basis: 60px;
+    width: 60px;
+  }
+  .performer-hover-name {
+    font-size: 11px;
+  }
+  .popover-content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .recommended-scene-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .scene-title {
+    text-align: center;
+    margin-left: 0;
+  }
+  .popover-title {
+    font-size: 16px;
+    margin-left: 10px !important;
+  }
+  .popover-divider {
+    margin: 0 0 2px 0;
+  }
+  .tag-details p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+
+/* Remove default blue outline / glow / focus ring */
+.performer-tag,
+.performer-tag:hover,
+.performer-tag:focus,
+.performer-tag:active {
+  outline: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  color: #fff !important; /* Force white text */
+}
+
+
+/* Keep performer and tag rows on a single line. */
+body.stash-liquid-glass .scene-card .performers,
+body.stash-liquid-glass .scene-card .scene-performers,
+body.stash-liquid-glass .scene-card .card-section .performers,
+body.stash-liquid-glass .scene-card .tag-chips {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-height: 27px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+/* Keep the natural chip width while allowing chips to shrink. */
+body.stash-liquid-glass .scene-card .performer-tag-wrapper,
+body.stash-liquid-glass .scene-card .tag-chip-wrapper {
+  display: block !important;
+  flex: 0 1 auto !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+body.stash-liquid-glass .scene-card .performer-tag,
+body.stash-liquid-glass .scene-card .tag-chip {
+  display: block !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Keep the overflow button immediately after the chips. */
+body.stash-liquid-glass .scene-card .more-indicator {
+  position: static !important;
+  display: inline-flex !important;
+  flex: 0 0 20px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Keep the title on a single line. */
+.scene-card .scene-title-wrapper {
+  position: relative;
+  overflow: visible !important;
+}
+
+.scene-card .scene-title-wrapper .scene-title {
+  display: block !important;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Show the popup only when the title is truncated. */
+.scene-card .scene-title-wrapper.lynx-title-truncated::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 7px);
+  z-index: 1000;
+
+  width: max-content;
+  max-width: min(380px, calc(100vw - 30px));
+  padding: 7px 10px;
+
+  color: #fff;
+  background: rgba(15, 18, 24, 0.96);
+  border: 1px solid rgba(var(--accent-rgb), 0.65);
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: normal;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.65),
+    0 0 12px rgba(var(--accent-rgb), 0.25);
+
+  pointer-events: none;
+}
+
+/* Small arrow pointing to the title. */
+.scene-card .scene-title-wrapper.lynx-title-truncated::before {
+  content: "";
+
+  position: absolute;
+  left: 18px;
+  bottom: calc(100% + 2px);
+  z-index: 1001;
+
+  width: 9px;
+  height: 9px;
+
+  background: rgba(15, 18, 24, 0.96);
+  border-right: 1px solid rgba(var(--accent-rgb), 0.65);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.65);
+  transform: rotate(45deg);
+
+  pointer-events: none;
+}
+
+/* ==================================================
+   LYNX — FLOATING OVERFLOW CHIPS WITHOUT A BACKGROUND PANEL
+   ================================================== */
+
+/* Constrain popup width without a background panel. */
+body.stash-liquid-glass
+div.popover.custom-popover.more-list-popover {
+  --bs-popover-bg: transparent !important;
+  --bs-popover-border-color: transparent !important;
+
+  width: min(360px, calc(100vw - 24px)) !important;
+  min-width: 0 !important;
+  max-width: min(360px, calc(100vw - 24px)) !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+
+  overflow: visible !important;
+}
+
+/* Remove backgrounds from nested Bootstrap layers. */
+body.stash-liquid-glass
+div.popover.custom-popover.more-list-popover > .popover-body,
+body.stash-liquid-glass
+div.popover.custom-popover.more-list-popover .popover-content-container,
+body.stash-liquid-glass
+div.popover.custom-popover.more-list-popover .popover-flex-container,
+body.stash-liquid-glass
+div.popover.custom-popover.more-list-popover .popover-flex-container > div {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+
+  overflow: visible !important;
+}
+
+/* Hide the heading. */
+body.stash-liquid-glass
+.more-list-popover .popover-title {
+  display: none !important;
+}
+
+/* Wrap chips across rows when necessary. */
+body.stash-liquid-glass
+.more-list-popover .more-list-scroll {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+
+  gap: 6px !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 2px !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+/* Allow each wrapper to shrink and wrap onto the next row. */
+body.stash-liquid-glass
+.more-list-popover
+:is(.performer-tag-wrapper, .tag-chip-wrapper) {
+  display: inline-flex !important;
+  flex: 0 1 auto !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Allow long names to wrap inside the chip. */
+body.stash-liquid-glass
+.more-list-popover
+:is(.performer-tag, .tag-chip) {
+  display: inline-flex !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+/* Remove the Bootstrap arrow. */
+body.stash-liquid-glass
+.more-list-popover .popover-arrow,
+body.stash-liquid-glass
+.more-list-popover::before,
+body.stash-liquid-glass
+.more-list-popover::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Final Lynx override: no panel behind overflow pills. */
+.popover.custom-popover.more-list-popover {
+  --bs-popover-bg: transparent !important;
+  --bs-popover-border-color: transparent !important;
+  --bs-popover-header-bg: transparent !important;
+  width: min(360px, calc(100vw - 24px)) !important;
+  min-width: 0 !important;
+  max-width: min(360px, calc(100vw - 24px)) !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  overflow: visible !important;
+}
+
+.popover.custom-popover.more-list-popover > .popover-body,
+.popover.custom-popover.more-list-popover .popover-content-container,
+.popover.custom-popover.more-list-popover .popover-flex-container,
+.popover.custom-popover.more-list-popover .popover-flex-container > div {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  overflow: visible !important;
+}
+
+.popover.custom-popover.more-list-popover .more-list-scroll {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 2px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.popover.custom-popover.more-list-popover
+  :is(.performer-tag-wrapper, .tag-chip-wrapper) {
+  display: inline-flex !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.popover.custom-popover.more-list-popover
+  :is(.performer-tag, .tag-chip) {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+/* ==================================================
+   LYNX NATIVE OVERFLOW LIST
+   This intentionally does not use Bootstrap .popover or Popper attributes.
+   ================================================== */
+
+.lynx-more-list-popover {
+  z-index: 10050 !important;
+  display: block !important;
+  min-width: 0 !important;
+  max-width: calc(100vw - 24px) !important;
+  max-height: min(60vh, 420px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  pointer-events: auto !important;
+}
+
+.lynx-more-list-popover .more-list-scroll {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  align-items: flex-start !important;
+  align-content: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 6px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 3px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.lynx-more-list-popover
+  :is(.performer-tag-wrapper, .tag-chip-wrapper) {
+  display: inline-flex !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.lynx-more-list-popover
+  :is(.performer-tag, .tag-chip) {
+  display: inline-flex !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+.lynx-more-list-popover .performer-tag.FEMALE,
+.lynx-more-list-popover .performer-tag.TRANSGENDER_MALE {
+  color: #fff !important;
+  background: #e64a8d !important;
+}
+
+.lynx-more-list-popover .performer-tag.MALE,
+.lynx-more-list-popover .performer-tag.TRANSGENDER_FEMALE {
+  color: #fff !important;
+  background: #3c91e6 !important;
+}
+
+.lynx-more-list-popover .performer-tag.INTERSEX,
+.lynx-more-list-popover .performer-tag.NONBINARY,
+.lynx-more-list-popover .performer-tag.NON_BINARY {
+  color: #fff !important;
+  background: #9e58d2 !important;
+}
+
+/* Performer preview used by performer pills inside the overflow list. */
+.lynx-overflow-performer-preview {
+  z-index: 10100 !important;
+  width: 132px !important;
+  margin: 0 !important;
+  padding: 5px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: rgba(8, 12, 18, 0.94) !important;
+  border: 1px solid rgba(var(--accent-rgb), 0.72) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65),
+              0 0 12px rgba(var(--accent-rgb), 0.25) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  pointer-events: none !important;
+}
+
+.lynx-overflow-performer-image {
+  display: block !important;
+  width: 120px !important;
+  height: 180px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+}
+
+.lynx-overflow-performer-name {
+  width: 100% !important;
+  padding: 2px 4px 3px !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
