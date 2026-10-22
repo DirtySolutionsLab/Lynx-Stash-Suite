@@ -1,0 +1,22 @@
+name: Lynx XL Girls
+# Version 0.1.2: native metadata; companion plugin fills Bra Size after save.
+performerByName:
+  action: script
+  script:
+    - python
+    - scraper.py
+    - query
+performerByFragment:
+  action: script
+  script:
+    - python
+    - scraper.py
+    - profile
+performerByURL:
+  - action: script
+    url:
+      - xlgirls.com/bbw-models/
+    script:
+      - python
+      - scraper.py
+      - profile

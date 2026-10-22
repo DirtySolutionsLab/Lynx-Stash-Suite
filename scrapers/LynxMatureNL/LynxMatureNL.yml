@@ -1,0 +1,19 @@
+name: Lynx Mature.nl
+# Mature.nl 1.1.0: source categories become tags; Skincolor maps to Ethnicity.
+performerByName:
+  action: script
+  script:
+    - python
+    - scraper.py
+    - query
+performerByURL:
+  - action: script
+    url:
+      - mature.nl/en/model/
+      - mature.nl/nl/model/
+      - mature.nl/de/model/
+      - mature.nl/fr/model/
+    script:
+      - python
+      - scraper.py
+      - profile
