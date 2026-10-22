@@ -1,0 +1,1 @@
+waist_bust<=0.8,waist_hip<=0.8,bust_hip>=0.85,bust_hip<=1.15=Curvy

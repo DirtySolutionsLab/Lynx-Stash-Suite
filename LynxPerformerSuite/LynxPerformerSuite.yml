@@ -1,0 +1,637 @@
+name: Lynx Performer Suite
+description: Performer metadata to tags, controlled tag transfer, performer links
+  and supporting images. Includes editable starter rules and legacy-list recovery.
+version: 1.1.2
+settings:
+  matcher_enabled:
+    displayName: Enable Performer Matcher
+    type: BOOLEAN
+    description: Add Match performers to Images and Galleries. Review names from filenames and folders, assign existing performers, or explicitly create missing names. Reload the page after enabling.
+  attributes_enabled:
+    displayName: Enable Performer Attributes
+    type: BOOLEAN
+    description: Enable this module. Reload the page after changing this switch. Existing
+      automation switches are kept separately.
+  attributes__measurementUnits:
+    displayName: Measurement units
+    description: auto, cm or inches. Automatic detection is an estimate; use an explicit
+      unit if uncertain.
+    type: STRING
+  attributes__inferBodyMeasurements:
+    displayName: Estimate body shape from numeric measurements
+    description: Adjust estimate body shape from numeric measurements. Changes affect
+      this module only. Preview metadata changes before applying them.
+    type: BOOLEAN
+  attributes__shapeInferenceRules:
+    displayName: Shape inference rules
+    description: Body-shape estimates from bust/waist/hips when height and weight
+      are unavailable. Rule syntax and limitations are documented in RULE-FORMATS.md.
+    type: STRING
+  attributes__inferBreastNumeric:
+    displayName: Estimate breast-size category from bust circumference
+    description: Adjust estimate breast-size category from bust circumference. Changes
+      affect this module only. Preview metadata changes before applying them.
+    type: BOOLEAN
+  attributes__bustInferenceRules:
+    displayName: Bust inference rules
+    description: Estimate breast-size categories from numeric bust circumference,
+      not cup size. See RULE-FORMATS.md. Circumference alone cannot establish a bra
+      cup.
+    type: STRING
+  attributes__inferBody:
+    displayName: Estimate body type from height and weight
+    description: Optional height (cm) / weight (kg) estimate. Ordered rules; first
+      match wins. This is a user-defined classification, not a medical assessment.
+    type: BOOLEAN
+  attributes__bodyInferenceRules:
+    displayName: Body inference rules
+    description: Ordered rules, separated by semicolons. Each rule uses conditions
+      followed by =Body Type. Open RULE-FORMATS.md for syntax and examples. First
+      matching rule wins.
+    type: STRING
+  attributes__inferBreastSize:
+    displayName: Estimate breast-size category from cup code
+    description: Optional category estimate from the cup code in Measurements. Repeated
+      letters such as DD and DDD have editable rules below.
+    type: BOOLEAN
+  attributes__cupInferenceMap:
+    displayName: Cup inference — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__automatic:
+    displayName: Process changes automatically
+    description: Queue updates automatically when saved metadata changes. Preview
+      before enabling.
+    type: BOOLEAN
+  attributes__createTags:
+    displayName: Create missing tags
+    description: Create missing tags. If disabled, only existing tags or aliases are
+      used.
+    type: BOOLEAN
+  attributes__removeStale:
+    displayName: Remove outdated tags added by Lynx
+    description: Remove previously inherited tags that no longer match the enabled
+      rules. Manual unrelated tags are retained.
+    type: BOOLEAN
+  attributes__manageMappedTags:
+    displayName: Also reconcile legacy / manually assigned mapped tags
+    description: Also reconcile matching legacy attribute tags. This may remove manually
+      assigned tags from the mapped vocabulary. Preview first.
+    type: BOOLEAN
+  attributes__country:
+    displayName: Tag nationality from country
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__countryMap:
+    displayName: Country — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__hair:
+    displayName: Tag hair color
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__ethnicityChoices:
+    displayName: Ethnicity choices
+    description: Dropdown values separated by semicolons. Not specified is available
+      separately and produces no tag.
+    type: STRING
+  attributes__ethnicity:
+    displayName: Tag ethnicity
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+    type: BOOLEAN
+  attributes__ethnicityMap:
+    displayName: Ethnicity — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__piercingChoices:
+    displayName: Piercing choices
+    description: Dropdown values separated by semicolons. Not specified is available
+      separately and produces no tag.
+    type: STRING
+  attributes__hairMap:
+    displayName: Hair — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__eyes:
+    displayName: Tag eye color
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__eyesMap:
+    displayName: Eyes — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__breasts:
+    displayName: Tag natural / augmented breasts
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__breastsMap:
+    displayName: Breasts — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__breastSize:
+    displayName: Tag breast-size category
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+    type: BOOLEAN
+  attributes__breastSizeField:
+    displayName: Breast size field
+    description: Stored custom-field name. Keep the current name to preserve access
+      to existing data; renaming does not migrate stored values.
+    type: STRING
+  attributes__breastSizeMap:
+    displayName: Breast size — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__tattoos:
+    displayName: Tag tattoos
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__tattooTag:
+    displayName: Tattoo tag
+    description: Tag used for any actual tattoo description or Inked choice. No ink
+      / not specified produces no tag.
+    type: STRING
+  attributes__veryInkedTag:
+    displayName: Very inked tag
+    description: Additional tag used for the Very inked choice. The general tattoo
+      tag can also be added.
+    type: STRING
+  attributes__tattooLevelField:
+    displayName: Tattoo level field
+    description: Stored custom-field name. Keep the current name to preserve access
+      to existing data; renaming does not migrate stored values.
+    type: STRING
+  attributes__tattooLevelMap:
+    displayName: Tattoo level — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__age:
+    displayName: Tag age group
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+    type: BOOLEAN
+  attributes__ageMap:
+    displayName: Age — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  attributes__piercings:
+    displayName: Tag piercings
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__piercingTag:
+    displayName: Piercing tag
+    description: Tag used when a piercing is selected or described. Not specified
+      / none produces no tag.
+    type: STRING
+  attributes__body:
+    displayName: Tag body type
+    type: BOOLEAN
+    description: Create or reuse tags from this performer attribute using the rules
+      below. Requires the Attributes module. Automatic processing is controlled separately.
+  attributes__bodyField:
+    displayName: Body field
+    description: Stored custom-field name. Keep the current name to preserve access
+      to existing data; renaming does not migrate stored values.
+    type: STRING
+  attributes__bodyMap:
+    displayName: Body — editable rules
+    description: 'One rule per line, separated by semicolons: source value=Tag Name.
+      A custom list replaces the starter list. Existing tag aliases are reused.'
+    type: STRING
+  links_enabled:
+    displayName: Enable Performer Links
+    type: BOOLEAN
+    description: Enable this module. Reload the page after changing this switch. Existing
+      automation switches are kept separately.
+  links__automatic:
+    displayName: Process changes automatically
+    description: Queue updates automatically when saved metadata changes. Preview
+      before enabling.
+    type: BOOLEAN
+  links__galleryIds:
+    displayName: Limit to gallery IDs
+    description: Optional comma-separated gallery IDs for manual performer-link transfer.
+      Blank uses the module's normal scope. Preview before applying.
+    type: STRING
+  tags_enabled:
+    displayName: Enable Tag Transfer
+    type: BOOLEAN
+    description: Enable this module. Reload the page after changing this switch. Existing
+      automation switches are kept separately.
+  tags__automatic:
+    displayName: Process changes automatically
+    description: Queue updates automatically when saved metadata changes. Preview
+      before enabling.
+    type: BOOLEAN
+  tags__removeStale:
+    displayName: Remove outdated tags added by Lynx
+    description: Remove previously inherited tags that no longer match the enabled
+      rules. Manual unrelated tags are retained.
+    type: BOOLEAN
+  tags__syncAllow:
+    displayName: Legacy tag-removal vocabulary
+    description: 'Comma-separated exact tag names or #ID. Blank removes no legacy/manual
+      tags. WARNING: matching manually assigned tags may be removed; preview first.'
+    type: STRING
+  tags__performerScenes:
+    displayName: Performer → Scenes
+    type: BOOLEAN
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+  tags__performerImages:
+    displayName: Performer → Images
+    type: BOOLEAN
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+  tags__performerGalleries:
+    displayName: Performer → Galleries
+    type: BOOLEAN
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+  tags__galleryImages:
+    displayName: Gallery → Images
+    type: BOOLEAN
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+  tags__galleryPerformerImages:
+    displayName: Gallery performers → Images
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+    type: BOOLEAN
+  tags__imagesGallery:
+    displayName: Images → Gallery
+    type: BOOLEAN
+    description: Transfer source tags in this direction. Only enabled routes run;
+      allow-lists and exclusions also apply.
+  tags__imagesAll:
+    displayName: Require tag on every image
+    description: 'For Images → Gallery: enabled = only tags shared by every image;
+      disabled = tags found on any image.'
+    type: BOOLEAN
+  tags__performerAllow:
+    displayName: Allowed performer tags
+    description: 'Comma-separated exact tag names or #ID. Blank allows all source
+      tags. Exclusions still apply.'
+    type: STRING
+  tags__galleryAllow:
+    displayName: Allowed gallery tags
+    description: 'Comma-separated exact tag names or #ID. Blank allows all source
+      tags. Exclusions still apply.'
+    type: STRING
+  tags__imageAllow:
+    displayName: Allowed image tags
+    description: 'Comma-separated exact tag names or #ID. Blank allows all source
+      tags. Exclusions still apply.'
+    type: STRING
+  tags__excluded:
+    displayName: Never transfer these tags
+    description: 'Comma-separated exact tag names or #ID. Blank excludes nothing.'
+    type: STRING
+  tags__skipOrganized:
+    displayName: Skip organized targets
+    description: Do not change target items marked organized.
+    type: BOOLEAN
+  images_enabled:
+    displayName: Enable Supporting Images
+    type: BOOLEAN
+    description: Enable this module. Reload the page after changing this switch. Existing
+      automation switches are kept separately.
+  images__a_maxImagesPerSlot:
+    displayName: Max images per slot
+    type: NUMBER
+    description: Adjust max images per slot. Changes affect this module only. Preview
+      metadata changes before applying them.
+  images__a_selectionMode:
+    displayName: Selection mode
+    type: STRING
+    description: 'How each slot chooses among multiple matches: first or random (Default:
+      first)'
+  images__a_slotSlideshowSeconds:
+    displayName: Slot slideshow seconds
+    type: STRING
+    description: '0 disables. 1+ enables slot slideshows (Default: 0)'
+  images__a_slotTransitionMs:
+    displayName: Slot transition ms
+    type: STRING
+    description: '0 disables. Transition duration in milliseconds (Default: 0)'
+  images__a_loopSlots:
+    displayName: Loop slots
+    type: BOOLEAN
+    description: 'Repeat slots for infinite scrolling behavior (Default: true)'
+  images__a_defaultPanelState:
+    displayName: Default panel state
+    type: STRING
+    description: 'expanded, collapsed, or remember last state (Default: remember;
+      falls back to expanded if no saved state exists)'
+  images__a_slotInfoPosition:
+    displayName: Slot info position
+    type: STRING
+    description: 'Whether the tag label row is shown at the top or bottom of the slot:
+      top or bottom (Default: top)'
+  images__a_imageHeight:
+    displayName: Image height
+    type: STRING
+    description: 'Sets the minimum height of slots and influences how tall slots can
+      grow (Default: 210)'
+  images__a_panelWidth:
+    displayName: Panel width
+    type: STRING
+    description: 'Panel width in pixels for the performer page panel (Default: 300)'
+  images__a_autoFitSlotCrops:
+    displayName: Auto fit slot crops
+    type: BOOLEAN
+    description: 'Automatically fit images to their slot aspect ratio when added to
+      slots or loaded in the panel (Default: true)'
+  images__a_panelBackgroundColor:
+    displayName: Panel background color
+    type: STRING
+    description: 'Background color for the slot header/footer panels (Default: #808080)'
+  images__a_panelOpacity:
+    displayName: Panel opacity
+    type: STRING
+    description: 'Background opacity for the slot header/footer panels from 0 to 1
+      (Default: 0.1)'
+  images__a_overlayBackgroundColor:
+    displayName: Overlay background color
+    type: STRING
+    description: 'Background color for buttons and labels (Default: #808080)'
+  images__a_overlayBackgroundOpacity:
+    displayName: Overlay background opacity
+    type: STRING
+    description: 'Background opacity for buttons and labels from 0 to 1 (Default:
+      0.3)'
+  images__a_overlayFontColor:
+    displayName: Overlay font color
+    type: STRING
+    description: 'Text and icon color for buttons and labels (Default: #ffffff)'
+  images__a_overlayFontSize:
+    displayName: Overlay font size
+    type: STRING
+    description: 'Font size in pixels for buttons and labels (Default: 13)'
+  images__a_openInNewTab:
+    displayName: Open in new tab
+    type: BOOLEAN
+    description: 'Open the image page in a new tab when clicking a supporting image
+      (Default: true)'
+  images__a_cardPreviewHoverBehavior:
+    displayName: Card preview hover behavior
+    type: STRING
+    description: 'How the performer card preview opens: performer card, badge, or
+      disabled (Default: badge)'
+  images__a_cardPreviewPanelWidth:
+    displayName: Card preview panel width
+    type: STRING
+    description: 'Width in pixels for the hover preview panel shown on performer cards
+      (Default: 500)'
+  images__a_cardPreviewPanelHeight:
+    displayName: Card preview panel height
+    type: STRING
+    description: 'Height in pixels for the hover preview panel shown on performer
+      cards (Default: 500)'
+  images__a_cardPreviewBackgroundColor:
+    displayName: Card preview background color
+    type: STRING
+    description: 'Background color for the hover preview panel shown on performer
+      cards (Default: #000000)'
+  images__a_cardPreviewShowEmptySlots:
+    displayName: Card preview show empty slots
+    type: BOOLEAN
+    description: 'Show blank placeholders for missing performer card preview slots
+      so slot order and gaps stay visible (Default: false)'
+  images__a_cardPreviewSlotOrder:
+    displayName: Card preview slot order
+    type: STRING
+    description: 'Six digits using each slot number once to control preview order,
+      for example 123456 or 145623 (Default: 123456)'
+  images__b_slot1Tags:
+    displayName: Slot1tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 1 matches (Default:
+      empty)'
+  images__b1_slot1ScanTarget:
+    displayName: Slot1scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__c_slot1Label:
+    displayName: Slot1label
+    type: STRING
+    description: 'Custom label for slot 1 (Default: tag names)'
+  images__c1_slot1IncludeSubTags:
+    displayName: Slot1include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 1 also matches descendant tags of the listed
+      tags (Default: false)'
+  images__d_slot2Tags:
+    displayName: Slot2tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 2 matches (Default:
+      empty)'
+  images__d1_slot2ScanTarget:
+    displayName: Slot2scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__e_slot2Label:
+    displayName: Slot2label
+    type: STRING
+    description: 'Custom label for slot 2 (Default: tag names)'
+  images__e1_slot2IncludeSubTags:
+    displayName: Slot2include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 2 also matches descendant tags of the listed
+      tags (Default: false)'
+  images__f_slot3Tags:
+    displayName: Slot3tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 3 matches (Default:
+      empty)'
+  images__f1_slot3ScanTarget:
+    displayName: Slot3scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__g_slot3Label:
+    displayName: Slot3label
+    type: STRING
+    description: 'Custom label for slot 3 (Default: tag names)'
+  images__g1_slot3IncludeSubTags:
+    displayName: Slot3include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 3 also matches descendant tags of the listed
+      tags (Default: false)'
+  images__h_slot4Tags:
+    displayName: Slot4tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 4 matches (Default:
+      empty)'
+  images__h1_slot4ScanTarget:
+    displayName: Slot4scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__i_slot4Label:
+    displayName: Slot4label
+    type: STRING
+    description: 'Custom label for slot 4 (Default: tag names)'
+  images__i1_slot4IncludeSubTags:
+    displayName: Slot4include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 4 also matches descendant tags of the listed
+      tags (Default: false)'
+  images__j_slot5Tags:
+    displayName: Slot5tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 5 matches (Default:
+      empty)'
+  images__j1_slot5ScanTarget:
+    displayName: Slot5scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__k_slot5Label:
+    displayName: Slot5label
+    type: STRING
+    description: 'Custom label for slot 5 (Default: tag names)'
+  images__k1_slot5IncludeSubTags:
+    displayName: Slot5include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 5 also matches descendant tags of the listed
+      tags (Default: false)'
+  images__l_slot6Tags:
+    displayName: Slot6tags
+    type: STRING
+    description: 'Comma-separated tag names required for slot 6 matches (Default:
+      empty)'
+  images__l1_slot6ScanTarget:
+    displayName: Slot6scan target
+    type: STRING
+    description: 'Optional Supporting Image Lab category: breasts, ass, genitals,
+      or face'
+  images__m_slot6Label:
+    displayName: Slot6label
+    type: STRING
+    description: 'Custom label for slot 6 (Default: tag names)'
+  images__m1_slot6IncludeSubTags:
+    displayName: Slot6include sub tags
+    type: BOOLEAN
+    description: 'When enabled, slot 6 also matches descendant tags of the listed
+      tags (Default: false)'
+  attributes__tattooChoices:
+    displayName: Tattoo dropdown choices
+    description: Choices separated by semicolons. Not specified is always available.
+    type: STRING
+  attributes__braSizeField:
+    displayName: Bra-size storage field
+    description: Existing custom-field name containing the full bra size, e.g. 36E.
+      Renaming does not move data.
+    type: STRING
+  attributes__braSizeLabel:
+    displayName: Bra-size display label
+    description: Visible label on edit and details pages, e.g. Bra Size or Cup Size.
+      Does not rename stored data.
+    type: STRING
+ui:
+  javascript:
+  - runtime.js
+  - defaults-client.js
+  - settings-ui.js
+  - loader.js
+  css:
+  - settings-ui.css
+  assets:
+    /: .
+tasks:
+- name: Attributes — Preview selected performers
+  description: Preview only; no metadata is saved.
+  defaultArgs:
+    mode: preview_selected
+    performer_ids: '[]'
+    module: attributes
+- name: Attributes — Update selected performers
+  description: Apply the selected module operation. Review a preview and your rule
+    settings first.
+  defaultArgs:
+    mode: apply_selected
+    performer_ids: '[]'
+    module: attributes
+- name: Attributes — Preview all performers
+  description: Preview only; no metadata is saved.
+  defaultArgs:
+    mode: preview
+    module: attributes
+- name: Attributes — Update all performers
+  description: Apply the selected module operation. Review a preview and your rule
+    settings first.
+  defaultArgs:
+    mode: apply
+    module: attributes
+- name: Attributes — Process queued changes
+  description: Process pending background changes.
+  defaultArgs:
+    mode: queued
+    module: attributes
+- name: Performer Links — Process queue
+  description: Process pending background changes.
+  defaultArgs:
+    mode: queued
+    module: performerLinks
+- name: Performer Links — Preview transfer
+  description: Preview only; no metadata is saved.
+  defaultArgs:
+    mode: preview
+    module: performerLinks
+- name: Performer Links — Transfer selected galleries
+  description: Apply the selected module operation. Review a preview and your rule
+    settings first.
+  defaultArgs:
+    mode: apply
+    module: performerLinks
+- name: Tag Transfer — Process queued changes
+  description: Process pending background changes.
+  defaultArgs:
+    mode: queued
+    module: tagTransfer
+- name: Tag Transfer — Preview transfer
+  description: Preview only; no metadata is saved.
+  defaultArgs:
+    mode: preview
+    module: tagTransfer
+- name: Tag Transfer — Transfer library tags
+  description: Apply the selected module operation. Review a preview and your rule
+    settings first.
+  defaultArgs:
+    mode: apply
+    module: tagTransfer
+exec:
+- python
+- '{pluginDir}/dispatch.py'
+interface: raw
+hooks:
+- name: Lynx module update queue
+  description: Queue changes for enabled modules only.
+  triggeredBy:
+  - Gallery.Create.Post
+  - Gallery.Update.Post
+  - Image.Create.Post
+  - Image.Update.Post
+  - Performer.Create.Post
+  - Performer.Update.Post
+  - Scene.Create.Post
+  - Scene.Update.Post

@@ -1,0 +1,19 @@
+.lynx-p-settings{--lynx-yellow:#f2d64b;max-width:1080px;margin:1rem 0;color:#e4e8ef;font-size:.95rem}
+.lynx-p-settings h3,.lynx-p-settings summary{color:var(--lynx-yellow)}
+.lynx-p-settings>p,.lynx-p-purpose{color:#aeb9c8;line-height:1.55}
+.lynx-p-settings .lynx-p-fold{border:1px solid #354151;border-radius:10px;margin:.7rem 0;background:#171b21;overflow:visible}
+.lynx-p-settings .lynx-p-fold>.lynx-p-fold,.lynx-p-settings .lynx-p-fold>div,.lynx-p-settings .lynx-p-fold>p{margin:.65rem .9rem}
+.lynx-p-settings summary{cursor:pointer;padding:.85rem 1rem;font-weight:600;list-style-position:inside}
+.lynx-p-settings summary small{float:right;font-weight:400;color:#aeb9c8;margin-left:1rem}
+.lynx-p-settings .lynx-p-fold .lynx-p-fold{background:#1c222b}
+.lynx-p-settings input,.lynx-p-settings textarea{width:100%;background:#11161d!important;color:#eef3fa!important;border:1px solid #46556b!important;border-radius:7px;padding:.65rem;box-sizing:border-box}
+.lynx-p-settings textarea{font-family:Consolas,monospace;line-height:1.5;resize:vertical;max-height:70vh}
+.lynx-p-settings .lynx-p-editor p{font-size:.88rem;color:#aeb9c8}
+.lynx-p-settings .lynx-p-source{color:#7bb1fa;font-size:.8rem;margin-top:.5rem}
+.lynx-p-settings .lynx-p-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0}
+.lynx-p-settings button{background:#243c59;color:#edf4ff;border:1px solid #4b6f97;border-radius:7px;padding:.5rem .8rem}
+.lynx-p-settings button:disabled{opacity:.45;cursor:default}
+.lynx-p-settings .lynx-p-warning{border-left:3px solid #e8ba50;padding:.6rem .9rem;background:#29251a;color:#ead6a8}
+.lynx-p-settings .lynx-p-footer{font-size:.84rem;border-top:1px solid #354151;padding-top:.8rem}
+.lynx-p-settings .setting{background:transparent!important;box-shadow:none!important}
+@media(max-width:650px){.lynx-p-settings summary small{float:none;display:block;margin:.25rem 0 0 1rem}}

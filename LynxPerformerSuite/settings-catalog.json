@@ -1,0 +1,786 @@
+{
+  "matcher_enabled": {
+    "displayName": "Enable Performer Matcher",
+    "description": "Add Match performers to Images and Galleries. Review filename and folder suggestions in batches. Nothing is assigned or created until you apply the reviewed matches. Reload after enabling.",
+    "type": "BOOLEAN",
+    "group": "Module",
+    "module": "matcher"
+  },
+  "attributes_enabled": {
+    "displayName": "Enable Performer Attributes",
+    "description": "Enable this module. Reload the page after changing this switch. Existing automation switches are kept separately.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "attributes"
+  },
+  "attributes__measurementUnits": {
+    "displayName": "Measurement units",
+    "description": "auto, cm or inches. Automatic detection is an estimate; use an explicit unit if uncertain.",
+    "type": "STRING",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__inferBodyMeasurements": {
+    "displayName": "Estimate body shape from numeric measurements",
+    "description": "Adjust estimate body shape from numeric measurements. Changes affect this module only. Preview metadata changes before applying them.",
+    "type": "BOOLEAN",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__shapeInferenceRules": {
+    "displayName": "Shape inference rules",
+    "description": "Body-shape estimates from bust/waist/hips when height and weight are unavailable. Rule syntax and limitations are documented in RULE-FORMATS.md.",
+    "type": "STRING",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__inferBreastNumeric": {
+    "displayName": "Estimate breast-size category from bust circumference",
+    "description": "Adjust estimate breast-size category from bust circumference. Changes affect this module only. Preview metadata changes before applying them.",
+    "type": "BOOLEAN",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__bustInferenceRules": {
+    "displayName": "Bust inference rules",
+    "description": "Estimate breast-size categories from numeric bust circumference, not cup size. See RULE-FORMATS.md. Circumference alone cannot establish a bra cup.",
+    "type": "STRING",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__inferBody": {
+    "displayName": "Estimate body type from height and weight",
+    "description": "Optional height (cm) / weight (kg) estimate. Ordered rules; first match wins. This is a user-defined classification, not a medical assessment.",
+    "type": "BOOLEAN",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__bodyInferenceRules": {
+    "displayName": "Body inference rules",
+    "description": "Ordered rules, separated by semicolons. Each rule uses conditions followed by =Body Type. Open RULE-FORMATS.md for syntax and examples. First matching rule wins.",
+    "type": "STRING",
+    "group": "Body Type",
+    "module": "attributes"
+  },
+  "attributes__inferBreastSize": {
+    "displayName": "Estimate breast-size category from cup code",
+    "description": "Optional category estimate from the cup code in Measurements. Repeated letters such as DD and DDD have editable rules below.",
+    "type": "BOOLEAN",
+    "group": "Measurement Estimates",
+    "module": "attributes"
+  },
+  "attributes__cupInferenceMap": {
+    "displayName": "Cup inference \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__automatic": {
+    "displayName": "Process changes automatically",
+    "description": "Queue updates automatically when saved metadata changes. Preview before enabling.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "attributes"
+  },
+  "attributes__createTags": {
+    "displayName": "Create missing tags",
+    "description": "Create missing tags. If disabled, only existing tags or aliases are used.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "attributes"
+  },
+  "attributes__removeStale": {
+    "displayName": "Remove outdated tags added by Lynx",
+    "description": "Remove previously inherited tags that no longer match the enabled rules. Manual unrelated tags are retained.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "attributes"
+  },
+  "attributes__manageMappedTags": {
+    "displayName": "Also reconcile legacy / manually assigned mapped tags",
+    "description": "Also reconcile matching legacy attribute tags. This may remove manually assigned tags from the mapped vocabulary. Preview first.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "attributes"
+  },
+  "attributes__country": {
+    "displayName": "Tag nationality from country",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Country & Nationality",
+    "module": "attributes"
+  },
+  "attributes__countryMap": {
+    "displayName": "Country \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Country & Nationality",
+    "module": "attributes"
+  },
+  "attributes__hair": {
+    "displayName": "Tag hair color",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Hair Color",
+    "module": "attributes"
+  },
+  "attributes__ethnicityChoices": {
+    "displayName": "Ethnicity choices",
+    "description": "Dropdown values separated by semicolons. Not specified is available separately and produces no tag.",
+    "type": "STRING",
+    "group": "Ethnicity",
+    "module": "attributes"
+  },
+  "attributes__ethnicity": {
+    "displayName": "Tag ethnicity",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Ethnicity",
+    "module": "attributes"
+  },
+  "attributes__ethnicityMap": {
+    "displayName": "Ethnicity \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Ethnicity",
+    "module": "attributes"
+  },
+  "attributes__piercingChoices": {
+    "displayName": "Piercing choices",
+    "description": "Dropdown values separated by semicolons. Not specified is available separately and produces no tag.",
+    "type": "STRING",
+    "group": "Piercings",
+    "module": "attributes"
+  },
+  "attributes__hairMap": {
+    "displayName": "Hair \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Hair Color",
+    "module": "attributes"
+  },
+  "attributes__eyes": {
+    "displayName": "Tag eye color",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Eye Color",
+    "module": "attributes"
+  },
+  "attributes__eyesMap": {
+    "displayName": "Eyes \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Eye Color",
+    "module": "attributes"
+  },
+  "attributes__breasts": {
+    "displayName": "Tag natural / augmented breasts",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__breastsMap": {
+    "displayName": "Breasts \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__breastSize": {
+    "displayName": "Tag breast-size category",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__breastSizeField": {
+    "displayName": "Breast size field",
+    "description": "Stored custom-field name. Keep the current name to preserve access to existing data; renaming does not migrate stored values.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__breastSizeMap": {
+    "displayName": "Breast size \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__tattoos": {
+    "displayName": "Tag tattoos",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__tattooTag": {
+    "displayName": "Tattoo tag",
+    "description": "Tag used for any actual tattoo description or Inked choice. No ink / not specified produces no tag.",
+    "type": "STRING",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__veryInkedTag": {
+    "displayName": "Very inked tag",
+    "description": "Additional tag used for the Very inked choice. The general tattoo tag can also be added.",
+    "type": "STRING",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__tattooLevelField": {
+    "displayName": "Tattoo level field",
+    "description": "Stored custom-field name. Keep the current name to preserve access to existing data; renaming does not migrate stored values.",
+    "type": "STRING",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__tattooLevelMap": {
+    "displayName": "Tattoo level \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__age": {
+    "displayName": "Tag age group",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Age",
+    "module": "attributes"
+  },
+  "attributes__ageMap": {
+    "displayName": "Age \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Age",
+    "module": "attributes"
+  },
+  "attributes__piercings": {
+    "displayName": "Tag piercings",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Piercings",
+    "module": "attributes"
+  },
+  "attributes__piercingTag": {
+    "displayName": "Piercing tag",
+    "description": "Tag used when a piercing is selected or described. Not specified / none produces no tag.",
+    "type": "STRING",
+    "group": "Piercings",
+    "module": "attributes"
+  },
+  "attributes__body": {
+    "displayName": "Tag body type",
+    "description": "Create or reuse tags from this performer attribute using the rules below. Requires the Attributes module. Automatic processing is controlled separately.",
+    "type": "BOOLEAN",
+    "group": "Body Type",
+    "module": "attributes"
+  },
+  "attributes__bodyField": {
+    "displayName": "Body field",
+    "description": "Stored custom-field name. Keep the current name to preserve access to existing data; renaming does not migrate stored values.",
+    "type": "STRING",
+    "group": "Body Type",
+    "module": "attributes"
+  },
+  "attributes__bodyMap": {
+    "displayName": "Body \u2014 editable rules",
+    "description": "One rule per line, separated by semicolons: source value=Tag Name. A custom list replaces the starter list. Existing tag aliases are reused.",
+    "type": "STRING",
+    "group": "Body Type",
+    "module": "attributes"
+  },
+  "links_enabled": {
+    "displayName": "Enable Performer Links",
+    "description": "Enable this module. Reload the page after changing this switch. Existing automation switches are kept separately.",
+    "type": "BOOLEAN",
+    "group": "Scope & Automation",
+    "module": "links"
+  },
+  "links__automatic": {
+    "displayName": "Process changes automatically",
+    "description": "Queue updates automatically when saved metadata changes. Preview before enabling.",
+    "type": "BOOLEAN",
+    "group": "Scope & Automation",
+    "module": "links"
+  },
+  "links__galleryIds": {
+    "displayName": "Limit to gallery IDs",
+    "description": "Optional comma-separated gallery IDs for manual performer-link transfer. Blank uses the module's normal scope. Preview before applying.",
+    "type": "STRING",
+    "group": "Scope & Automation",
+    "module": "links"
+  },
+  "tags_enabled": {
+    "displayName": "Enable Tag Transfer",
+    "description": "Enable this module. Reload the page after changing this switch. Existing automation switches are kept separately.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "tags"
+  },
+  "tags__automatic": {
+    "displayName": "Process changes automatically",
+    "description": "Queue updates automatically when saved metadata changes. Preview before enabling.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "tags"
+  },
+  "tags__removeStale": {
+    "displayName": "Remove outdated tags added by Lynx",
+    "description": "Remove previously inherited tags that no longer match the enabled rules. Manual unrelated tags are retained.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "tags"
+  },
+  "tags__syncAllow": {
+    "displayName": "Legacy tag-removal vocabulary",
+    "description": "Comma-separated exact tag names or #ID. Blank removes no legacy/manual tags. WARNING: matching manually assigned tags may be removed; preview first.",
+    "type": "STRING",
+    "group": "Automation & Safety",
+    "module": "tags"
+  },
+  "tags__performerScenes": {
+    "displayName": "Performer \u2192 Scenes",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__performerImages": {
+    "displayName": "Performer \u2192 Images",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__performerGalleries": {
+    "displayName": "Performer \u2192 Galleries",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__galleryImages": {
+    "displayName": "Gallery \u2192 Images",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__galleryPerformerImages": {
+    "displayName": "Gallery performers \u2192 Images",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__imagesGallery": {
+    "displayName": "Images \u2192 Gallery",
+    "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__imagesAll": {
+    "displayName": "Require tag on every image",
+    "description": "For Images \u2192 Gallery: enabled = only tags shared by every image; disabled = tags found on any image.",
+    "type": "BOOLEAN",
+    "group": "Transfer Routes",
+    "module": "tags"
+  },
+  "tags__performerAllow": {
+    "displayName": "Allowed performer tags",
+    "description": "Comma-separated exact tag names or #ID. Blank allows all source tags. Exclusions still apply.",
+    "type": "STRING",
+    "group": "Tag Filters",
+    "module": "tags"
+  },
+  "tags__galleryAllow": {
+    "displayName": "Allowed gallery tags",
+    "description": "Comma-separated exact tag names or #ID. Blank allows all source tags. Exclusions still apply.",
+    "type": "STRING",
+    "group": "Tag Filters",
+    "module": "tags"
+  },
+  "tags__imageAllow": {
+    "displayName": "Allowed image tags",
+    "description": "Comma-separated exact tag names or #ID. Blank allows all source tags. Exclusions still apply.",
+    "type": "STRING",
+    "group": "Tag Filters",
+    "module": "tags"
+  },
+  "tags__excluded": {
+    "displayName": "Never transfer these tags",
+    "description": "Comma-separated exact tag names or #ID. Blank excludes nothing.",
+    "type": "STRING",
+    "group": "Tag Filters",
+    "module": "tags"
+  },
+  "tags__skipOrganized": {
+    "displayName": "Skip organized targets",
+    "description": "Do not change target items marked organized.",
+    "type": "BOOLEAN",
+    "group": "Automation & Safety",
+    "module": "tags"
+  },
+  "images_enabled": {
+    "displayName": "Enable Supporting Images",
+    "description": "Enable this module. Reload the page after changing this switch. Existing automation switches are kept separately.",
+    "type": "BOOLEAN",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_maxImagesPerSlot": {
+    "displayName": "Max images per slot",
+    "description": "Adjust max images per slot. Changes affect this module only. Preview metadata changes before applying them.",
+    "type": "NUMBER",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_selectionMode": {
+    "displayName": "Selection mode",
+    "description": "How each slot chooses among multiple matches: first or random (Default: first)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_slotSlideshowSeconds": {
+    "displayName": "Slot slideshow seconds",
+    "description": "0 disables. 1+ enables slot slideshows (Default: 0)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_slotTransitionMs": {
+    "displayName": "Slot transition ms",
+    "description": "0 disables. Transition duration in milliseconds (Default: 0)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_loopSlots": {
+    "displayName": "Loop slots",
+    "description": "Repeat slots for infinite scrolling behavior (Default: true)",
+    "type": "BOOLEAN",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_defaultPanelState": {
+    "displayName": "Default panel state",
+    "description": "expanded, collapsed, or remember last state (Default: remember; falls back to expanded if no saved state exists)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_slotInfoPosition": {
+    "displayName": "Slot info position",
+    "description": "Whether the tag label row is shown at the top or bottom of the slot: top or bottom (Default: top)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_imageHeight": {
+    "displayName": "Image height",
+    "description": "Sets the minimum height of slots and influences how tall slots can grow (Default: 210)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_panelWidth": {
+    "displayName": "Panel width",
+    "description": "Panel width in pixels for the performer page panel (Default: 300)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_autoFitSlotCrops": {
+    "displayName": "Auto fit slot crops",
+    "description": "Automatically fit images to their slot aspect ratio when added to slots or loaded in the panel (Default: true)",
+    "type": "BOOLEAN",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_panelBackgroundColor": {
+    "displayName": "Panel background color",
+    "description": "Background color for the slot header/footer panels (Default: #808080)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_panelOpacity": {
+    "displayName": "Panel opacity",
+    "description": "Background opacity for the slot header/footer panels from 0 to 1 (Default: 0.1)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_overlayBackgroundColor": {
+    "displayName": "Overlay background color",
+    "description": "Background color for buttons and labels (Default: #808080)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_overlayBackgroundOpacity": {
+    "displayName": "Overlay background opacity",
+    "description": "Background opacity for buttons and labels from 0 to 1 (Default: 0.3)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_overlayFontColor": {
+    "displayName": "Overlay font color",
+    "description": "Text and icon color for buttons and labels (Default: #ffffff)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_overlayFontSize": {
+    "displayName": "Overlay font size",
+    "description": "Font size in pixels for buttons and labels (Default: 13)",
+    "type": "STRING",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_openInNewTab": {
+    "displayName": "Open in new tab",
+    "description": "Open the image page in a new tab when clicking a supporting image (Default: true)",
+    "type": "BOOLEAN",
+    "group": "Panel Appearance",
+    "module": "images"
+  },
+  "images__a_cardPreviewHoverBehavior": {
+    "displayName": "Card preview hover behavior",
+    "description": "How the performer card preview opens: performer card, badge, or disabled (Default: badge)",
+    "type": "STRING",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__a_cardPreviewPanelWidth": {
+    "displayName": "Card preview panel width",
+    "description": "Width in pixels for the hover preview panel shown on performer cards (Default: 500)",
+    "type": "STRING",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__a_cardPreviewPanelHeight": {
+    "displayName": "Card preview panel height",
+    "description": "Height in pixels for the hover preview panel shown on performer cards (Default: 500)",
+    "type": "STRING",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__a_cardPreviewBackgroundColor": {
+    "displayName": "Card preview background color",
+    "description": "Background color for the hover preview panel shown on performer cards (Default: #000000)",
+    "type": "STRING",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__a_cardPreviewShowEmptySlots": {
+    "displayName": "Card preview show empty slots",
+    "description": "Show blank placeholders for missing performer card preview slots so slot order and gaps stay visible (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__a_cardPreviewSlotOrder": {
+    "displayName": "Card preview slot order",
+    "description": "Six digits using each slot number once to control preview order, for example 123456 or 145623 (Default: 123456)",
+    "type": "STRING",
+    "group": "Card Preview",
+    "module": "images"
+  },
+  "images__b_slot1Tags": {
+    "displayName": "Slot1tags",
+    "description": "Comma-separated tag names required for slot 1 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 1",
+    "module": "images"
+  },
+  "images__b1_slot1ScanTarget": {
+    "displayName": "Slot1scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 1",
+    "module": "images"
+  },
+  "images__c_slot1Label": {
+    "displayName": "Slot1label",
+    "description": "Custom label for slot 1 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 1",
+    "module": "images"
+  },
+  "images__c1_slot1IncludeSubTags": {
+    "displayName": "Slot1include sub tags",
+    "description": "When enabled, slot 1 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 1",
+    "module": "images"
+  },
+  "images__d_slot2Tags": {
+    "displayName": "Slot2tags",
+    "description": "Comma-separated tag names required for slot 2 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 2",
+    "module": "images"
+  },
+  "images__d1_slot2ScanTarget": {
+    "displayName": "Slot2scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 2",
+    "module": "images"
+  },
+  "images__e_slot2Label": {
+    "displayName": "Slot2label",
+    "description": "Custom label for slot 2 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 2",
+    "module": "images"
+  },
+  "images__e1_slot2IncludeSubTags": {
+    "displayName": "Slot2include sub tags",
+    "description": "When enabled, slot 2 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 2",
+    "module": "images"
+  },
+  "images__f_slot3Tags": {
+    "displayName": "Slot3tags",
+    "description": "Comma-separated tag names required for slot 3 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 3",
+    "module": "images"
+  },
+  "images__f1_slot3ScanTarget": {
+    "displayName": "Slot3scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 3",
+    "module": "images"
+  },
+  "images__g_slot3Label": {
+    "displayName": "Slot3label",
+    "description": "Custom label for slot 3 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 3",
+    "module": "images"
+  },
+  "images__g1_slot3IncludeSubTags": {
+    "displayName": "Slot3include sub tags",
+    "description": "When enabled, slot 3 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 3",
+    "module": "images"
+  },
+  "images__h_slot4Tags": {
+    "displayName": "Slot4tags",
+    "description": "Comma-separated tag names required for slot 4 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 4",
+    "module": "images"
+  },
+  "images__h1_slot4ScanTarget": {
+    "displayName": "Slot4scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 4",
+    "module": "images"
+  },
+  "images__i_slot4Label": {
+    "displayName": "Slot4label",
+    "description": "Custom label for slot 4 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 4",
+    "module": "images"
+  },
+  "images__i1_slot4IncludeSubTags": {
+    "displayName": "Slot4include sub tags",
+    "description": "When enabled, slot 4 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 4",
+    "module": "images"
+  },
+  "images__j_slot5Tags": {
+    "displayName": "Slot5tags",
+    "description": "Comma-separated tag names required for slot 5 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 5",
+    "module": "images"
+  },
+  "images__j1_slot5ScanTarget": {
+    "displayName": "Slot5scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 5",
+    "module": "images"
+  },
+  "images__k_slot5Label": {
+    "displayName": "Slot5label",
+    "description": "Custom label for slot 5 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 5",
+    "module": "images"
+  },
+  "images__k1_slot5IncludeSubTags": {
+    "displayName": "Slot5include sub tags",
+    "description": "When enabled, slot 5 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 5",
+    "module": "images"
+  },
+  "images__l_slot6Tags": {
+    "displayName": "Slot6tags",
+    "description": "Comma-separated tag names required for slot 6 matches (Default: empty)",
+    "type": "STRING",
+    "group": "Image Category 6",
+    "module": "images"
+  },
+  "images__l1_slot6ScanTarget": {
+    "displayName": "Slot6scan target",
+    "description": "Optional Supporting Image Lab category: breasts, ass, genitals, or face",
+    "type": "STRING",
+    "group": "Image Category 6",
+    "module": "images"
+  },
+  "images__m_slot6Label": {
+    "displayName": "Slot6label",
+    "description": "Custom label for slot 6 (Default: tag names)",
+    "type": "STRING",
+    "group": "Image Category 6",
+    "module": "images"
+  },
+  "images__m1_slot6IncludeSubTags": {
+    "displayName": "Slot6include sub tags",
+    "description": "When enabled, slot 6 also matches descendant tags of the listed tags (Default: false)",
+    "type": "BOOLEAN",
+    "group": "Image Category 6",
+    "module": "images"
+  },
+  "attributes__tattooChoices": {
+    "displayName": "Tattoo dropdown choices",
+    "description": "Choices separated by semicolons. Not specified is always available.",
+    "type": "STRING",
+    "group": "Tattoos",
+    "module": "attributes"
+  },
+  "attributes__braSizeField": {
+    "displayName": "Bra-size storage field",
+    "description": "Existing custom-field name containing the full bra size, e.g. 36E. Renaming does not move data.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  },
+  "attributes__braSizeLabel": {
+    "displayName": "Bra-size display label",
+    "description": "Visible label on edit and details pages, e.g. Bra Size or Cup Size. Does not rename stored data.",
+    "type": "STRING",
+    "group": "Breast Type & Size",
+    "module": "attributes"
+  }
+}

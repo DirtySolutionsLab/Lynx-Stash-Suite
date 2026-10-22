@@ -1,0 +1,34 @@
+/* Native Bootstrap rows/columns control layout, just like Stash's own fields. */
+#performer-edit .lynx-body-type-field:not(.row) {
+  margin: 0.7rem 0;
+}
+#performer-edit .lynx-body-type-field > label {
+  color: inherit;
+  font-weight: 400;
+}
+.lynx-body-type-detail {
+  display: flex !important;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+  color: #f3f3f3;
+}
+.lynx-body-type-label { color: #f2d64b; font-weight: 600; }
+#performer-edit .lynx-native-attribute-choice {
+  margin-top: 0;
+  background: #171b22 !important;
+  color: #eee !important;
+  border: 1px solid #455575 !important;
+  border-radius: 0.75rem !important;
+}
+#performer-edit .lynx-native-attribute-choice option { background: #171b22; color: #eee; }
+#performer-edit .lynx-native-attribute-choice:focus {
+  border-color: #528be7 !important;
+  box-shadow: 0 0 0 2px #528be733;
+}
+/* Marked only after the dropdown is attached; native Save/Cancel still uses it. */
+#performer-edit input.lynx-native-attribute-source,
+#performer-edit textarea.lynx-native-attribute-source {
+  display: none !important;
+}
+#performer-edit .lynx-body-type-field.row { display: flex !important; }

@@ -1,0 +1,44 @@
+/* Scoped Lynx review dialog. Native cards and controls keep their own layout. */
+.lpm-toolbar{display:flex;gap:.8rem;align-items:center;margin:.5rem 0 .8rem;flex-wrap:wrap}
+.lpm-toolbar small{color:#a6b6c7}
+.lpm-dialog{width:min(1160px,96vw);max-height:92vh;padding:1.2rem;border:1px solid #465669;border-radius:18px;background:#141a22;color:#ecf2f8;box-shadow:0 24px 100px #000b;overflow:auto}
+.lpm-dialog::backdrop{background:#05090dbc;backdrop-filter:blur(4px)}
+.lpm-dialog header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.lpm-dialog h2{color:#f2d24d;font-size:1.55rem;margin:0}
+.lpm-dialog button,.lpm-dialog input,.lpm-dialog select{font:inherit;color:#e8eff7;background:#202a36;border:1px solid #455972;border-radius:8px;padding:.45rem .7rem;max-width:100%;box-shadow:none}
+.lpm-dialog button{cursor:pointer}.lpm-dialog button:hover{background:#30435a;border-color:#75aaf0}
+.lpm-dialog button:disabled{opacity:.45;cursor:default}
+.lpm-dialog :focus-visible{outline:2px solid #f2d24d;outline-offset:2px}
+.lpm-dialog .lpm-primary{background:#294a6c;border-color:#658dba;font-weight:600}
+.lpm-dialog input[type=checkbox]{width:17px;height:17px;flex:0 0 17px;margin:0;accent-color:#67a7e9}
+.lpm-dialog input[type=number]{width:6rem}
+.lpm-dialog option{background:#1b2531;color:#eef4ff}
+.lpm-options,.lpm-actions,.lpm-review-tools{display:flex;gap:.65rem;align-items:center;flex-wrap:wrap;margin:.9rem 0}
+.lpm-check{display:inline-flex;gap:.45rem;align-items:center;margin:0;cursor:pointer}
+.lpm-muted,.lpm-dialog small{color:#a6b6c7}
+.lpm-status{padding:.7rem .9rem;border-radius:9px;background:#1e2a38;color:#c9e1ff}
+.lpm-summary{color:#afc2d6;font-size:.9rem}
+.lpm-warning{padding:.8rem;border:1px solid #806d38;background:#30291c;border-radius:10px;color:#f1dcaa;margin:.6rem 0}
+.lpm-warning p{margin:.4rem 0}
+.lpm-manual{width:100%;display:flex;flex-wrap:wrap;gap:.6rem;padding:.7rem;background:#19222d;border-radius:10px}
+.lpm-manual>input{flex:1;min-width:220px}
+.lpm-search-results{width:100%;display:flex;flex-wrap:wrap;gap:.4rem}
+.lpm-group{border:1px solid #364353;border-radius:12px;background:#1a222c;margin:.65rem 0;padding:.75rem}
+.lpm-group>summary{display:flex;align-items:center;gap:.7rem;cursor:pointer;list-style:none}
+.lpm-group>summary::before{content:'▸';color:#f2d24d}.lpm-group[open]>summary::before{content:'▾'}
+.lpm-group summary strong{flex:1;color:#f1d661}.lpm-group summary small{white-space:nowrap}
+.lpm-badge{padding:.2rem .55rem;border-radius:20px;font-size:.78rem;white-space:nowrap}
+.lpm-exact{background:#193f38;color:#9ce1c8}.lpm-new{background:#273e59;color:#afd1fb}
+.lpm-review{background:#493c22;color:#f4d68b}.lpm-none{background:#363039;color:#d5bdcf}
+.lpm-group:not([open])>:not(summary){display:none}
+.lpm-thumbnails{display:flex;gap:.5rem;margin:.8rem 0}
+.lpm-thumbnails img{width:72px;height:84px;object-fit:cover;border-radius:7px}
+.lpm-target{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;padding:.7rem;background:#141d27;border-radius:9px}
+.lpm-target>strong,.lpm-target>small{width:100%}
+.lpm-path{font-size:.8rem;color:#aab9ca;overflow-wrap:anywhere;margin:.6rem 0}
+.lpm-item{display:flex;align-items:center;gap:.65rem;border-top:1px solid #303b49;padding:.5rem 0}
+.lpm-item>img{width:45px;height:54px;object-fit:cover;border-radius:5px}
+.lpm-item>div{min-width:0;flex:1}.lpm-item small{display:block;overflow-wrap:anywhere;font-size:.78rem}
+.lpm-item a{color:#8cbeef}
+.lpm-dialog [hidden]{display:none!important}
+@media(max-width:650px){.lpm-dialog{padding:.7rem}.lpm-group>summary{flex-wrap:wrap}.lpm-target>input{width:100%}.lpm-badge{font-size:.7rem}}

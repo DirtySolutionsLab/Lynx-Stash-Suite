@@ -1,0 +1,110 @@
+{
+  "LynxTheme": {
+    "bundle": "LynxTheme",
+    "module": "theme",
+    "prefix": "",
+    "enabled": "theme_enabled"
+  },
+  "LynxSceneCard": {
+    "bundle": "LynxTheme",
+    "module": "sceneCards",
+    "prefix": "cards__",
+    "enabled": "cards_enabled"
+  },
+  "LynxEnhancedCards": {
+    "bundle": "LynxTheme",
+    "module": "enhancedCards",
+    "prefix": "enhanced__",
+    "enabled": "enhanced_enabled"
+  },
+  "LynxPluginCompatibility": {
+    "bundle": "LynxTheme",
+    "module": "compatibility",
+    "prefix": "compat__",
+    "enabled": "compat_enabled"
+  },
+  "LynxPerformerAttributeTags": {
+    "bundle": "LynxPerformerSuite",
+    "module": "attributes",
+    "prefix": "attributes__",
+    "enabled": "attributes_enabled"
+  },
+  "LynxTagBridge": {
+    "bundle": "LynxPerformerSuite",
+    "module": "tagTransfer",
+    "prefix": "tags__",
+    "enabled": "tags_enabled"
+  },
+  "LynxPerformerBridge": {
+    "bundle": "LynxPerformerSuite",
+    "module": "performerLinks",
+    "prefix": "links__",
+    "enabled": "links_enabled"
+  },
+  "PerformerTagBasedSupportingImages": {
+    "bundle": "LynxPerformerSuite",
+    "module": "supportingImages",
+    "prefix": "images__",
+    "enabled": "images_enabled"
+  },
+  "LynxXLGirls": {
+    "bundle": "LynxScrapingSuite",
+    "module": "xlGirls",
+    "prefix": "xl__",
+    "enabled": "xl_enabled"
+  },
+  "LynxCropper": {
+    "bundle": "LynxTools",
+    "module": "cropper",
+    "prefix": "crop__",
+    "enabled": "crop_enabled"
+  },
+  "stashRightClickScenes": {
+    "bundle": "LynxTools",
+    "module": "sceneMenu",
+    "prefix": "sceneMenu__",
+    "enabled": "sceneMenu_enabled"
+  },
+  "stashRightClickGalleries": {
+    "bundle": "LynxTools",
+    "module": "galleryMenu",
+    "prefix": "galleryMenu__",
+    "enabled": "galleryMenu_enabled"
+  },
+  "stashRightClickImages": {
+    "bundle": "LynxTools",
+    "module": "imageMenu",
+    "prefix": "imageMenu__",
+    "enabled": "imageMenu_enabled"
+  },
+  "stashRightClickPerformers": {
+    "bundle": "LynxTools",
+    "module": "performerMenu",
+    "prefix": "performerMenu__",
+    "enabled": "performerMenu_enabled"
+  },
+  "stashRightClickTags": {
+    "bundle": "LynxTools",
+    "module": "tagMenu",
+    "prefix": "tagMenu__",
+    "enabled": "tagMenu_enabled"
+  },
+  "stashRightClickSettings": {
+    "bundle": "LynxTools",
+    "module": "settingsMenu",
+    "prefix": "settingsMenu__",
+    "enabled": "settingsMenu_enabled"
+  },
+  "LynxVRView": {
+    "bundle": "LynxTools",
+    "module": "vrViewer",
+    "prefix": "vr__",
+    "enabled": "vr_enabled"
+  },
+  "LynxRenamer": {
+    "bundle": "LynxRenamer",
+    "module": "renamer",
+    "prefix": "",
+    "enabled": null
+  }
+}
