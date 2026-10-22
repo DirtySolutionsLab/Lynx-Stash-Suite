@@ -1,0 +1,23 @@
+name: Lynx Default Tabs
+description: A Lynx adaptation of edit-unorganized by feederbox826. Open your preferred tab on scene, image and gallery detail pages.
+version: 0.3.1
+settings:
+  organized:
+    displayName: Open the chosen tab for organized items too
+    description: Off opens the chosen tab only for unorganized items. On applies to all items.
+    type: BOOLEAN
+  targetTabScenes:
+    displayName: Default scene tab
+    description: 'Available tabs: details, queue, markers, filters, file-info, history, edit. Blank uses edit.'
+    type: STRING
+  targetTabImages:
+    displayName: Default image tab
+    description: 'Available tabs: details, file-info, edit. Blank uses edit.'
+    type: STRING
+  targetTabGalleries:
+    displayName: Default gallery tab
+    description: 'Available tabs: details, chapters, edit. Blank uses edit.'
+    type: STRING
+ui:
+  javascript:
+    - edit-unorganized.js
