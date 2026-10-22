@@ -26,6 +26,6 @@ Some internal CSS classes and browser-storage keys retain their Refract-era name
 
 ## Credits and licenses
 
-Lynx Theme builds on [Refract by ordureconnoisseur](https://github.com/ordureconnoisseur/stash-refract). Theme code is distributed under the GNU Affero General Public License v3; see [LynxTheme/LICENSE](LynxTheme/LICENSE). The bundled Albert Sans font is under the SIL Open Font License 1.1; see [LynxTheme/fonts/OFL-AlbertSans.txt](LynxTheme/fonts/OFL-AlbertSans.txt). More details are in [CREDITS.md](CREDITS.md).
+Lynx Theme builds mainly on [Refract by ordureconnoisseur](https://github.com/ordureconnoisseur/stash-refract). Theme code is distributed under the GNU Affero General Public License v3; see [LynxTheme/LICENSE](LynxTheme/LICENSE). The bundled Albert Sans font is under the SIL Open Font License 1.1; see [LynxTheme/fonts/OFL-AlbertSans.txt](LynxTheme/fonts/OFL-AlbertSans.txt). More details are in [CREDITS.md](CREDITS.md).
 
 This is an independent community project, not an official Stash plugin.
