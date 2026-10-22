@@ -1,0 +1,60 @@
+name: Lynx Tools
+description: Optional context menus, a snapping image cropper and single-eye VR viewing modes for Stash. Enable only the modules you want.
+version: 1.0.0-rc.2
+settings:
+  crop_enabled:
+    displayName: Enable Cropper
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  crop__showCropIcon:
+    displayName: Show crop icon
+    type: BOOLEAN
+    description: Show a small Lynx crop badge on Stash images with a saved display
+      crop. Default ON.
+  crop__cropIconOpacity:
+    displayName: Crop icon opacity
+    type: STRING
+    description: Crop badge opacity from 0 to 1. Default 0.5.
+  galleryMenu_enabled:
+    displayName: Enable Gallery menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  imageMenu_enabled:
+    displayName: Enable Image menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  performerMenu_enabled:
+    displayName: Enable Performer menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  sceneMenu_enabled:
+    displayName: Enable Scene menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  settingsMenu_enabled:
+    displayName: Enable Settings menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  tagMenu_enabled:
+    displayName: Enable Tag menu
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+  vr_enabled:
+    displayName: Enable VR Viewer
+    type: BOOLEAN
+    description: Enable this module, then reload the page. Disabled modules do not load their scripts or styles.
+ui:
+  javascript:
+  - runtime.js
+  - settings-ui.js
+  - loader.js
+  css:
+  - settings-ui.css
+  assets:
+    /: .
+  csp:
+    connect-src:
+    - https://fansdb.cc/graphql
+    - https://fansdb.xyz/graphql
+    - https://stashdb.org/graphql
+    - https://theporndb.net/graphql
