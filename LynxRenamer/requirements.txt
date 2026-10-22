@@ -1,0 +1,2 @@
+# Required Python dependency. Install into the interpreter used by Stash.
+requests>=2.31,<3
