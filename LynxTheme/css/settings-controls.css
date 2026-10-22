@@ -1,0 +1,60 @@
+/* Lynx 0.2.9: final visibility gates, after legacy and custom card styles.
+   Retain existing design/data; only the corresponding control owns visibility. */
+
+body.stash-liquid-glass.refract-sc-hide-rating.refract-sc-hide-rating.refract-sc-hide-rating .scene-card .rating-banner {
+  display: none !important;
+}
+body.stash-liquid-glass.refract-sc-hide-performers.refract-sc-hide-performers.refract-sc-hide-performers .scene-card :is(.performers-container, .stash-performer-avatars, .stash-performer-pill) {
+  display: none !important;
+}
+
+/* Tag pills replaces the old Count pills control. Keep the saved key for
+   compatibility, but let it own the real tag-name row, not obsolete counters. */
+body.stash-liquid-glass .scene-card .stash-performer-circles,
+body.stash-liquid-glass .scene-card :is(.stash-tag-count, .stash-o-count) {
+  display: none !important;
+}
+body.stash-liquid-glass.refract-sc-hide-counts.refract-sc-hide-counts.refract-sc-hide-counts .scene-card :is(.tag-resolution-row, .tag-chips-container) {
+  display: none !important;
+}
+
+/* Only reveal the existing native performer rating; don't add a second rating
+   in the obsolete stats strip. Image-only scene-detail thumbnails stay compact. */
+body.stash-liquid-glass:not(.refract-pc-hide-rating) .performer-card:not(.scene-tabs .performer-card) > .thumbnail-section > .rating-banner {
+  display: flex !important;
+}
+body.stash-liquid-glass.refract-pc-hide-rating.refract-pc-hide-rating.refract-pc-hide-rating .performer-card :is(.rating-banner, .stash-perf-rating) {
+  display: none !important;
+}
+body.stash-liquid-glass.refract-pc-hide-country.refract-pc-hide-country.refract-pc-hide-country .performer-card :is(.lynx-country-link, .performer-card__country-flag, .performer-card__country-string, .stash-perf-country) {
+  display: none !important;
+}
+body.stash-liquid-glass.refract-pc-hide-stats.refract-pc-hide-stats.refract-pc-hide-stats .performer-card :is(.card-popovers, .stash-perf-stats) {
+  display: none !important;
+}
+
+/* Fixed preference: hide only active filters outside the filter editor. */
+body.stash-liquid-glass:not(.refract-show-filter-tags) .filter-tags:not(.modal .filter-tags, .modal-dialog .filter-tags),
+body.stash-liquid-glass:not(.refract-show-filter-tags) .wrap-tags:not(.modal .wrap-tags, .modal-dialog .wrap-tags) {
+  display: none !important;
+}
+
+/* Accessible controls and calmer layout; preserve keyboard focus visibility. */
+/* Enhanced Cards must not revive its obsolete Age/Scenes/O-count strip.
+   Keep the current bottom counter row controlled by Performer Stat pills.
+   Repeat the mode class to win over the separately loaded visual module. */
+body.stash-liquid-glass.refract-rating-style-playing-card.refract-rating-style-playing-card .performer-card .stash-perf-stats {
+  display: none !important;
+}
+
+#plugin-refract-scene-elems .refract-card-elems,
+#plugin-refract-performer-elems .refract-card-elems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+#plugin-refract-scene-elems button:focus-visible,
+#plugin-refract-performer-elems button:focus-visible {
+  outline: 2px solid var(--accent, #5899ed);
+  outline-offset: 3px;
+}

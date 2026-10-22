@@ -1,0 +1,7549 @@
+/* LynxTheme custom layer generated from supplied custom.css. */
+/* ===== FIX: FORCE COLOR ON STASHGIFS ICON ===== */
+#StashGifsButton .nav-menu-icon path {
+    fill: #00eaff !important;   /* Your color */
+    stroke: #00eaff !important; /* Sometimes required */
+}
+
+/* Optionally style the entire SVG as well */
+#StashGifsButton .nav-menu-icon {
+    color: #ff66cc !important; /* override currentColor */
+}
+
+
+/* ===== ICON COLOR FOR STASHGIFS BUTTON ===== */
+.nav-link[data-rb-event-key="/plugin/stashgifs/assets/app/"] .nav-menu-icon {
+    stroke: #a6ff4d !important; /* Choose any color */
+}
+
+/* Text below the icon */
+.nav-link[data-rb-event-key="/plugin/stashgifs/assets/app/"] a.minimal::after {
+    content: "GIFs";
+}
+
+
+/* ===== LYNX TOP NAV: ICON COLORS + LABELS BELOW ===== */
+
+/* Stack icons vertically with labels below */
+.nav-link a.minimal {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 8px !important;
+    padding-bottom: 4px !important;
+}
+
+/* Icon size */
+.nav-menu-icon {
+    width: 42px !important;
+    height: 42px !important;
+    margin-bottom: 4px !important;
+}
+
+/* Hide the original text */
+.nav-link a.minimal span {
+    display: none !important;
+}
+
+/* Add text below the icon */
+.nav-link a.minimal::after {
+    display: none;
+    text-align: center;
+    font-size: 11px;
+    margin-top: 2px;
+    opacity: 0.9;
+}
+
+/* ===== LABELS PER ROUTE ===== */
+.nav-link[data-rb-event-key="/scenes"] a.minimal::after {
+    content: "Scenes";
+}
+.nav-link[data-rb-event-key="/images"] a.minimal::after {
+    content: "Images";
+}
+.nav-link[data-rb-event-key="/groups"] a.minimal::after {
+    content: "Groups";
+}
+.nav-link[data-rb-event-key="/scenes/markers"] a.minimal::after {
+    content: "Markers";
+}
+.nav-link[data-rb-event-key="/galleries"] a.minimal::after {
+    content: "Galleries";
+}
+.nav-link[data-rb-event-key="/performers"] a.minimal::after {
+    content: "Performers";
+}
+.nav-link[data-rb-event-key="/studios"] a.minimal::after {
+    content: "Studios";
+}
+.nav-link[data-rb-event-key="/tags"] a.minimal::after {
+    content: "Tags";
+}
+
+/* ===== ICON COLORS ===== */
+.nav-link[data-rb-event-key="/scenes"] .nav-menu-icon {
+    stroke: #ff4d4d !important;
+}
+.nav-link[data-rb-event-key="/images"] .nav-menu-icon {
+    stroke: #eeff00 !important;
+}
+.nav-link[data-rb-event-key="/groups"] .nav-menu-icon {
+    stroke: #0075ff !important;
+}
+.nav-link[data-rb-event-key="/scenes/markers"] .nav-menu-icon {
+    stroke: #ffa31a !important;
+}
+.nav-link[data-rb-event-key="/galleries"] .nav-menu-icon {
+    stroke: #ff0000 !important;
+}
+.nav-link[data-rb-event-key="/performers"] .nav-menu-icon {
+    stroke: #4da6ff !important;
+}
+.nav-link[data-rb-event-key="/studios"] .nav-menu-icon {
+    stroke: #8aff80 !important;
+}
+.nav-link[data-rb-event-key="/tags"] .nav-menu-icon {
+    stroke: #d580ff !important;
+}
+
+/* Hover effect */
+.nav-link a.minimal:hover .nav-menu-icon {
+    transform: scale(1.15);
+    transition: 0.15s ease;
+}
+
+
+
+
+/* ===== Galleries + Uniform card image sizing (paste into Custom CSS or end of loaded stylesheet) ===== */
+
+/* --- Generic gallery/card containers: center and contain --- */
+.gallery-card .gallery-preview,
+.gallery-card .gallery-thumb,
+.gallery-card .gallery-image,
+.gallery-preview,
+.gallery-thumb,
+.gallery-image,
+.card.gallery,
+.card .gallery-preview,
+.image-card-preview,
+.image-card-preview.portrait,
+.image-card-preview.landscape {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background-color: #0b0b0b !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 220px !important; /* Uniform height for all cards; adjust if desired */
+  min-height: 220px !important;
+  max-height: 220px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* --- Images inside gallery/card containers: fill box with cover --- */
+.gallery-card img,
+.gallery-preview img,
+.gallery-thumb img,
+.gallery-image img,
+.image-card-preview-image,
+.image-card-preview img,
+.card .gallery-preview img,
+.card img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* --- Fallback for inline background-image --- */
+.gallery-preview[style*="background-image"],
+.gallery-thumb[style*="background-image"],
+.gallery-image[style*="background-image"],
+.image-card-preview[style*="background-image"],
+.image-card-preview[style*="background"] {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+
+/* --- Overlays and buttons above the image --- */
+.gallery-card .preview-button,
+.gallery-card .overlay,
+.gallery-card .studio-overlay,
+.image-card .preview-button,
+.image-card .overlay,
+.image-card .studio-overlay {
+  position: absolute !important;
+  z-index: 20 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* --- Responsive adjustment: reduce height on small screens --- */
+@media (max-width: 480px) {
+  .gallery-card .gallery-preview,
+  .image-card-preview,
+  .gallery-preview,
+  .gallery-thumb {
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+  }
+}
+
+
+/* ===== Center and contain images in Galleries (paste into Custom CSS or end of loaded stylesheet) ===== */
+
+/* Generic gallery/card container selectors */
+.gallery-card .gallery-preview,
+.gallery-card .gallery-thumb,
+.gallery-card .gallery-image,
+.gallery-preview,
+.gallery-thumb,
+.gallery-image,
+.card.gallery,
+.card .gallery-preview,
+.image-card-preview,
+.image-card-preview.portrait,
+.image-card-preview.landscape {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background-color: #0b0b0b !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 140px !important;
+  padding: 0 !important;
+}
+
+/* Images inside gallery/card containers */
+.gallery-card img,
+.gallery-preview img,
+.gallery-thumb img,
+.gallery-image img,
+.image-card-preview-image,
+.image-card-preview img,
+.card .gallery-preview img,
+.card img {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 auto !important;
+  position: relative !important;
+}
+
+/* Fallback for inline background-image on gallery containers */
+.gallery-preview[style*="background-image"],
+.gallery-thumb[style*="background-image"],
+.gallery-image[style*="background-image"],
+.gallery-preview[style*="background"],
+.gallery-thumb[style*="background"],
+.gallery-image[style*="background"],
+.image-card-preview[style*="background-image"],
+.image-card-preview[style*="background"] {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+}
+
+/* Ensure overlays, buttons and badges remain above the image */
+.gallery-card .preview-button,
+.gallery-card .overlay,
+.gallery-card .studio-overlay,
+.image-card .preview-button,
+.image-card .overlay,
+.image-card .studio-overlay {
+  position: absolute !important;
+  z-index: 5 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+
+
+/* ===== Center and contain images in image cards =====
+   Paste this into Settings → Interface → Custom CSS or at the end of the loaded stylesheet
+*/
+
+/* Container: create a box that centers its contents */
+.image-card-preview,
+.image-card-preview.portrait,
+.image-card-preview.landscape {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background-color: #0b0b0b !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 140px !important; /* Adjust as needed */
+}
+
+/* Image: show the complete image, preserve its aspect ratio and center it */
+.image-card-preview-image {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 auto !important;
+  position: relative !important;
+}
+
+/* Fallback when the container uses an inline background-image */
+.image-card-preview[style*="background-image"],
+.image-card-preview[style*="background"] {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+}
+
+/* Keep overlay elements (buttons and badges) above the image */
+.image-card .preview-button,
+.image-card .studio-overlay,
+.image-card .overlay {
+  position: absolute !important;
+  z-index: 5 !important;
+}
+
+
+
+/* Active icon */
+.navbar-item.is-active {
+    background-color: #333;
+    color: #fff;
+}
+
+
+span:has(>div.count-button>button[title="O Count"]) {
+    display: none;
+}
+
+.scene-toolbar-group > span {
+    margin-left: auto !important;
+}
+
+.star-rating-number {
+    font-size: 0rem;
+    margin: auto .5rem;
+}
+
+body.stash-liquid-glass .scene-card .card-section {
+    padding: 0rem 0.7rem 0.5rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Hide extra scene-card elements from the new theme */
+.stash-performer-circles {
+    display: none !important;
+}
+
+body.stash-liquid-glass .scene-card .card-section-title {
+    display: none !important;
+}
+
+/* Left padding beside Save in scene settings */
+.pl-0, .px-0 {
+    padding-left: 3px!important;
+}
+
+.performer-scenes .count-button {
+    display: none !important;
+}
+
+/* Thin white outline on hover */
+.card:hover,
+.grid-card:hover,
+.group-card:hover {
+  outline: 1px solid #ffffff !important;
+  outline-offset: 0px !important;
+
+  /* Prevent other hover effects from interfering */
+  background-color: inherit !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Remove image dimming */
+.card:hover img,
+.grid-card:hover img,
+.group-card:hover img.group-card-image {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove overlays */
+.card:hover .thumbnail-section::after,
+.grid-card:hover .thumbnail-section::after,
+.group-card:hover .thumbnail-section::after {
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Disable the zoom effect */
+.zoom-1:hover {
+  transform: none !important;
+}
+
+
+/*
+ * ============================
+ * DISABLE ALL CARD HOVER EFFECTS
+ * ============================
+ */
+
+/* Remove background changes */
+.card:hover,
+.grid-card:hover,
+.group-card:hover {
+  background-color: inherit !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Remove image dimming on hover */
+.card:hover img,
+.grid-card:hover img,
+.group-card:hover img.group-card-image {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove overlays that Stash adds above thumbnails */
+.card:hover .thumbnail-section::after,
+.grid-card:hover .thumbnail-section::after,
+.group-card:hover .thumbnail-section::after {
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Remove transitions that cause dimming or zooming */
+.card,
+.grid-card,
+.group-card,
+.card img,
+.group-card img {
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Completely disable the zoom-1 hover effect */
+.zoom-1:hover {
+  transform: none !important;
+}
+
+
+
+
+/* Adjust star size */
+.rating-stars,
+.rating-stars-precision-full {
+    transform: scale(1.6) !important;   /* Change 1.4 to the desired scale */
+    transform-origin: left center !important; /* Keep the stars from shifting */
+}
+
+
+/* Hide Stream on the information page and show the path */
+.scene-file-info dt:nth-of-type(1),
+.scene-file-info dd:nth-of-type(1) {
+    display: none !important;
+}
+
+.TruncatedText {
+    -webkit-line-clamp: unset !important;
+    max-height: none !important;
+}
+
+/* Show the complete file path without clipping */
+.scene-details .detail-item .value,
+.file-info .detail-item .value,
+.detail-item .value {
+    white-space: normal !important;     /* Allow line wrapping */
+    overflow: visible !important;       /* No clipping */
+    text-overflow: unset !important;    /* Remove the ellipsis */
+    display: block !important;          /* Let the text use the full width */
+    word-break: break-all !important;   /* Break long words and paths */
+    max-width: none !important;         /* Remove the maximum width */
+}
+
+
+/* Yellow highlight around selected cards */
+.grid-card.card:has(input:checked) {
+    border: 1px solid #FFD500 !important;
+    box-shadow: 0 0 6px #FFD500 !important;
+}
+
+
+/* Limit group descriptions to two lines */
+.group-card__description {
+    max-height: 3.2em !important;
+    overflow: hidden !important;
+    position: relative !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    cursor: pointer !important;
+
+    /* Reserve space for the See more row */
+    padding-bottom: 1.6em !important;
+}
+
+/* Place the See more indicator on a separate line below the text */
+.group-card__description::after {
+    content: "...Read more";
+    color: #d4af37;
+    font-weight: 700;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    /* Give it its own line */
+    display: block;
+    width: 100%;
+
+    /* Background prevents it from blending into the text */
+    background: #192127;
+
+    /* Add a little spacing above the text */
+    padding-top: 4px;
+}
+
+.group-card__date {
+    font-style: italic !important;
+}
+
+
+
+/* Expand on click */
+.group-card__description:active {
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+}
+
+/* Hide See more while expanded */
+.group-card__description:active::after {
+    content: "";
+}
+
+
+/* Outer card */
+.scene-card {
+    background-color: #192127 !important;
+}
+
+/* Image section */
+.scene-card-preview {
+    background-color: #192127 !important;
+}
+
+/* Text section */
+.scene-card-content {
+    /* background-color: #192127 !important; */
+}
+
+
+
+/* Hide selected fields in the performer editor */
+[data-field="penis_length"],
+[data-field="death_date"],
+[data-field="circumcised"] {
+    display: none !important;
+}
+
+
+
+/* Use a solid dark background for grid cards */
+.grid-card.card {
+    background-color: #192127!important;
+    backdrop-filter: none !important; /* Remove transparency */
+    box-shadow: none !important;      /* Remove bright edges */
+    border: none !important;
+}
+
+/* Match the sidebar filter/toolbar background to the rest of the page */
+.sidebar-pane-content,
+.sidebar-pane-content .filtered-list-toolbar,
+.sidebar-pane-content .btn-toolbar,
+.sidebar-pane-content .filtered-list-toolbar.btn-toolbar {
+    background-color: #060a0c!important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+/* Use a uniform dark background throughout the Tags page */
+body,
+#root,
+.main.container-fluid,
+.main.container-fluid > .row,
+#root > div.main.container-fluid > div {
+    background-color: #060a0c!important; /* Choose your dark shade */
+}
+
+
+
+/* Text Highlight Overhaul */
+
+.detail-item.synopsis,
+p {
+	font-weight: 500 !important;
+	text-shadow: -1px -1px 0 black,  
+               1px -1px 0 black,  
+               -1px 1px 0 black,  
+               0.25px 0.25px 0 black; /* Add a black stroke */
+}
+
+h3,
+h5 {
+	color: gold !important;
+}
+
+h6 { 
+	color: gold !important;
+}	
+
+div.TruncatedText {
+	font-weight: 600 !important;
+	text-shadow: -1px -1px 0 black,  
+               1px -1px 0 black,  
+               -1px 1px 0 black,  
+               0.25px 0.25px 0 black; /* Add a black stroke */
+}
+
+span.performer-name {
+	font-weight: 700 !important;
+}
+
+.movie-card.grid-card.card .TruncatedText {
+	color: white !important;
+	font-weight: 600 !important;
+}
+
+div.col-12 h6 {
+	border-bottom: 1px solid #ccc; /* Adds a light gray line below each section */
+}
+
+.recommendation-row-head h2 {
+	color: gold;
+}
+
+
+
+/* Gold labels in the left column of Scene Edit */
+#scene-edit-details label {
+    color: #d4af37 !important;   /* Classic gold */
+    font-weight: 600 !important; /* Use a stronger, more polished label style */
+}
+
+
+
+
+
+/* Hide the Director box (nth-child(5)) and the following box (nth-child(6)) */
+#scene-edit-details > form > div:nth-child(2) > div.col-xl-12.col-lg-7 > div:nth-child(5),
+#scene-edit-details > form > div:nth-child(2) > div.col-xl-12.col-lg-7 > div:nth-child(6) {
+  display: none !important;
+}
+
+
+
+/* Reduce tag-card content padding from 20px to 5px */
+.tag-card.grid-card.card,
+.tag-card.grid-card.card .card-section {
+  padding: 5px !important;
+}
+
+/* Handle padding applied to .card instead of .tag-card */
+.grid-card.card.tag-card {
+  padding: 5px !important;
+}
+
+
+
+/* Reduce the gap between performer cards */
+.performer-card.grid-card.card {
+    margin-bottom: 0.15rem !important;   /* The default is approximately 0.75rem */
+}
+
+/* Tighten spacing both vertically and horizontally */
+.performer-card {
+    padding: 0 !important;
+}
+
+.grid-card {
+    margin: 0.15rem !important;          /* Reduce spacing around each card */
+}
+
+
+
+
+/* Use the thumbnail section as the positioning reference */
+.thumbnail-section {
+    position: relative !important;
+}
+
+/* Hide the country text (BR, DE, etc.) */
+.thumbnail-section .performer-card__country-string {
+    display: none !important;
+    left: 2px !important;
+    top: calc(.7rem + 24px) !important;
+}
+
+/* Move the flag and make it circular */
+.thumbnail-section .performer-card__country-flag {
+    position: absolute !important;
+    top: 2px;
+    left: 0;
+    margin: 2px;
+
+    /* Adjust these two values to fine-tune the position */
+    top: 35px !important;   /* Move the flag down below the selection checkbox */
+    left: 7px !important;   /* Small inset from the left */
+
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 50% !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+    z-index: 50 !important;
+    box-shadow: 0 0 3px rgba(0,0,0,0.35) !important;
+}
+
+
+
+.overlay-resolution,
+.overlay-duration {
+    -webkit-text-stroke: 0px transparent !important; /* Disable the hard text stroke */
+    text-shadow:
+        0 0 2px #000,
+        0 0 2px #000; /* Softer, more diffuse edge */
+}
+
+/* Make the title wrapper compact */
+.scene-title-wrapper {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-top: 0 !important;
+    padding-bottom: 2px !important;
+    line-height: 0 !important; /* Neutralize the wrapper line height */
+}
+
+/* Title: control its height */
+.scene-title-wrapper .scene-title {
+    line-height: 1 !important;      /* Actual text line height */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    min-height: 0 !important;
+    display: inline-block !important;
+}
+
+/* Handle additional theme containers around the title */
+.scene-title-wrapper .title,
+.scene-title-wrapper .scene-title-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Reduce spacing throughout the content section */
+.scene-card-content {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+
+
+
+/* Reduce the gap between performer names and tags */
+.scene-card .performers,
+.scene-card .scene-performers,
+.scene-card .card-section .performers {
+    margin-bottom: 1px !important;   /* Change to 1px for tighter spacing */
+}
+
+/* Reduce the gap between performer names and tags */
+.tag-resolution-row {
+    margin-top: 2px !important;   /* Change to 1px for very tight spacing */
+}
+
+/* Handle extra spacing added by Stash to the tag-chips container */
+.tag-chips {
+    margin-top: 2px !important;
+}
+
+*************************
+
+/* Use a uniform light shade across the page */
+html,
+body,
+#root,
+.main.container-fluid,
+.main.container-fluid > .row,
+.container-fluid,
+.container-fluid:before,
+.container-fluid:after {
+    background-color: #333e46 !important; /* Your light shade */
+}
+
+/* Keep the original background on scene cards */
+.scene-card,
+.scene-card .card-section {
+    background-color: inherit !important;
+}
+
+
+*****************
+
+.tag-resolution-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+***********************
+
+/* Add spacing between performer rows and names */
+.scene-card .performers,
+.scene-card .scene-performers,
+.scene-card .card-section .performers {
+    line-height: 1.35em !important;   /* Slightly larger line spacing */
+    gap: 4px !important;              /* Spacing between names */
+}
+
+/* Add spacing when names are inside spans or links */
+.scene-card .performers a,
+.scene-card .scene-performers a,
+.scene-card .card-section .performers a {
+    margin-right: 4px !important;     /* Small gaps between names */
+}
+
+**************************
+
+.card-section > div > div {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 3.2em;
+}
+
+
+*****************************
+/* Stop movement on cards and chip-like elements */
+.scene-card,
+.image-card,
+.gallery-card,
+.performer-card,
+.tag-card,
+.group-card,
+.studio-card {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Default state: transparent border with the same thickness */
+.scene-card,
+.image-card,
+.gallery-card,
+.performer-card,
+.tag-card,
+.group-card,
+.studio-card {
+    border: 2px solid transparent !important;
+    box-sizing: border-box !important;
+}
+
+/* HOVER: restore the white border */
+.scene-card:hover,
+.image-card:hover,
+.gallery-card:hover,
+.performer-card:hover,
+.tag-card:hover,
+.studio-card:hover {
+    border-color: white !important;
+}
+
+/* FOCUS: no outline */
+.scene-card:focus,
+.scene-card:focus-within,
+.image-card:focus,
+.image-card:focus-within,
+.gallery-card:focus,
+.gallery-card:focus-within,
+.performer-card:focus,
+.performer-card:focus-within,
+.tag-card:focus,
+.tag-card:focus-within,
+.group-card:focus,
+.group-card:focus-within,
+.studio-card:focus,
+.studio-card:focus-within {
+    border-color: transparent !important;
+    outline: none !important;
+}
+
+
+***************
+
+*******************************
+
+/* Scene-card title text in list view */
+.scene-card .scene-title,
+.scene-card-container .scene-title {
+  color: gold !important; /* Match the yellow of the resolution badge */
+  font-weight: 600;          /* Slightly heavier text to match the style */
+}
+
+.scene-card .scene-title,
+.scene-card-container .scene-title {
+  font-size: 15px !important;   /* 1px larger than the 14px default */
+  color: gold !important;     /* Match the resolution color */
+  font-weight: 600 !important;
+}
+
+
+
+***********************************
+
+.performers-custom-modal-content {
+    background-color: #0a0a0a !important; /* Almost black */
+    color: #fff; /* Make the text white for readability */
+    border-radius: 8px; /* Optional visual adjustment */
+}
+
+
+
+*******************************************
+
+.group-description,
+.group-description + div,
+.group-description ~ div {
+    display: none !important;
+}
+
+
+
+
+.reveal-in-filesystem-button {
+  display: none !important;
+}
+
+.card-section {
+    margin-bottom: 0;
+    padding-top: 0 !important;
+}
+
+
+/* Resolution: AIK yellow with a thin black shadow */
+.overlay-resolution {
+  color: #FFD500 !important;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000 !important;
+}
+
+/* Duration: white with a thin black shadow */
+.overlay-duration {
+  font-weight: 600 !important; /* Slightly thicker */
+  color: #ffffff !important;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000 !important;
+}
+
+
+
+
+
+.overlay-resolution,
+.resolution {
+  color: gold !important;
+  text-shadow: -1px -1px 0 #000,
+               1px -1px 0 #000,
+               -1px 1px 0 #000,
+               1px 1px 0 #000 !important;
+}
+
+
+
+
+.more-indicator {
+  background-color: #FFD500 !important; /* Yellow */
+  color: #000 !important; /* Black */
+  border-radius: 50% !important; /* Circle */
+  width: 20px !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important; /* Hide the original text */
+  padding: 0 !important;
+}
+
+
+
+/* Vertically center the more-indicator in its row */
+.more-indicator,
+.scene-card .more-indicator,
+.card-section .more-indicator {
+    align-self: center !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 2px;
+}
+
+
+
+*********************
+
+.tag-chips {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}
+
+.tag-chip {
+  flex: 0 0 auto !important;
+}
+
+
+
+***************
+
+.card hr {
+    margin-top: auto;
+    border-color: #090c10 !important;
+}
+
+#custom-tags-manager-hover-preview.tag-manager-hover-preview {
+    position: fixed;
+    z-index: 1085;
+    left: 0;
+    top: 0;
+    width: min(34rem, calc(100vw - 2rem));
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 120ms ease, transform 120ms ease;
+    /* visibility: hidden; */
+    display: none !important;
+}
+
+.grid-card.card {
+    transition: none !important;
+    transform: none !important;
+}
+
+.gallery-card-image, .tag-card-image, .image-card-preview {
+    height: 150px;
+    width: 100%;
+}
+
+
+
+
+*************************
+
+div.TruncatedText {
+	font-weight: 600 !important;
+	text-shadow: 0px 0px 0 black,  
+               0px 0px 0 black,  
+               0px 0px 0 black,  
+               0.25px 0.25px 0 black !important; /* Add a black stroke */
+}
+
+.grid-card.card {
+    position: relative;
+    /* transition: border 0.5s ease, transform 0.5s ease, filter 0.5s ease; */
+    border-radius: 10px;
+}
+
+/* Navigation Bar Styling */
+nav.bg-dark {
+	background: rgba(10, 20, 25, 0.80) !important;
+}
+
+
+
+
+
+/*********************************/
+
+
+.video-js .vjs-time-tooltip {
+    top: -1.5em;
+}
+
+.video-js .vjs-vtt-thumbnail-display {
+    bottom: 3em;
+    transition: opacity .1s;
+}
+
+
+
+
+
+
+
+
+/* Background Studio Grey Banners -- Better Readability */
+.studio-logo,
+.studio-card-image {
+	border-radius: 10px;
+	/* Adjust the border-radius for rounded corners */
+	background-color: rgba(26, 26, 26, 0);
+}
+
+.performer-tag-container .performer-disambiguation {
+    color: lightgray;
+}
+
+.alert-danger {
+    color: #721d1d;
+    background-color: #00000000;
+    border-color: #f5c7c7;
+}
+
+/* Popup Modal Styling - Settings Section - General "Dark Themed Glassy Look" */
+
+
+div.modal-content {
+	background: rgba(0, 0, 0, 0.9);
+	/* Darker background for dark mode, adjust opacity as needed */
+}
+
+.form-container.edit-buttons-container.px-3.pt-3.row {
+    position: sticky !important;
+}
+
+/* Match the Save, Delete and Scrape backgrounds to the rest of the page */
+body.stash-liquid-glass #scene-edit-details
+.form-container.edit-buttons-container,
+
+body.stash-liquid-glass #scene-edit-details
+.scraper-group.btn-group,
+
+body.stash-liquid-glass #scene-edit-details
+.edit-buttons {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+:root {
+ --vsc-font-sm: 12px;
+ --vsc-performer-avatar-bg-color: rgba(0, 0, 0, 0.6);
+ --vsc-performer-avatar-initials-size: 18px;
+ --vsc-performer-avatar-size: 60px;
+ --vsc-resolution-icon-bg-color: #f5f8fa;
+ --vsc-resolution-icon-color: #30404d;
+ --vsc-top-line-opacity: 0.8;
+ --vsc-preview-background-backdrop-filter: blur(10px);
+ --vsc-preview-background-color: #000;
+ --vsc-gender-color--female: #e64a8d;
+ --vsc-gender-color--intersex: #9e58d2;
+ --vsc-gender-color--male: #000000;
+ --vsc-gender-color--nonbinary: #9e58d2;
+ --vsc-gender-color--transgender_female: #3c91e6;
+ --vsc-gender-color--transmale: #89cff0;
+ --vsc-gender-color--unknown: #FF8000;
+ --vsc-performer-overflow-border-bottom: 1px dotted #f5f8fa;
+}
+
+/* Hide only the related/recommended scene list; keep performer information and image */
+.related-scenes-popover .recommendation-popover,
+.related-scenes-popover .recommended-scene-item,
+.recommendation-popover .recommended-scene-item,
+.recommended-scene-item {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide only the Related scenes popover title */
+.related-scenes-popover .popover-header,
+.related-scenes-popover .popover-title,
+.related-scenes-popover .popover-heading,
+.related-scenes-popover .title,
+.related-scenes-popover h3,
+.card-popovers .popover-header,
+.card-popovers .popover-title,
+.custom-popover .popover-header,
+.custom-popover .popover-title {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ============================================
+   Performer images forced to 1.5:1 ratio
+   WITHOUT shrinking the performer card
+   ============================================ */
+
+/* Create an internal aspect-ratio container */
+.performer-card .thumbnail-section {
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+
+    /* Keep the original LYNX height */
+    min-height: 320px !important;
+    max-height: 320px !important;
+}
+
+/* Aspect-ratio box inside thumbnail-section */
+.performer-card .thumbnail-section::before {
+    content: "";
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.5 / 1; /* 1.5:1 ratio */
+}
+
+/* Let the image fill the aspect-ratio box */
+.performer-card .performer-card-image,
+.performer-card .performer-card-image img {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — ICON COLORS BELOW IMAGE CARDS
+ * ==================================================
+ */
+
+/* Performers: match the light blue navbar icon */
+body.stash-liquid-glass
+.image-card
+.card-popovers
+.performer-count
+svg {
+  color: #4da6ff !important;
+  fill: currentColor !important;
+}
+
+/* Tags: match the purple navbar icon */
+body.stash-liquid-glass
+.image-card
+.card-popovers
+.tag-count
+svg {
+  color: #d580ff !important;
+}
+
+/* Gallery: match the red navbar icon */
+body.stash-liquid-glass
+.image-card
+.card-popovers
+.gallery-count
+svg {
+  color: #ff0000 !important;
+}
+
+/* Organized: match the yellow Images navbar icon */
+body.stash-liquid-glass
+.image-card
+.card-popovers
+.organized
+svg {
+  color: #eeff00 !important;
+  fill: currentColor !important;
+}
+
+
+/*
+ * ==================================================
+ * LYNX — STUDIO LOGO ON IMAGE CARDS
+ * Match the scene-card position and size
+ * ==================================================
+ */
+
+body.stash-liquid-glass .image-card .studio-overlay {
+  position: absolute !important;
+
+  /* Position: upper-right corner */
+  top: 0.7rem !important;
+  right: 0.7rem !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  /* Override older rules that made the element full width */
+  width: auto !important;
+  height: auto !important;
+  max-width: 40% !important;
+
+  z-index: 8 !important;
+  text-align: right !important;
+}
+
+/* Studio link */
+body.stash-liquid-glass .image-card .studio-overlay > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  max-width: 100% !important;
+
+  /* Size when the studio is shown as text */
+  font-size: 1.1rem !important;
+  line-height: 1.1 !important;
+}
+
+/* Size when the studio has an image logo */
+body.stash-liquid-glass
+.image-card
+.studio-overlay
+img.image-thumbnail {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 120px !important;
+  max-height: 36px !important;
+  object-fit: contain !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — GALLERY CARD ICON COLORS
+ * ==================================================
+ */
+
+/* Image count: match the yellow Images navbar icon */
+body.stash-liquid-glass
+.gallery-card
+.card-popovers
+.image-count
+svg {
+  color: #eeff00 !important;
+
+}
+
+/* Tags: match the purple Tags navbar icon */
+body.stash-liquid-glass
+.gallery-card
+.card-popovers
+.tag-count
+svg {
+  color: #d580ff !important;
+  fill: currentColor !important;
+}
+
+/* Performers: match the light blue Performers navbar icon */
+body.stash-liquid-glass
+.gallery-card
+.card-popovers
+.performer-count
+svg {
+  color: #4da6ff !important;
+  fill: currentColor !important;
+}
+
+/* Scenes: match the red Scenes navbar icon */
+body.stash-liquid-glass
+.gallery-card
+.card-popovers
+.scene-count
+svg {
+  color: #ff4d4d !important;
+  fill: currentColor !important;
+}
+
+/* Organized status: green */
+body.stash-liquid-glass
+.gallery-card
+.card-popovers
+.organized
+svg {
+  color: #8aff80 !important;
+  fill: currentColor !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — STUDIO ON GALLERY CARDS
+ * ==================================================
+ */
+
+body.stash-liquid-glass .gallery-card .studio-overlay {
+  position: absolute !important;
+
+  /* Position in the upper-right corner */
+  top: 0.7rem !important;
+  right: 0.7rem !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  /* Override older full-width rules */
+  width: auto !important;
+  height: auto !important;
+  max-width: 36% !important;
+
+  z-index: 8 !important;
+  text-align: right !important;
+}
+
+/* Studio displayed as text */
+body.stash-liquid-glass .gallery-card .studio-overlay > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  max-width: 100% !important;
+
+  font-size: 1.1rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: normal !important;
+}
+
+/* Studio displayed as a logo */
+body.stash-liquid-glass
+.gallery-card
+.studio-overlay
+img.image-thumbnail {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 105px !important;
+  max-height: 32px !important;
+  object-fit: contain !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — CLEANER PERFORMER CARDS
+ * ==================================================
+ */
+
+
+/*
+ * --------------------------------------------------
+ * 1. NAME
+ * Hide the extra LynxTheme/Enhanced Cards name at the top.
+ * --------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.performer-card
+.refract-pc-name-banner {
+  display: none !important;
+}
+
+
+/* Show Stash's standard name below the image */
+body.stash-liquid-glass
+.performer-card
+.card-section-title,
+
+body.stash-liquid-glass.refract-rating-style-playing-card
+.performer-card
+.card-section-title {
+  display: flex !important;
+  align-items: center !important;
+}
+
+
+/* Style the name below the image */
+body.stash-liquid-glass
+.performer-card
+.card-section-title
+.performer-name {
+  display: block !important;
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+
+/*
+ * --------------------------------------------------
+ * 2. NATIONALITY
+ * Hide the country name and keep only the flag.
+ * --------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.performer-card
+.performer-card__country-string,
+
+body.stash-liquid-glass
+.performer-card
+.stash-perf-country {
+  display: none !important;
+}
+
+
+/* Enhanced Cards normally hides the original flag. This rule shows it again. */
+body.stash-liquid-glass.refract-rating-style-playing-card
+.performer-card
+.performer-card__country-flag:not(.stash-perf-country) {
+  display: block !important;
+}
+
+
+/* Show the flag even when Country is disabled in LynxTheme's performer settings */
+body.stash-liquid-glass.refract-pc-hide-country.refract-pc-hide-country.refract-pc-hide-country
+.performer-card
+.performer-card__country-flag {
+  display: block !important;
+}
+
+
+/* Flag in the upper-left corner. 35px leaves room for the selection circle. */
+body.stash-liquid-glass
+.performer-card
+.performer-card__country-flag {
+  position: absolute !important;
+  top: 35px !important;
+  left: 11px !important;
+
+  width: 25px !important;
+  height: 25px !important;
+  margin: 0 !important;
+
+  border-radius: 50% !important;
+  background-size: cover !important;
+  background-position: center !important;
+
+  z-index: 50 !important;
+}
+
+
+/*
+ * --------------------------------------------------
+ * 3. RATING AND LEGACY STATISTICS
+ * Hide rating on the image and in the Lynx statistics row.
+ * --------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.performer-card
+.rating-banner,
+
+body.stash-liquid-glass
+.performer-card
+.stash-perf-rating,
+
+body.stash-liquid-glass
+.performer-card
+.hon-battle-rank-badge {
+  display: none !important;
+}
+
+
+/* Hide the extra LynxTheme statistics row containing rating, age, O-count and country */
+body.stash-liquid-glass
+.performer-card
+.stash-perf-stats,
+
+body.stash-liquid-glass.refract-rating-style-playing-card
+.performer-card
+.stash-perf-stats {
+  display: none !important;
+}
+
+
+/* Hide the age below the name */
+body.stash-liquid-glass
+.performer-card
+.performer-card__age {
+  display: flex !important;
+}
+
+
+/*
+ * --------------------------------------------------
+ * PERFORMER COUNTERS AT THE BOTTOM OF THE CARD
+ * --------------------------------------------------
+ */
+
+/* Make the card a vertical column */
+body.stash-liquid-glass .performer-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Push the icon row to the bottom */
+body.stash-liquid-glass
+.performer-card > .card-popovers {
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  gap: 0.65rem !important;
+  width: 100% !important;
+
+  /* Push this row to the bottom edge of the card */
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+
+  padding: 0.1rem 0.5rem 0.15rem !important;
+  box-sizing: border-box !important;
+}
+
+
+/* Give every counter the same width and height */
+body.stash-liquid-glass
+.performer-card
+.card-popovers > :is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+) {
+  display: flex !important;
+  flex: 0 0 48px !important;
+  width: 48px !important;
+  min-width: 48px !important;
+
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+
+/* Stack each link/button vertically: icon above, count below */
+body.stash-liquid-glass
+.performer-card
+.card-popovers > :is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+) > a,
+
+body.stash-liquid-glass
+.performer-card
+.card-popovers > :is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+) > button,
+
+body.stash-liquid-glass
+.performer-card
+.card-popovers > :is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+).btn {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  gap: 3px !important;
+  width: 100% !important;
+  padding: 3px 2px !important;
+}
+
+
+/* Give all icons the same size and reserved height */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+:is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+)
+svg {
+  display: block !important;
+  flex: 0 0 22px !important;
+
+  width: 22px !important;
+  height: 22px !important;
+
+  margin: 0 !important;
+}
+
+
+/* Always place the count on the line below the icon */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+:is(
+  .scene-count,
+  .group-count,
+  .image-count,
+  .gallery-count
+)
+span {
+  display: block !important;
+
+  width: 100% !important;
+  min-height: 1.1rem !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #ffffff !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+
+/* Hide everything in the row first */
+body.stash-liquid-glass
+.performer-card
+.card-popovers > * {
+  display: none !important;
+}
+
+
+/* Show only the four requested counters */
+body.stash-liquid-glass
+.performer-card
+.card-popovers > .scene-count,
+
+body.stash-liquid-glass
+.performer-card
+.card-popovers > .group-count,
+
+body.stash-liquid-glass
+.performer-card
+.card-popovers > .image-count,
+
+body.stash-liquid-glass
+.performer-card
+.card-popovers > .gallery-count {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+
+/*
+ * --------------------------------------------------
+ * COLORS MATCHING THE NAVBAR
+ * --------------------------------------------------
+ */
+
+/* Scenes: red */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+.scene-count
+svg {
+  color: #ff4d4d !important;
+}
+
+
+/* Groups: blue */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+.group-count
+svg {
+  color: #0075ff !important;
+}
+
+
+/* Images: yellow */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+.image-count
+svg {
+  color: #eeff00 !important;
+}
+
+
+/* Galleries: red */
+body.stash-liquid-glass
+.performer-card
+.card-popovers
+.gallery-count
+svg {
+  color: #ff0000 !important;
+}
+
+/* Larger gender icons on performer cards */
+body.stash-liquid-glass
+.performer-card
+.gender-icon {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+  font-size: 1.4rem !important;
+  margin-right: 0.1rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* Female and transgender female: pink */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="FEMALE"],
+
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="TRANSGENDER_FEMALE"] {
+  color: #3c91e6 !important;
+}
+
+/* Male and transgender male: blue */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="MALE"],
+
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="TRANSGENDER_MALE"] {
+  color: #4da6ff !important;
+}
+
+/* Non-binary and intersex: purple */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="NON_BINARY"],
+
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="INTERSEX"] {
+  color: #9e58d2 !important;
+}
+
+/*
+ * ==================================================
+ * Performer name and disambiguation on a single line
+ * ==================================================
+ */
+
+/* Keep the name and disambiguation on the same line */
+body.stash-liquid-glass
+.performer-card
+.card-section-title > div {
+  display: flex !important;
+  align-items: baseline !important;
+  flex-wrap: nowrap !important;
+
+  min-width: 0 !important;
+  max-width: 100% !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+
+/* Performer name */
+body.stash-liquid-glass
+.performer-card
+.card-section-title
+.performer-name {
+  display: inline !important;
+
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+
+/* Disambiguation after the name */
+body.stash-liquid-glass
+.performer-card
+.card-section-title
+.performer-disambiguation {
+  display: inline !important;
+  flex-shrink: 0 !important;
+
+  margin-left: 0.3rem !important;
+  white-space: nowrap !important;
+}
+
+/*
+ * ==================================================
+ * IMAGE CARDS — CLICKABLE SELECTION CIRCLE
+ * ==================================================
+ */
+
+/* Raise the entire control layer above the image link */
+body.stash-liquid-glass
+.image-card > .card-controls {
+  position: absolute !important;
+  top: 0.5rem !important;
+  left: 0.5rem !important;
+  z-index: 9999 !important;
+
+  /* Only the circle itself should receive clicks */
+  pointer-events: none !important;
+}
+
+/* Make the selection circle clickable */
+body.stash-liquid-glass
+.image-card > .card-controls
+.card-check {
+  position: relative !important;
+  z-index: 1 !important;
+
+  pointer-events: auto !important;
+  cursor: pointer !important;
+
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/*
+ * ==================================================
+ * LYNX SCENE CARDS — BLUE GLASS PILL FOR MORE ITEMS
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card
+.more-indicator {
+  position: static !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+
+  /* Natural width based on content */
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 34px !important;
+  height: 24px !important;
+
+  margin: 0 !important;
+  padding: 0 8px !important;
+
+  color: #bfe3ff !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35, 120, 200, 0.48),
+      rgba(8, 26, 45, 0.92)
+    ) !important;
+
+  border: 1px solid rgba(65, 190, 255, 0.9) !important;
+  border-radius: 9px !important;
+
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+
+  cursor: pointer !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 5px rgba(40, 170, 255, 0.25) !important;
+
+  transform: none !important;
+
+  transition:
+    color 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease !important;
+}
+
+
+/* Hover */
+body.stash-liquid-glass
+.scene-card
+.more-indicator:hover {
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(60, 165, 245, 0.65),
+      rgba(12, 42, 72, 0.96)
+    ) !important;
+
+  border-color: #8bd5ff !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 9px rgba(50, 180, 255, 0.5) !important;
+
+  transform: translateY(-1px) !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — OVERFLOW POPUP WITH FLOATING PILLS ONLY
+ * ==================================================
+ */
+
+/* Remove every panel background layer */
+body.stash-liquid-glass .popover.more-list-popover,
+body.stash-liquid-glass .more-list-popover,
+body.stash-liquid-glass .more-list-popover .popover-body,
+body.stash-liquid-glass .more-list-popover .popover-content-container,
+body.stash-liquid-glass .more-list-popover .popover-flex-container,
+body.stash-liquid-glass .more-list-popover .popover-flex-container > div {
+  --bs-popover-bg: transparent !important;
+  --bs-popover-border-color: transparent !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* Remove Bootstrap pseudo-layers and the arrow */
+body.stash-liquid-glass .more-list-popover::before,
+body.stash-liquid-glass .more-list-popover::after,
+body.stash-liquid-glass .more-list-popover .arrow,
+body.stash-liquid-glass .more-list-popover .popover-arrow {
+  display: none !important;
+  content: none !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* Hide All Performers and All Tags headings */
+body.stash-liquid-glass
+.more-list-popover
+.popover-title {
+  display: none !important;
+}
+
+
+/* Pill group */
+body.stash-liquid-glass
+.more-list-popover
+.more-list-scroll {
+  display: flex !important;
+  flex-flow: row wrap !important;
+
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  gap: 6px !important;
+
+  width: max-content !important;
+  max-width: 300px !important;
+
+  margin: 0 !important;
+  padding: 2px !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+
+  overflow: visible !important;
+}
+
+
+/* Each wrapper must also be transparent */
+body.stash-liquid-glass
+.more-list-popover
+:is(.performer-tag-wrapper, .tag-chip-wrapper) {
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+
+  width: max-content !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/*
+ * ==================================================
+ * PERFORMER PILLS — MATCH THE CARD'S GENDER COLORS
+ * ==================================================
+ */
+
+/* Female and transgender male: pink */
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.FEMALE,
+
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.TRANSGENDER_MALE {
+  color: #ffffff !important;
+  background: #e64a8d !important;
+  background-color: #e64a8d !important;
+}
+
+
+/* Male and transgender female: blue */
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.MALE,
+
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.TRANSGENDER_FEMALE {
+  color: #ffffff !important;
+  background: #3c91e6 !important;
+  background-color: #3c91e6 !important;
+}
+
+
+/* Intersex and non-binary: purple */
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.INTERSEX,
+
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.NONBINARY,
+
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag.NON_BINARY {
+  color: #ffffff !important;
+  background: #9e58d2 !important;
+  background-color: #9e58d2 !important;
+}
+
+
+/* Hover: keep the gender color but slightly brighten the pill */
+body.stash-liquid-glass
+.more-list-popover
+.performer-tag:hover {
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  filter: brightness(1.12);
+  transform: translateY(-1px) !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — HIDE TAG POPUPS AND TIGHTEN SCENE CARDS
+ * ==================================================
+ */
+
+/* 1. Hide only popups from regular scene-card tag pills. Performer images and the overflow list are unaffected. */
+body.stash-liquid-glass
+.popover.custom-popover[id^="popover-tag-"],
+body.stash-liquid-glass
+.popover.custom-popover[aria-label^="Related scenes for tag"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 2. Reduce spacing between the thumbnail and the yellow title */
+body.stash-liquid-glass
+.scene-card .card-section {
+  padding-top: 0 !important;
+}
+
+body.stash-liquid-glass
+.scene-card .scene-card-content {
+  padding-top: 0 !important;
+}
+
+body.stash-liquid-glass
+.scene-card .scene-title-wrapper {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+body.stash-liquid-glass
+.scene-card .scene-title {
+  margin-top: 0 !important;
+}
+
+/* 3. Reduce spacing below the tags to the bottom of the card */
+body.stash-liquid-glass
+.scene-card .card-section {
+  padding-bottom: 0.25rem !important;
+}
+
+body.stash-liquid-glass
+.scene-card .scene-card-content,
+body.stash-liquid-glass
+.scene-card .tag-resolution-row,
+body.stash-liquid-glass
+.scene-card .tag-chips-container,
+body.stash-liquid-glass
+.scene-card .tag-chips {
+  margin-bottom: 0 !important;
+  padding-bottom: 1px !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — MORE COMPACT IMAGES PAGE
+ * ==================================================
+ */
+
+
+/* Remove extra bottom padding from the entire card */
+body.stash-liquid-glass .image-card,
+body.stash-liquid-glass .grid-card.image-card {
+  min-width: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Reduce spacing around the thumbnail */
+body.stash-liquid-glass
+.image-card .thumbnail-section {
+  padding: 0.3rem 0.3rem 0 !important;
+}
+
+/* Reduce spacing above and below the title */
+body.stash-liquid-glass
+.image-card .card-section {
+  padding: 0.38rem 0.6rem 0.25rem !important;
+}
+
+body.stash-liquid-glass
+.image-card .card-section-title {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-size: 1.1rem !important;
+  line-height: 1.15 !important;
+}
+
+/* Remove extra margins around the title link */
+body.stash-liquid-glass
+.image-card .card-section > a {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* More compact icon row */
+body.stash-liquid-glass
+.image-card > .card-popovers {
+  gap: 0.4rem !important;
+
+  margin: 0 !important;
+  padding: 0.1rem 0.55rem 0.1rem !important;
+
+  min-height: 0 !important;
+}
+
+/* No extra margin below the final card section */
+body.stash-liquid-glass
+.image-card > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — GROUP CARDS
+ * Tighter cards, yellow titles and navbar-colored icons
+ * ==================================================
+ */
+
+/* Less spacing in the text section */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section {
+  padding: 0.45rem 0.7rem 0.2rem !important;
+}
+
+/* Yellow title, including on hover */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section-title,
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section-title *,
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section a:hover
+.card-section-title {
+  color: #ffd633 !important;
+}
+
+/* Slightly reduce spacing below the title */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section-title {
+  margin: 0 0 0.1rem !important;
+}
+
+/* Always limit descriptions to two lines */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.group-card__description,
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.movie-card__description {
+  position: relative !important;
+  display: -webkit-box !important;
+
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+
+  max-height: 2.8em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+  white-space: normal !important;
+  text-overflow: ellipsis !important;
+
+  line-height: 1.4 !important;
+  cursor: help !important;
+}
+
+/* Prevent the old :active rule from expanding the card */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__description, .movie-card__description):active,
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__description, .movie-card__description):hover {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+
+  max-height: 2.8em !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Tighter separator above the counter icons */
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > hr {
+  margin: 0 !important;
+}
+
+/* Reduce spacing below the icons to the card edge */
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > .card-popovers {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0.1rem 0.55rem 0.1rem !important;
+
+  align-items: center !important;
+  gap: 0.45rem !important;
+}
+
+/* Remove extra padding from icon-row buttons */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers :is(a, button, .btn) {
+  margin: 0 !important;
+  padding-top: 0.1rem !important;
+  padding-bottom: 0.1rem !important;
+}
+
+/* SCENES: red, matching the Scenes navbar icon */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .scene-count svg {
+  color: #ff4d4d !important;
+}
+
+/* GROUPS: blue, matching the Groups navbar icon */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .group-count svg {
+  color: #0075ff !important;
+}
+
+/* PERFORMERS: light blue */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .performer-count svg {
+  color: #4da6ff !important;
+  fill: currentColor !important;
+}
+
+/* IMAGES: yellow */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .image-count svg {
+  color: #eeff00 !important;
+}
+
+/* GALLERIES: red */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .gallery-count svg {
+  color: #ff0000 !important;
+}rem
+
+/* TAGS: purple */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers .tag-count svg {
+  color: #d580ff !important;
+}
+
+/* Hover popup for the full description */
+.lynx-group-description-tooltip {
+  position: fixed;
+  z-index: 100000;
+
+  display: none;
+  width: min(360px, calc(100vw - 24px));
+  max-height: 220px;
+  overflow-y: auto;
+
+  padding: 0.55rem 0.7rem;
+
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  background: rgba(13, 15, 19, 0.97);
+  border: 1px solid rgba(77, 166, 255, 0.55);
+  border-radius: 8px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.55),
+    0 0 12px rgba(77, 166, 255, 0.18);
+
+  pointer-events: none;
+}
+
+/* Remove space below the icon row on group cards */
+body.stash-liquid-glass .group-card.card,
+body.stash-liquid-glass .movie-card.card {
+  padding-bottom: 0 !important;
+}
+
+/* Keep only a very small gap inside the icon row */
+body.stash-liquid-glass
+:is(.group-card, .movie-card).card > .card-popovers {
+  margin-bottom: 0 !important;
+  padding-bottom: 0.12rem !important;
+}
+
+/* Ensure the final element does not add its own margin */
+body.stash-liquid-glass
+:is(.group-card, .movie-card).card > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — KEEP THE ICON ROW AT THE CARD BOTTOM
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card).card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Keep the image section at its original size */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.thumbnail-section {
+  flex: 0 0 auto !important;
+}
+
+/* Let the text section fill the available space */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section {
+  flex: 1 1 auto !important;
+}
+
+/* Keep the separator and icon row at the bottom */
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > hr {
+  flex: 0 0 auto !important;
+}
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > .card-popovers {
+  flex: 0 0 auto !important;
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.12rem !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — EVEN CARDS WITHOUT ENLARGING THE GRID
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card).card {
+  --lynx-group-info-height: 6rem;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+/* Give the text area the same height on every card */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section {
+  flex: 0 0 var(--lynx-group-info-height) !important;
+
+  height: var(--lynx-group-info-height) !important;
+  min-height: var(--lynx-group-info-height) !important;
+  max-height: var(--lynx-group-info-height) !important;
+
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Limit the title to two lines */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section-title,
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section-title .TruncatedText {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+
+  max-height: 2.3rem !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+}
+
+/* Use a uniform, compact icon-row height */
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > .card-popovers {
+  flex: 0 0 auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.12rem !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — CORRECT READ MORE ON GROUP CARDS
+ * ==================================================
+ */
+
+/* Disable older CSS-generated Read more variants */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__description, .movie-card__description) {
+  padding-bottom: 0 !important;
+}
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__description, .movie-card__description)::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* JavaScript adds this element only when the text is too long */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.lynx-read-more-indicator {
+  display: block !important;
+
+  width: max-content !important;
+  margin: 0.08rem 0 0 !important;
+  padding: 0 !important;
+
+  color: #ffd633 !important;
+  background: transparent !important;
+
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 0.9rem !important;
+
+pointer-events: auto !important;
+cursor: help !important;
+}
+
+/* Fast hover popup triggered only by Read more */
+body.stash-liquid-glass
+.lynx-read-more-indicator {
+  pointer-events: auto !important;
+  cursor: help !important;
+}
+
+.lynx-group-description-tooltip {
+  display: block !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+
+  transform: translateY(3px) !important;
+  transition:
+    opacity 45ms ease,
+    transform 45ms ease,
+    visibility 45ms ease !important;
+
+  pointer-events: none !important;
+}
+
+.lynx-group-description-tooltip.lynx-visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/*
+ * ==================================================
+ * READ MORE — HOVER ONLY ON THE READ MORE TEXT
+ * ==================================================
+ */
+
+/* The description must no longer trigger a hover popup */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__description, .movie-card__description) {
+  pointer-events: none !important;
+}
+
+/* Read more should still respond to the pointer */
+body.stash-liquid-glass
+.lynx-read-more-indicator {
+  pointer-events: auto !important;
+  cursor: help !important;
+}
+
+/* The new popup */
+.lynx-readmore-popup {
+  position: fixed !important;
+  z-index: 100000 !important;
+
+  visibility: hidden;
+  opacity: 0;
+
+  width: min(360px, calc(100vw - 24px));
+  max-height: 220px;
+  overflow-y: auto;
+
+  padding: 0.55rem 0.7rem;
+
+  color: #ffffff;
+  background: rgba(13, 15, 19, 0.98);
+
+  border: 1px solid rgba(77, 166, 255, 0.55);
+  border-radius: 8px;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 12px rgba(77, 166, 255, 0.2);
+
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  transform: translateY(3px);
+  transition:
+    opacity 40ms ease,
+    transform 40ms ease,
+    visibility 40ms ease;
+
+  pointer-events: none !important;
+}
+
+.lynx-readmore-popup.lynx-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*
+ * ==================================================
+ * GROUPS — ALWAYS RESERVE SPACE FOR READ MORE
+ * ==================================================
+ */
+
+/* Cards with Read more reserve space at the bottom */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section:has(.lynx-read-more-indicator) {
+  position: relative !important;
+  padding-bottom: 1.2rem !important;
+}
+
+/* Show one description line on the card when the description is long. The complete text remains available in the hover popup. */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(
+  .group-card__description,
+  .movie-card__description
+).lynx-has-more {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 1 !important;
+
+  max-height: 1.4em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+/* Anchor Read more to the bottom of the text area */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.lynx-read-more-indicator {
+  position: absolute !important;
+  left: 0.7rem !important;
+  bottom: 0.15rem !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  line-height: 0.9rem !important;
+  pointer-events: auto !important;
+  cursor: help !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — MULTIPLE COUNTER ICONS AT THE BOTTOM
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card) > .card-popovers {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  gap: 0.75rem !important;
+  min-height: 28px !important;
+}
+
+/* The new counters */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.lynx-group-stat {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  flex: 0 0 auto !important;
+  gap: 0.25rem !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+/* Use the same size for all icons */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.lynx-group-stat svg {
+  display: block !important;
+  flex: 0 0 18px !important;
+
+  width: 18px !important;
+  height: 18px !important;
+
+  margin: 0 !important;
+}
+
+/* Scenes: red */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.scene-count svg {
+  color: #ff4d4d !important;
+}
+
+/* Performers: light blue */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.performer-count svg {
+  color: #4da6ff !important;
+  fill: currentColor !important;
+}
+
+/* Tags: purple */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.tag-count svg {
+  color: #d580ff !important;
+}
+
+/* Subgroups: blue */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers
+.group-count svg {
+  color: #0075ff !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — HIDE EMPTY COUNTERS
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.lynx-group-stat[hidden] {
+  display: none !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — PERFORMER POPUP MATCHING SCENE CARDS
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.performer-count.lynx-group-stat {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Allow the popup to extend beyond the card's normal boundary */
+body.stash-liquid-glass
+:is(.group-card, .movie-card):has(
+  .performer-count.lynx-group-stat:hover
+) {
+  overflow: visible !important;
+  z-index: 100 !important;
+}
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-popovers {
+  overflow: visible !important;
+}
+
+/* Transparent popup: show only the pills */
+body.stash-liquid-glass
+.lynx-group-performer-popup {
+  position: absolute !important;
+  z-index: 1000 !important;
+
+  left: 50% !important;
+  bottom: 100% !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  max-width: min(360px, calc(100vw - 24px)) !important;
+  max-height: 210px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  gap: 0.3rem !important;
+  padding: 0.25rem 0 0.35rem !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: translate(-50%, 4px) !important;
+  transition:
+    opacity 55ms ease,
+    transform 55ms ease,
+    visibility 55ms ease !important;
+}
+
+/* Show quickly on hover */
+body.stash-liquid-glass
+.performer-count.lynx-group-stat:hover
+.lynx-group-performer-popup,
+body.stash-liquid-glass
+.lynx-group-performer-popup:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translate(-50%, 0) !important;
+}
+
+/* Performer pills */
+body.stash-liquid-glass
+.lynx-group-performer-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  width: max-content !important;
+  max-width: 240px !important;
+
+  margin: 0 !important;
+  padding: 0.28rem 0.55rem !important;
+
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 999px !important;
+
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+
+  white-space: normal !important;
+  text-decoration: none !important;
+
+  transform: none !important;
+}
+
+/* Female and transgender male: pink */
+body.stash-liquid-glass
+.lynx-group-performer-pill:is(
+  .FEMALE,
+  .TRANSGENDER_MALE
+) {
+  background: #e64a8d !important;
+}
+
+/* Male and transgender female: blue */
+body.stash-liquid-glass
+.lynx-group-performer-pill:is(
+  .MALE,
+  .TRANSGENDER_FEMALE
+) {
+  background: #3c91e6 !important;
+}
+
+/* Non-binary and intersex: purple */
+body.stash-liquid-glass
+.lynx-group-performer-pill:is(
+  .NON_BINARY,
+  .NONBINARY,
+  .INTERSEX
+) {
+  background: #9e58d2 !important;
+}
+
+/* Unknown gender: orange */
+body.stash-liquid-glass
+.lynx-group-performer-pill.UNKNOWN {
+  background: #ff8000 !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-pill:hover {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  filter: brightness(1.12) !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — BODY PORTAL FOR THE PERFORMER POPUP
+ * Cannot be clipped by the card or card grid
+ * ==================================================
+ */
+
+/* Hide the old popup inside the card */
+body.stash-liquid-glass
+.performer-count.lynx-group-stat
+> .lynx-group-performer-popup {
+  display: none !important;
+}
+
+/* Standalone popup containing performer pills */
+body.stash-liquid-glass
+.lynx-group-performer-list-portal {
+  position: fixed !important;
+  z-index: 99990 !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  max-width: min(380px, calc(100vw - 20px)) !important;
+  max-height: min(240px, calc(100vh - 20px)) !important;
+
+  gap: 0.3rem !important;
+  padding: 0.3rem !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: translateY(3px) scale(0.98) !important;
+  transition:
+    opacity 45ms ease,
+    transform 45ms ease,
+    visibility 45ms ease !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-list-portal.lynx-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Ensure pills are styled correctly outside the card as well */
+body.stash-liquid-glass
+.lynx-group-performer-list-portal
+.lynx-group-performer-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+
+  width: max-content !important;
+  max-width: 240px !important;
+
+  margin: 0 !important;
+  padding: 0.28rem 0.55rem !important;
+
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 999px !important;
+
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+
+  white-space: normal !important;
+  text-decoration: none !important;
+  transform: none !important;
+}
+
+/* Performer image and name: match the Scene popup size */
+body.stash-liquid-glass
+.lynx-group-performer-preview {
+  position: fixed !important;
+  z-index: 100000 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  width: 140px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+
+  color: #ffffff !important;
+  background: rgba(12, 12, 14, 0.97) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
+
+  box-shadow:
+    0 8px 26px rgba(0, 0, 0, 0.65),
+    0 0 12px rgba(77, 166, 255, 0.16) !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: scale(0.96) !important;
+  transition:
+    opacity 40ms ease,
+    transform 40ms ease,
+    visibility 40ms ease !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-preview.lynx-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-preview img {
+  display: block !important;
+
+  width: 140px !important;
+  height: 184px !important;
+
+  object-fit: cover !important;
+  object-position: center 18% !important;
+
+  background: #101014 !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-preview span {
+  display: block !important;
+
+  padding: 0.4rem 0.55rem !important;
+
+  color: #ffffff !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+/*
+ * ==================================================
+ * GROUPS — STABLE PERFORMER POPUP MATCHING SCENES
+ * ==================================================
+ */
+
+/* Disable the two previous popup variants */
+body.stash-liquid-glass
+.lynx-group-performer-list-portal,
+body.stash-liquid-glass
+.lynx-group-performer-preview {
+  display: none !important;
+}
+
+/* New standalone popup that cannot be clipped */
+body.stash-liquid-glass
+.lynx-group-performer-card-portal {
+  position: fixed !important;
+  z-index: 100000 !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+
+  width: max-content !important;
+  max-width: min(460px, calc(100vw - 16px)) !important;
+  max-height: min(440px, calc(100vh - 16px)) !important;
+
+  gap: 0.5rem !important;
+  padding: 0.5rem !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  background: rgba(12, 12, 14, 0.96) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.65),
+    0 0 14px rgba(77, 166, 255, 0.16) !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: translateY(3px) scale(0.98) !important;
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease,
+    visibility 100ms ease !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-card-portal.lynx-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* One performer card */
+body.stash-liquid-glass
+.lynx-group-performer-hover-card {
+  display: flex !important;
+  flex-direction: column !important;
+
+  flex: 0 0 140px !important;
+  width: 140px !important;
+  overflow: hidden !important;
+
+  color: #ffffff !important;
+  background: rgba(20, 20, 24, 0.98) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 9px !important;
+
+  text-decoration: none !important;
+
+  transition:
+    border-color 90ms ease,
+    transform 90ms ease,
+    filter 90ms ease !important;
+}
+
+body.stash-liquid-glass
+.lynx-group-performer-hover-card:hover {
+  color: #ffffff !important;
+  border-color: rgba(77, 166, 255, 0.8) !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.08) !important;
+}
+
+/* Match the Scene performer popup image size */
+body.stash-liquid-glass
+.lynx-group-performer-hover-card img {
+  display: block !important;
+
+  width: 140px !important;
+  height: 184px !important;
+
+  object-fit: cover !important;
+  object-position: center 18% !important;
+
+  background: #101014 !important;
+}
+
+/* Name below the image */
+body.stash-liquid-glass
+.lynx-group-performer-hover-card span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 2.3rem !important;
+  padding: 0.4rem 0.5rem !important;
+
+  color: #ffffff !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+/* Groups: place Read more directly below the description */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.card-section:has(.lynx-read-more-indicator) {
+  padding-bottom: 0.2rem !important;
+}
+
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+.lynx-read-more-indicator {
+  position: static !important;
+
+  display: block !important;
+  width: max-content !important;
+
+  left: auto !important;
+  bottom: auto !important;
+
+  margin: 0.08rem 0 0 !important;
+  padding: 0 !important;
+}
+
+/* Groups: white date text */
+body.stash-liquid-glass
+:is(.group-card, .movie-card)
+:is(.group-card__date, .movie-card__date) {
+  color: #ffffff !important;
+}
+
+/* Performer cards — Female: pink */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="FEMALE"],
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="FEMALE"] svg {
+  color: #e64a8d !important;
+  fill: currentColor !important;
+}
+
+/* Performer cards — Transgender female: blue */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="TRANSGENDER_FEMALE"],
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender="TRANSGENDER_FEMALE"] svg {
+  color: #3c91e6 !important;
+  fill: currentColor !important;
+}
+
+/* Performer cards: remove the box, background and glow around gender symbols */
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender] svg,
+body.stash-liquid-glass
+.performer-card
+.gender-icon[data-gender] svg * {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Performer editor: dark gender dropdown with light text */
+body.stash-liquid-glass
+select:is(
+  [name="gender"],
+  #gender,
+  [id*="gender" i]
+) {
+  color: #ffffff !important;
+  background-color: #17191e !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+
+  color-scheme: dark !important;
+}
+
+/* Options in the open dropdown */
+body.stash-liquid-glass
+select:is(
+  [name="gender"],
+  #gender,
+  [id*="gender" i]
+) option {
+  color: #ffffff !important;
+  background-color: #17191e !important;
+}
+
+/* Selected and focused field */
+body.stash-liquid-glass
+select:is(
+  [name="gender"],
+  #gender,
+  [id*="gender" i]
+):focus {
+  color: #ffffff !important;
+  background-color: #17191e !important;
+  border-color: #4da6ff !important;
+  box-shadow: 0 0 0 2px rgba(77, 166, 255, 0.2) !important;
+}
+
+/*
+ * ==================================================
+ * PERFORMER DETAILS — STASH IDS AND A MORE COMPACT LAYOUT
+ * ==================================================
+ */
+
+/* Make the performer image slightly larger */
+body.stash-liquid-glass
+#performer-page
+.detail-header
+.detail-header-image {
+  flex: 0 0 22rem !important;
+
+  width: 22rem !important;
+  min-width: 22rem !important;
+  max-width: 22rem !important;
+}
+
+body.stash-liquid-glass
+#performer-page
+.detail-header
+.detail-header-image img {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+
+  object-fit: cover !important;
+}
+
+/* More compact information panel on the right */
+body.stash-liquid-glass
+#performer-page
+.detail-header
+.detail-group {
+  margin-top: 0.3rem !important;
+  padding: 0.4rem 0.65rem !important;
+}
+
+/* Reduce spacing between information rows */
+body.stash-liquid-glass
+#performer-page
+.detail-header
+.detail-item {
+  line-height: 1.25 !important;
+}
+
+body.stash-liquid-glass
+#performer-page
+.detail-header
+.detail-item:not(:first-child) {
+  margin-top: 0.18rem !important;
+  padding-top: 0.18rem !important;
+}
+
+/* Slightly reduce spacing inside title and value fields */
+body.stash-liquid-glass
+#performer-page
+.detail-header
+:is(.detail-item-title, .detail-item-value) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Keep a reasonable size on smaller screens */
+@media (max-width: 900px) {
+  body.stash-liquid-glass
+  #performer-page
+  .detail-header
+  .detail-header-image {
+    flex-basis: 18rem !important;
+
+    width: 18rem !important;
+    min-width: 18rem !important;
+    max-width: 18rem !important;
+  }
+}
+
+/*
+ * ==================================================
+ * LYNXTHEME — STUDIO CARDS
+ * ==================================================
+ */
+
+/* Use a column layout so the icon row can sit at the bottom */
+body.stash-liquid-glass .studio-card.card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  padding-bottom: 0 !important;
+}
+
+/* Let the content fill the space above the icon row */
+body.stash-liquid-glass .studio-card > .card-section {
+  flex: 1 1 auto !important;
+  padding-bottom: 0.25rem !important;
+}
+
+/* Remove unnecessary spacing above the icon row */
+body.stash-liquid-glass .studio-card > hr {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Place icons at the bottom with less spacing below */
+body.stash-liquid-glass .studio-card > .card-popovers {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  gap: 0.65rem !important;
+  width: 100% !important;
+  min-height: 0 !important;
+
+  margin: auto 0 0 !important;
+  padding: 0.18rem 0.55rem 0.2rem !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+body.stash-liquid-glass
+.studio-card
+.card-popovers > * {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+/* Scenes: match the red navbar icon */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.scene-count svg {
+  color: #ff4d4d !important;
+}
+
+/* Performers: match the blue navbar icon */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.performer-count svg {
+  color: #4da6ff !important;
+  fill: currentColor !important;
+}
+
+/* Images */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.image-count svg {
+  color: #eeff00 !important;
+}
+
+/* Galleries */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.gallery-count svg {
+  color: #ff4d4d !important;
+}
+
+/* Tags */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.tag-count svg {
+  color: #d580ff !important;
+}
+
+/* Groups */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+.group-count svg {
+  color: #0075ff !important;
+}
+
+/* Ensure Stash's standard hover popups remain usable */
+body.stash-liquid-glass
+.studio-card
+.card-popovers
+:is(.scene-count, .performer-count) {
+  position: relative !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Allow the popup to extend beyond the studio card */
+body.stash-liquid-glass
+.studio-card:has(.scene-count:hover),
+body.stash-liquid-glass
+.studio-card:has(.performer-count:hover) {
+  overflow: visible !important;
+  z-index: 50 !important;
+}
+
+/* Remove the gray rounded surface behind the studio logo */
+body.stash-liquid-glass
+.studio-card
+:is(
+  .studio-card-header,
+  .studio-card-image-container,
+  .studio-card-image,
+  .image-thumbnail
+) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/*
+ * ================================================================
+ * LYNXTHEME — STYLING FOR STUDIO CARDS' NATIVE HOVER POPUPS
+ * ================================================================
+ */
+
+body.stash-liquid-glass .lynx-studio-media-popup {
+  --lynx-studio-popup-accent: #4da6ff;
+
+  position: fixed !important;
+  z-index: 100000 !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  max-width: min(590px, calc(100vw - 16px)) !important;
+  max-height: min(440px, calc(100vh - 16px)) !important;
+
+  gap: 0.5rem !important;
+  padding: 0.5rem !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  color: #fff !important;
+  background: rgba(9, 11, 15, 0.97) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 11px !important;
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.68),
+    0 0 15px rgba(77, 166, 255, 0.15) !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transform: none !important;
+  transition:
+    opacity 35ms ease,
+    visibility 35ms ease !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup.lynx-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup--scene {
+  --lynx-studio-popup-accent: #ff4d4d;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup--performer {
+  --lynx-studio-popup-accent: #4da6ff;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup--image {
+  --lynx-studio-popup-accent: #eeff00;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup--gallery {
+  --lynx-studio-popup-accent: #ff4d4d;
+}
+
+body.stash-liquid-glass
+.lynx-studio-media-popup--group {
+  --lynx-studio-popup-accent: #0075ff;
+}
+
+/* One item in the popup */
+body.stash-liquid-glass .lynx-studio-popup-card {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 0 0 178px !important;
+
+  width: 178px !important;
+  overflow: hidden !important;
+
+  color: #fff !important;
+  background: rgba(20, 20, 24, 0.98) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 9px !important;
+
+  text-decoration: none !important;
+
+  transition:
+    border-color 80ms ease,
+    transform 80ms ease,
+    filter 80ms ease !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-card:hover {
+  color: #fff !important;
+  border-color: var(--lynx-studio-popup-accent) !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.08) !important;
+}
+
+/* Performer cards use the same portrait aspect ratio as earlier popups */
+body.stash-liquid-glass
+.lynx-studio-popup-card--performer {
+  flex-basis: 140px !important;
+  width: 140px !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-media {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: 100px !important;
+  overflow: hidden !important;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(77, 166, 255, 0.16),
+      rgba(12, 12, 15, 0.98) 70%
+    ) !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-popup-card--performer
+.lynx-studio-popup-media {
+  height: 184px !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-media img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-popup-card--performer
+.lynx-studio-popup-media img {
+  object-position: center 18% !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-popup-media.lynx-image-missing::before {
+  content: "LYNX" !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-name {
+  display: -webkit-box !important;
+  min-height: 2.5rem !important;
+  padding: 0.42rem 0.52rem !important;
+
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+
+  color: #fff !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-message {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 210px !important;
+  min-height: 64px !important;
+  padding: 0.75rem 1rem !important;
+
+  color: #fff !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+}
+
+body.stash-liquid-glass .lynx-studio-popup-show-all {
+  display: flex !important;
+  flex: 1 0 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  padding: 0.35rem 0.55rem 0.1rem !important;
+
+  color: var(--lynx-studio-popup-accent) !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+}
+
+body.stash-liquid-glass
+.lynx-studio-popup-show-all:hover {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* Hide Stash's small text tooltip while the Lynx popup is open */
+body.lynx-studio-popup-open .tooltip,
+body.lynx-studio-popup-open .popover,
+body.lynx-studio-popup-open .hover-popover {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.stash-liquid-glass .lynx-studio-media-popup,
+  body.stash-liquid-glass .lynx-studio-popup-card {
+    transition: none !important;
+  }
+}
+
+/*
+ * ==================================================
+ * STUDIOS — MORE CARDS PER ROW
+ * Keep the same room for text and icons
+ * ==================================================
+ */
+
+@media (min-width: 700px) {
+  body.stash-liquid-glass .studio-card.card {
+    width: 206px !important;
+    min-width: 206px !important;
+    max-width: 206px !important;
+
+    box-sizing: border-box !important;
+
+    /* Reduce empty space at the sides */
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+
+    /* Keep the existing compact bottom spacing */
+    padding-bottom: 0 !important;
+
+    margin: 2px !important;
+  }
+}
+
+/*
+ * ==================================================
+ * TAGS — COMPACT CARDS, COLORED ICONS AND YELLOW TITLES
+ * ==================================================
+ */
+
+/* More cards per row on larger screens */
+@media (min-width: 700px) {
+  body.stash-liquid-glass .tag-card.card {
+    width: 209px !important;
+    min-width: 209px !important;
+    max-width: 209px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    box-sizing: border-box !important;
+    margin: 1px !important;
+    padding: 3px 3px 0 !important;
+  }
+}
+
+/* Let the content fill the card so the icon row sits at the bottom */
+body.stash-liquid-glass
+.tag-card > .card-section {
+  flex: 1 1 auto !important;
+  padding: 0.3rem 0.35rem 0.12rem !important;
+}
+
+/* Tag name: match the Scene title style */
+body.stash-liquid-glass
+.tag-card
+.card-section-title,
+body.stash-liquid-glass
+.tag-card
+.card-section-title
+.TruncatedText {
+  color: gold !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+}
+
+body.stash-liquid-glass
+.tag-card
+.card-section-title {
+  margin: 0 0 0.15rem !important;
+}
+
+/* Yellow hover color */
+body.stash-liquid-glass
+.tag-card
+.card-section a:hover
+.card-section-title,
+body.stash-liquid-glass
+.tag-card
+.card-section a:hover
+.card-section-title
+.TruncatedText {
+  color: #ffd633 !important;
+}
+
+/* Slightly more compact description and relationship rows */
+body.stash-liquid-glass
+.tag-card
+:is(
+  .tag-description,
+  .tag-parent-tags,
+  .tag-sub-tags
+) {
+  margin-top: 0.08rem !important;
+  margin-bottom: 0.08rem !important;
+  line-height: 1.2 !important;
+}
+
+/* Separator directly above the icons */
+body.stash-liquid-glass
+.tag-card > hr {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Icon row at the bottom */
+body.stash-liquid-glass
+.tag-card > .card-popovers {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+
+  gap: 0.5rem !important;
+  width: 100% !important;
+
+  margin: auto 0 0 !important;
+  padding: 0.12rem 0.35rem 0.18rem !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Remove empty icon rows and their separators */
+body.stash-liquid-glass
+.tag-card > .card-popovers:empty {
+  display: none !important;
+}
+
+body.stash-liquid-glass
+.tag-card > hr:has(+ .card-popovers:empty) {
+  display: none !important;
+}
+
+/*
+ * --------------------------------------------------
+ * ICON COLORS MATCHING THE NAVBAR
+ * --------------------------------------------------
+ */
+
+/* Scenes */
+body.stash-liquid-glass
+.tag-card
+.scene-count svg {
+  color: #ff4d4d !important;
+}
+
+/* Images */
+body.stash-liquid-glass
+.tag-card
+.image-count svg {
+  color: #eeff00 !important;
+}
+
+/* Groups */
+body.stash-liquid-glass
+.tag-card
+.group-count svg {
+  color: #0075ff !important;
+}
+
+/* Markers */
+body.stash-liquid-glass
+.tag-card
+.marker-count svg {
+  color: #ffa31a !important;
+}
+
+/* Galleries */
+body.stash-liquid-glass
+.tag-card
+.gallery-count svg {
+  color: #ff0000 !important;
+}
+
+/* Performers */
+body.stash-liquid-glass
+.tag-card
+.performer-count svg {
+  color: #4da6ff !important;
+}
+
+/* Studios */
+body.stash-liquid-glass
+.tag-card
+.studio-count svg {
+  color: #8aff80 !important;
+}
+
+/* Tags */
+body.stash-liquid-glass
+.tag-card
+.tag-count svg {
+  color: #d580ff !important;
+}
+
+/* Tags: hide the description completely */
+body.stash-liquid-glass
+.tag-card
+.tag-description {
+  display: none !important;
+}
+
+/*
+ * ==================================================
+ * ORGANIZED — DARK GREEN EVERYWHERE
+ * ==================================================
+ */
+
+:root {
+  --lynx-organized-green: #2f6b3f;
+  --lynx-organized-green-hover: #3f8050;
+}
+
+/* Organized icon on all card types */
+body.stash-liquid-glass
+:is(
+  .scene-card,
+  .image-card,
+  .gallery-card,
+  .performer-card,
+  .studio-card,
+  .tag-card,
+  .group-card,
+  .movie-card
+)
+.card-popovers
+.organized
+svg {
+  color: var(--lynx-organized-green) !important;
+  fill: currentColor !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Also override the color directly on the Font Awesome shape */
+body.stash-liquid-glass
+:is(
+  .scene-card,
+  .image-card,
+  .gallery-card,
+  .performer-card,
+  .studio-card,
+  .tag-card,
+  .group-card,
+  .movie-card
+)
+.card-popovers
+.organized
+svg path {
+  fill: var(--lynx-organized-green) !important;
+}
+
+/* Keep the dark green color on hover */
+body.stash-liquid-glass
+:is(
+  .scene-card,
+  .image-card,
+  .gallery-card,
+  .performer-card,
+  .studio-card,
+  .tag-card,
+  .group-card,
+  .movie-card
+)
+.card-popovers
+.organized:hover
+svg {
+  color: var(--lynx-organized-green-hover) !important;
+  fill: currentColor !important;
+  filter: none !important;
+}
+
+body.stash-liquid-glass
+:is(
+  .scene-card,
+  .image-card,
+  .gallery-card,
+  .performer-card,
+  .studio-card,
+  .tag-card,
+  .group-card,
+  .movie-card
+)
+.card-popovers
+.organized:hover
+svg path {
+  fill: var(--lynx-organized-green-hover) !important;
+}
+
+/* Organized button on Scene and Image detail pages */
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized {
+  color: var(--lynx-organized-green) !important;
+  background: rgba(47, 107, 63, 0.16) !important;
+  border-color: rgba(47, 107, 63, 0.75) !important;
+  box-shadow: none !important;
+}
+
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized
+svg {
+  color: var(--lynx-organized-green) !important;
+  fill: currentColor !important;
+  filter: none !important;
+}
+
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized
+svg path {
+  fill: var(--lynx-organized-green) !important;
+}
+
+/* Organized button hover state */
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized:hover {
+  color: var(--lynx-organized-green-hover) !important;
+  background: rgba(47, 107, 63, 0.24) !important;
+  border-color: var(--lynx-organized-green-hover) !important;
+  box-shadow: none !important;
+}
+
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized:hover
+svg,
+body.stash-liquid-glass
+:is(.scene-tabs, .image-tabs)
+:is(.scene-toolbar, .image-toolbar)
+.organized-button.organized:hover
+svg path {
+  color: var(--lynx-organized-green-hover) !important;
+  fill: var(--lynx-organized-green-hover) !important;
+  filter: none !important;
+}
+
+/* Tags: horizontally center the tag name */
+body.stash-liquid-glass
+.tag-card
+.card-section-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  text-align: center !important;
+}
+
+body.stash-liquid-glass
+.tag-card
+.card-section-title
+.TruncatedText {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/*
+ * =========================================================
+ * LYNX — SUBTAGS ON TAG DETAILS
+ * Show at most three rows and a yellow Expand link when needed.
+ * Requires the Lynx-Tag-Subtags-Expand.js block.
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+#tag-page
+.detail-item-value.sub-tags {
+  flex-wrap: wrap !important;
+}
+
+body.stash-liquid-glass
+#tag-page
+.detail-item-value.sub-tags
+> .lynx-subtag-hidden {
+  display: none !important;
+}
+
+body.stash-liquid-glass
+#tag-page
+.detail-item-value.sub-tags
+> .lynx-subtags-expand {
+  appearance: none !important;
+  display: block !important;
+  flex: 0 0 100% !important;
+  width: max-content !important;
+  max-width: max-content !important;
+
+  margin: 0.18rem 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  color: #ffd633 !important;
+  font: inherit !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+body.stash-liquid-glass
+#tag-page
+.detail-item-value.sub-tags
+> .lynx-subtags-expand:hover,
+body.stash-liquid-glass
+#tag-page
+.detail-item-value.sub-tags
+> .lynx-subtags-expand:focus-visible {
+  color: #ffe875 !important;
+  text-decoration: underline !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — MORE COMPACT GALLERY CARDS
+ * Match the tight spacing on the Images page
+ * ==================================================
+ */
+
+/* Remove extra space at the bottom of the card */
+body.stash-liquid-glass .gallery-card,
+body.stash-liquid-glass .grid-card.gallery-card {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* More compact text section */
+body.stash-liquid-glass
+.gallery-card .card-section {
+  padding: 0.38rem 0.6rem 0.25rem !important;
+}
+
+/* Reduce spacing around the title */
+body.stash-liquid-glass
+.gallery-card .card-section-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.15 !important;
+}
+
+/* Tighter separator above the icons */
+body.stash-liquid-glass
+.gallery-card > hr {
+  margin: 0.1rem 0.55rem 0 !important;
+}
+
+/* Tighter icon row with less space below */
+body.stash-liquid-glass
+.gallery-card > .card-popovers {
+  gap: 0.4rem !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0.1rem 0.55rem 0.1rem !important;
+}
+
+/* Ensure the final section does not create extra spacing */
+body.stash-liquid-glass
+.gallery-card > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ==================================================
+   LYNX SCENE PILLS – DESIGN A: SOFT GLASS
+   ================================================== */
+
+/* Shared glass base */
+body.stash-liquid-glass
+.scene-card :is(.performer-tag, .tag-chip),
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+:is(.performer-tag, .tag-chip) {
+  color: #f5f7fb !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 2px 7px rgba(0, 0, 0, 0.24) !important;
+
+  backdrop-filter:
+    blur(7px)
+    saturate(115%) !important;
+
+  -webkit-backdrop-filter:
+    blur(7px)
+    saturate(115%) !important;
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.48) !important;
+
+  transition:
+    filter 80ms ease,
+    border-color 80ms ease,
+    box-shadow 80ms ease,
+    transform 80ms ease !important;
+}
+
+
+/*
+ * ==================================================
+ * FEMALE + TRANSGENDER MALE — SOFT PINK
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card
+.performer-tag:is(.FEMALE, .TRANSGENDER_MALE),
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+.performer-tag:is(.FEMALE, .TRANSGENDER_MALE) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(226, 82, 142, 0.76),
+      rgba(105, 34, 67, 0.3)
+    ) !important;
+
+  border-color:
+    rgba(245, 135, 181, 0.58) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 235, 0.2),
+    inset 0 -1px 0 rgba(64, 8, 34, 0.22),
+    0 0 8px rgba(226, 82, 142, 0.17),
+    0 2px 7px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/*
+ * ==================================================
+ * MALE + TRANSGENDER FEMALE — SOFT BLUE
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card
+.performer-tag:is(.MALE, .TRANSGENDER_FEMALE),
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+.performer-tag:is(.MALE, .TRANSGENDER_FEMALE) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(62, 139, 224, 0.46),
+      rgba(27, 62, 116, 0.3)
+    ) !important;
+
+  border-color:
+    rgba(123, 181, 247, 0.6) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(218, 236, 255, 0.2),
+    inset 0 -1px 0 rgba(5, 31, 72, 0.24),
+    0 0 8px rgba(62, 139, 224, 0.18),
+    0 2px 7px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/*
+ * ==================================================
+ * NON-BINARY + INTERSEX — SOFT PURPLE
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card
+.performer-tag:is(
+  .NONBINARY,
+  .NON_BINARY,
+  .INTERSEX
+),
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+.performer-tag:is(
+  .NONBINARY,
+  .NON_BINARY,
+  .INTERSEX
+) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(149, 88, 205, 0.45),
+      rgba(69, 37, 105, 0.3)
+    ) !important;
+
+  border-color:
+    rgba(189, 139, 235, 0.58) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(239, 220, 255, 0.18),
+    inset 0 -1px 0 rgba(37, 13, 66, 0.24),
+    0 0 8px rgba(149, 88, 205, 0.17),
+    0 2px 7px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/*
+ * ==================================================
+ * UNKNOWN GENDER — SUBTLE NEUTRAL
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card
+.performer-tag.UNKNOWN,
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+.performer-tag.UNKNOWN {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(110, 116, 128, 0.45),
+      rgba(48, 52, 61, 0.32)
+    ) !important;
+
+  border-color:
+    rgba(174, 181, 194, 0.42) !important;
+}
+
+
+/*
+ * ==================================================
+ * TAG PILLS — DARK PURPLE / GRAPHITE GLASS
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card .tag-chip,
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+.tag-chip {
+  color: #e9e6f1 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(83, 82, 96, 0.58),
+      rgba(42, 41, 51, 0.48)
+    ) !important;
+
+  border-color:
+    rgba(174, 148, 222, 0.32) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 0 7px rgba(154, 105, 220, 0.1),
+    0 2px 7px rgba(0, 0, 0, 0.24) !important;
+}
+
+
+/*
+ * ==================================================
+ * HOVER — SLIGHTLY BRIGHTER, NOT LARGER
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.scene-card :is(.performer-tag, .tag-chip):hover,
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+:is(.performer-tag, .tag-chip):hover {
+  border-color:
+    rgba(255, 255, 255, 0.58) !important;
+
+  filter:
+    brightness(1.13)
+    saturate(1.08) !important;
+
+  transform:
+    translateY(-1px) !important;
+
+  text-decoration: none !important;
+}
+
+/* Brighten pills on hover without moving them */
+body.stash-liquid-glass
+.scene-card
+:is(.performer-tag, .tag-chip):hover,
+
+body.stash-liquid-glass
+:is(.more-list-popover, .lynx-more-list-popover)
+:is(.performer-tag, .tag-chip):hover {
+  transform: none !important;
+}
+
+/*
+ * ==================================================
+ * TAG DETAILS — LARGER NAVIGATION TABS
+ * Match the size on Performer Details
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+#tag-page
+.nav-tabs
+.nav-link {
+  padding: 0.55rem 1rem !important;
+  font-size: 0.86rem !important;
+  border-radius: var(--radius) !important;
+  letter-spacing: 0.015em !important;
+}
+
+/* Count beside Scenes, Images, etc. */
+body.stash-liquid-glass
+#tag-page
+.nav-tabs
+.nav-link
+.badge {
+  padding: 0.18em 0.5em !important;
+  font-size: 0.72rem !important;
+}
+
+/*
+ * ==================================================
+ * PERFORMER FLAG — CIRCULAR, LOWER-RIGHT CORNER
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.performer-card
+.thumbnail-section
+.performer-card__country-flag {
+  position: absolute !important;
+
+  /* Lower-right corner */
+  top: auto !important;
+  left: auto !important;
+  right: 9px !important;
+  bottom: 9px !important;
+
+  /* Slightly larger than before */
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 !important;
+
+  border: 0px solid rgba(10, 12, 16, 0.9) !important;
+  border-radius: 50% !important;
+
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+box-shadow:
+  0 0 0 1px rgba(0, 0, 0, 0.85),
+  0 0 5px rgba(0, 0, 0, 0.95),
+  0 0 10px rgba(0, 0, 0, 0.75) !important;
+
+  filter: none !important;
+  z-index: 40 !important;
+  pointer-events: none !important;
+}
+
+/* Dark glow around social icons on performer cards */
+body.stash-liquid-glass
+.performer-card
+.performer-card__links
+.performer-card__link
+svg {
+  filter:
+    drop-shadow(0 0 1px #000000)
+    drop-shadow(0 0 3px rgba(0, 0, 0, 1))
+    drop-shadow(0 0 6px rgba(0, 0, 0, 0.9)) !important;
+}
+
+/* Slightly stronger glow when hovering an icon */
+body.stash-liquid-glass
+.performer-card
+.performer-card__links
+.performer-card__link:hover
+svg {
+  filter:
+    drop-shadow(0 0 2px #000000)
+    drop-shadow(0 0 5px rgba(0, 0, 0, 1))
+    drop-shadow(0 0 9px rgba(0, 0, 0, 0.9)) !important;
+} 
+/*
+ * ==================================================
+ * CLICKABLE COUNTRY FLAG ON PERFORMER CARDS
+ * ==================================================
+ */
+
+body.stash-liquid-glass
+.performer-card
+.thumbnail-section
+.lynx-country-link {
+  position: absolute !important;
+  right: 9px !important;
+  bottom: 9px !important;
+
+  display: block !important;
+  width: 30px !important;
+  height: 30px !important;
+
+  border-radius: 50% !important;
+  z-index: 50 !important;
+  cursor: pointer !important;
+}
+
+/* Let the flag fill its clickable link */
+body.stash-liquid-glass
+.performer-card
+.lynx-country-link
+.performer-card__country-flag {
+  position: static !important;
+  inset: auto !important;
+
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  border: 2px solid rgba(10, 12, 16, 0.95) !important;
+  border-radius: 50% !important;
+
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.9),
+    0 0 5px rgba(0, 0, 0, 1),
+    0 0 10px rgba(0, 0, 0, 0.8) !important;
+
+  pointer-events: none !important;
+}
+
+/* Hide Stash's country text code, such as US or RU */
+body.stash-liquid-glass
+.performer-card
+.lynx-country-link
+.performer-card__country-string {
+  display: none !important;
+}
+
+/* Custom fast tooltip */
+body.stash-liquid-glass
+.performer-card
+.lynx-country-link::after {
+  content: attr(data-country-name);
+
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 7px);
+
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(76, 139, 245, 0.65);
+  border-radius: 7px;
+
+  background: rgba(10, 13, 18, 0.96);
+  color: #ffffff;
+
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.75),
+    0 0 8px rgba(76, 139, 245, 0.25);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3px);
+
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease,
+    visibility 0.1s ease;
+
+  pointer-events: none;
+  z-index: 100;
+}
+
+body.stash-liquid-glass
+.performer-card
+.lynx-country-link:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Subtle response on flag hover */
+body.stash-liquid-glass
+.performer-card
+.lynx-country-link:hover
+.performer-card__country-flag {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 1),
+    0 0 7px rgba(0, 0, 0, 1),
+    0 0 13px rgba(0, 0, 0, 0.9) !important;
+}
+
+/*
+ * ==================================================
+ * SCENE DETAILS — TITLE AND STUDIO LOGO
+ * ==================================================
+ */
+
+/* Yellow scene title */
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container > h3.scene-header,
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container > h3.scene-header
+.TruncatedText {
+  color: gold !important;
+font-size: 1.5rem !important;
+    font-weight: 700 !important;
+}
+
+/* Let the studio heading use the full width */
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container > h1.text-center.studio-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  align-self: stretch !important;
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 0 0.3rem !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+/* Center the link containing the logo */
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container > h1.text-center.studio-logo > a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  text-align: center !important;
+}
+
+
+
+/*
+ * ==================================================
+ * SCENE PLAYER — VOLUME AND PLAYBACK SPEED
+ * ==================================================
+ */
+
+/* The volume panel is 56px wide although its button is only 36px. Limit the panel to the button's actual width. */
+body.stash-liquid-glass
+.video-js
+.vjs-control-bar > .vjs-volume-panel {
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure the volume button does not create extra space */
+body.stash-liquid-glass
+.video-js
+.vjs-volume-panel
+.vjs-mute-control {
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide the entire playback-speed button and control */
+body.stash-liquid-glass
+.video-js
+.vjs-control-bar > .vjs-playback-rate {
+  display: none !important;
+}
+
+/* Remove the extra blue volume-slider marker */
+body.stash-liquid-glass
+.video-js
+.vjs-volume-level::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Also remove any blue focus rectangle */
+body.stash-liquid-glass
+.video-js
+.vjs-volume-bar:focus,
+
+body.stash-liquid-glass
+.video-js
+.vjs-volume-bar:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/*
+ * ==================================================
+ * STUDIO DETAILS — LARGER TABS
+ * ==================================================
+ */
+
+/* Scenes, Galleries, Images, Groups and Appears With */
+body.stash-liquid-glass
+.studio-tabs
+.nav-tabs
+.nav-link {
+  font-size: 0.86rem !important;
+  line-height: 1.5 !important;
+  padding: 0.55rem 1rem !important;
+}
+
+/* Count badges beside tab names */
+body.stash-liquid-glass
+.studio-tabs
+.nav-tabs
+.nav-link
+.badge {
+  font-size: 0.72rem !important;
+  line-height: 1 !important;
+
+  margin-left: 0.36rem !important;
+  padding: 0.13rem 0.36rem !important;
+}
+
+/* The card itself */
+.scene-card,
+.card {
+  padding-bottom: 0.5rem;      /* Add a little extra space at the bottom */
+  overflow: visible;           /* Allow content to extend beyond the card */
+}
+
+/* Tag row at the bottom of the card */
+.scene-card .tags,
+.card-footer .tags {
+  margin-bottom: 0;            /* Remove negative or extra bottom margin */
+  padding-bottom: 0.25rem;     /* Fine-tune spacing so the pill remains fully visible */
+}
+
+/* LynxTheme - fix tri-state / indeterminate checkboxes */
+input[type="checkbox"]:indeterminate {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 1rem;
+    height: 1rem;
+
+    border: 1px solid var(--bs-primary, #6ea8fe);
+    border-radius: 0.2rem;
+
+    background-color: var(--bs-primary, #6ea8fe);
+    position: relative;
+}
+
+/* Horizontal bar: the third state */
+input[type="checkbox"]:indeterminate::after {
+    content: "";
+    position: absolute;
+
+    left: 20%;
+    right: 20%;
+    top: 50%;
+
+    height: 2px;
+    background: #fff;
+
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+/* =========================================================
+   LynxTheme - Active Filters Bar
+   ========================================================= */
+
+#lynx-active-filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    width: 100%;
+
+    margin: 6px 0 12px;
+    padding: 7px 9px;
+
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.lynx-active-filter-label {
+    margin-right: 3px;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.lynx-active-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+
+    max-width: 320px;
+
+    padding: 4px 4px 4px 9px;
+
+    border: 1px solid rgba(110, 160, 235, 0.3);
+    border-radius: 999px;
+
+    background: rgba(65, 110, 185, 0.18);
+
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.lynx-active-filter-chip:hover {
+    background: rgba(65, 110, 185, 0.30);
+    border-color: rgba(110, 165, 245, 0.55);
+}
+
+.lynx-active-filter-chip:focus-visible {
+    outline: 2px solid rgba(110, 165, 245, 0.8);
+    outline-offset: 2px;
+}
+
+.lynx-active-filter-chip.is-removing {
+    opacity: 0.48;
+    pointer-events: none;
+    transition: opacity 100ms ease;
+}
+
+.lynx-active-filter-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lynx-active-filter-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 15px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.lynx-active-filter-remove:hover {
+    background: rgba(220, 70, 70, 0.55);
+    color: #fff;
+}
+
+.lynx-active-filter-remove:disabled {
+    cursor: wait;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — CINEMA MODE
+ * ---------------------------------------------------------
+ * STARTED:
+ * - Hide scene information
+ * - Hide the thumbnail scrubber
+ * - Use the full player width
+ * LEFT EDGE:
+ * - Slide scene information over the video
+ * The selectors below also keep the started layout while paused.
+ * =========================================================
+ */
+
+
+/*
+ * =========================================================
+ * 1. FULL-WIDTH LAYOUT AFTER PLAYBACK HAS STARTED
+ * =========================================================
+ */
+
+@media (min-width: 1200px) {
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started) {
+
+        grid-template-columns: minmax(0, 1fr) !important;
+        column-gap: 0 !important;
+
+        position: relative !important;
+    }
+
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started)
+    > .scene-player-container {
+
+        grid-column: 1 !important;
+
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+
+
+    /*
+ * =====================================================
+ * 2. TURN THE INFORMATION PANEL INTO A HIDDEN DRAWER
+ * =====================================================
+ */
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started)
+    > .scene-tabs {
+
+        /* Keep the panel in the DOM/layout so it can slide into view even when Stash applies .collapsed. */
+        display: block !important;
+
+        position: absolute !important;
+
+        top: 20px !important;
+        bottom: 20px !important;
+        left: 0 !important;
+
+        width: clamp(385px, 22.5vw, 405px) !important;
+
+        height: auto !important;
+        max-height: none !important;
+
+        margin: 0 !important;
+
+        z-index: 50 !important;
+
+        /* Completely outside the left edge */
+        transform: translateX(calc(-100% - 12px));
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            transform 0.25s cubic-bezier(.22, .61, .36, 1),
+            opacity 0.18s ease,
+            visibility 0s linear 0.25s !important;
+    }
+
+
+
+    /*
+ * =====================================================
+ * 3. LEFT EDGE: INVISIBLE HOTZONE
+ * =====================================================
+ */
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started)
+    > .scene-divider {
+
+        /* Move Stash's existing divider to the absolute left edge */
+        display: block !important;
+
+        position: absolute !important;
+
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+
+        width: 26px !important;
+        height: auto !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        z-index: 60 !important;
+
+        /* Completely invisible */
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        opacity: 1 !important;
+        visibility: visible !important;
+
+        pointer-events: auto !important;
+
+        cursor: default !important;
+    }
+
+
+    /* Hide the chevron. Keep the divider element as the hotzone. */
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started)
+    > .scene-divider
+    .btn {
+
+        opacity: 0 !important;
+
+        visibility: hidden !important;
+
+        pointer-events: none !important;
+    }
+
+
+
+    /*
+ * =====================================================
+ * 4. POINTER AT THE LEFT EDGE: SHOW THE PANEL
+ * =====================================================
+ */
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(
+        .scene-player-container .video-js.vjs-has-started
+    ):has(
+        > .scene-divider:hover
+    )
+    > .scene-tabs {
+
+        transform: translateX(0);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transition:
+            transform 0.25s cubic-bezier(.22, .61, .36, 1),
+            opacity 0.18s ease,
+            visibility 0s !important;
+    }
+
+
+
+    /*
+ * =====================================================
+ * 5. KEEP THE PANEL OPEN WHILE THE POINTER IS OVER IT
+ * =====================================================
+ */
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(
+        .scene-player-container .video-js.vjs-has-started
+    ):has(
+        > .scene-tabs:hover
+    )
+    > .scene-tabs {
+
+        transform: translateX(0);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transition:
+            transform 0.25s cubic-bezier(.22, .61, .36, 1),
+            opacity 0.18s ease,
+            visibility 0s !important;
+    }
+
+
+
+    /* Also keep the panel open when clicking or interacting inside it */
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(
+        .scene-player-container .video-js.vjs-has-started
+    ):has(
+        > .scene-tabs:focus-within
+    )
+    > .scene-tabs {
+
+        transform: translateX(0);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transition:
+            transform 0.25s cubic-bezier(.22, .61, .36, 1),
+            opacity 0.18s ease,
+            visibility 0s !important;
+    }
+}
+
+
+
+/*
+ * =========================================================
+ * 6. HIDE THE THUMBNAIL SCRUBBER AFTER PLAYBACK HAS STARTED
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-player-container
+.VideoPlayer:has(.video-js.vjs-has-started)
+> .scrubber-wrapper {
+
+    display: none !important;
+}
+
+
+
+/* =========================================================
+   7. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body.stash-liquid-glass
+    .main.container-fluid
+    > .row:has(.scene-player-container .video-js.vjs-has-started)
+    > .scene-tabs {
+
+        transition: none !important;
+    }
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS
+ * CIRCULAR PERFORMER IMAGES: TWO PER ROW
+ * =========================================================
+ */
+
+
+/*
+ * ---------------------------------------------------------
+ * 1. ALWAYS SHOW TWO PERFORMERS PER ROW
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers {
+
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 12px !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 4px 0 8px !important;
+
+    overflow: visible !important;
+
+    flex-wrap: unset !important;
+    justify-content: unset !important;
+
+    scroll-snap-type: none !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * 2. EACH PERFORMER CARD FILLS HALF THE ROW
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card {
+
+    display: block !important;
+
+    position: relative !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    flex: none !important;
+
+    grid-column: auto !important;
+
+    justify-self: stretch !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+
+    border-radius: 50% !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+
+    animation: none !important;
+
+    contain: none !important;
+
+    clip-path: circle(50%) !important;
+}
+
+
+/* Important: details.css has special rules for the third card when there are exactly three performers. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count="3"]
+.scene-performers
+> .performer-card:nth-child(3) {
+
+    grid-column: auto !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    justify-self: stretch !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * 3. THE IMAGE AREA FILLS THE ENTIRE CIRCLE
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.thumbnail-section {
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-radius: 50% !important;
+
+    overflow: hidden !important;
+}
+
+
+/* Let the image link fill the entire circle */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.thumbnail-section
+> a:has(> .performer-card-image) {
+
+    display: block !important;
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    border-radius: 50% !important;
+
+    overflow: hidden !important;
+}
+
+
+/* The performer image */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.performer-card-image {
+
+    display: block !important;
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: cover !important;
+
+    /* A slightly higher focal point suits portraits better */
+    object-position: center 20% !important;
+
+    border-radius: 50% !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * 4. HIDE EVERYTHING EXCEPT THE IMAGE
+ * ---------------------------------------------------------
+ */
+
+
+/* Name, age, statistics, etc. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.card-section {
+
+    display: none !important;
+}
+
+
+/* Icon/statistics row below */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.card-popovers {
+
+    display: none !important;
+}
+
+
+/* Optional separator */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+> hr {
+
+    display: none !important;
+}
+
+
+/* Rating */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.rating-banner {
+
+    display: none !important;
+}
+
+
+/* Favorite heart */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.favorite-button {
+
+    display: none !important;
+}
+
+
+/* Checkbox / card controls */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.card-controls {
+
+    display: none !important;
+}
+
+
+/* Flag / country */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+:is(
+    .performer-card__country-flag,
+    .performer-card__country-string,
+    .flag-icon
+) {
+
+    display: none !important;
+}
+
+
+/* Playing-card decoration */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+:is(
+    .refract-pc-name-banner,
+    .refract-pc-tier-label
+) {
+
+    display: none !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * 5. HIDE LEGACY CAROUSEL CONTROLS
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row
+:is(
+    .stash-perf-nav,
+    .stash-perf-dots,
+    .stash-perf-prev,
+    .stash-perf-next
+) {
+
+    display: none !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS PERFORMERS
+ * STEP 2
+ * Name, gender, flag and hover information
+ * =========================================================
+ */
+
+
+/*
+ * =========================================================
+ * 1. RESERVE ROOM FOR THE NAME BELOW THE CIRCLE
+ * =========================================================
+ */
+
+/* The performer card itself is no longer the circle. Only thumbnail-section is circular. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card {
+
+    aspect-ratio: auto !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    overflow: visible !important;
+
+    border-radius: 0 !important;
+
+    clip-path: none !important;
+
+    background: transparent !important;
+}
+
+
+/*
+ * =========================================================
+ * 2. KEEP THE IMAGE PERFECTLY CIRCULAR
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.thumbnail-section {
+
+    position: relative !important;
+
+    inset: auto !important;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: 100% !important;
+    max-height: none !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-radius: 50% !important;
+
+    /* Important: allow overflow so the flag can extend slightly beyond the circle. The image link itself remains clipped to a circle. */
+    overflow: visible !important;
+}
+
+
+/* The image link provides the circular mask */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.thumbnail-section
+> a:has(> .performer-card-image) {
+
+    position: absolute !important;
+    inset: 0 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    overflow: hidden !important;
+
+    border-radius: 50% !important;
+
+    border:
+        1px solid rgba(var(--accent-rgb), .42)
+        !important;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.38)
+        !important;
+}
+
+
+/* Image */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.performer-card-image {
+
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    object-position: center 20% !important;
+
+    border-radius: 50% !important;
+}
+
+
+/* Subtle hover effect on the portrait itself */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.thumbnail-section
+> a:has(> .performer-card-image) {
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease !important;
+}
+
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.thumbnail-section
+> a:has(> .performer-card-image):hover {
+
+    transform: scale(1.025) !important;
+
+    border-color:
+        var(--accent-bright) !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.48),
+        0 0 15px rgba(var(--accent-rgb),.25)
+        !important;
+}
+
+
+/*
+ * =========================================================
+ * 3. SHOW THE NAME BELOW THE CIRCLE
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+.card-section {
+
+    display: block !important;
+
+    position: relative !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    padding:
+        7px 4px 0
+        !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+
+/* Name row */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-section-title {
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #fff !important;
+
+    font-size: .82rem !important;
+
+    font-weight: 650 !important;
+
+    line-height: 1.2 !important;
+
+    text-align: center !important;
+
+    overflow: visible !important;
+}
+
+
+/* user-design.css sets performer-name to 1.1rem. Reduce only the Scene Details version here. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.performer-name {
+
+    display: inline !important;
+
+    color: #fff !important;
+
+    font-size: 1rem !important;
+
+    font-weight: 650 !important;
+
+    line-height: 1.2 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+}
+
+
+/* No disambiguation here */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.performer-disambiguation {
+
+    display: none !important;
+}
+
+
+/*
+ * =========================================================
+ * 4. GENDER ICON
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.gender-icon {
+
+    display: inline-block !important;
+
+    flex: 0 0 auto !important;
+
+    width: .92rem !important;
+    height: .92rem !important;
+
+    font-size: .92rem !important;
+
+    margin-right: 2px !important;
+
+    vertical-align: -0.08em !important;
+}
+
+
+/*
+ * =========================================================
+ * 5. SMALL FLAG ON THE CIRCLE'S LOWER-RIGHT EDGE
+ * =========================================================
+ */
+
+/* The flag already sits inside thumbnail-section. Keep it as a small badge rather than moving it into the name row. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.performer-card__country-flag {
+
+    display: block !important;
+
+    position: absolute !important;
+
+    right: 6px !important;
+    bottom: 4px !important;
+
+    z-index: 20 !important;
+
+    width: 22px !important;
+    height: 16px !important;
+
+    margin: 0 !important;
+
+    border-radius: 3px !important;
+
+    overflow: hidden !important;
+
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.75),
+        0 0 0 1px rgba(255,255,255,.55)
+        !important;
+}
+
+
+/* The BR/US/SE country code is not needed */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.performer-card__country-string {
+
+    display: none !important;
+}
+
+
+/*
+ * =========================================================
+ * 7. SHOW THE POPUP ONLY ON IMAGE HOVER
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card:has(
+    .thumbnail-section:hover
+)
+> .card-popovers,
+
+/* Keep the popup open when moving the pointer from the image down to the popup */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card:has(
+    > .card-popovers:hover
+)
+> .card-popovers {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1)
+        !important;
+
+    transition-delay: 0s !important;
+}
+
+
+/*
+ * =========================================================
+ * 8. THE FOUR COUNTERS
+ * =========================================================
+ */
+
+/* The existing user-design.css already uses Scenes, Groups, Images and Galleries */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+) {
+
+    display: inline-flex !important;
+
+    flex:
+        1 1 0
+        !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+}
+
+
+/* Each icon and count */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+:is(
+    a,
+    button,
+    .btn
+) {
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    padding:
+        3px 2px
+        !important;
+}
+
+
+/* Icons */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+:is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+svg {
+
+    width: 18px !important;
+    height: 18px !important;
+
+    min-width: 18px !important;
+
+    margin: 0 !important;
+}
+
+
+/* Counts */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+:is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+span {
+
+    display: block !important;
+
+    width: auto !important;
+
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #fff !important;
+
+    font-size: .67rem !important;
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    text-align: center !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS PERFORMERS
+ * Hide age and remove the bright hover outline
+ * =========================================================
+ */
+
+
+/* Hide age on performer cards in Scene Details */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+:is(
+    .performer-card__age,
+    .stash-perf-age
+) {
+    display: none !important;
+}
+
+/*
+ * =========================================================
+ * SCENE DETAILS — NO BRIGHT OUTLINE ON CIRCULAR PERFORMERS
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card:hover {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Keep the circle itself unchanged on hover as well */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card:hover
+.thumbnail-section,
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.thumbnail-section:hover {
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   LYNXTHEME – SCENE DETAILS
+   PERFORMER HOVER POPUP – FIX
+   ========================================================= */
+
+
+/*
+ * ---------------------------------------------------------
+ * DEFAULT POPUP STATE
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+> .card-popovers {
+
+    /* Override display:none from cards.css */
+    display: flex !important;
+
+    position: absolute !important;
+
+    /* Position the popup over the lower part of the portrait, not far below the card */
+    left: 50% !important;
+    bottom: 38px !important;
+    top: auto !important;
+
+    width: 190px !important;
+
+    transform:
+        translateX(-50%)
+        translateY(5px)
+        scale(.96)
+        !important;
+
+    z-index: 9999 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-wrap: nowrap !important;
+
+    gap: 5px !important;
+
+    margin: 0 !important;
+
+    padding: 8px 9px !important;
+
+    background:
+        rgba(13, 16, 21, .96)
+        !important;
+
+    border:
+        1px solid rgba(255,255,255,.14)
+        !important;
+
+    border-radius: 10px !important;
+
+    -webkit-backdrop-filter:
+        blur(12px) !important;
+
+    backdrop-filter:
+        blur(12px) !important;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.70),
+        0 0 16px rgba(var(--accent-rgb),.12)
+        !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transition:
+        opacity 130ms ease,
+        transform 150ms ease,
+        visibility 0s linear 150ms
+        !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * IMAGE HOVER: SHOW THE POPUP
+ * ---------------------------------------------------------
+ */
+
+/* thumbnail-section comes before card-popovers in the card. The ~ combinator matches a later card-popovers sibling. This is more robust than the earlier :has() variant. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.thumbnail-section:hover
+~ .card-popovers {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1)
+        !important;
+
+    transition-delay: 0s !important;
+}
+
+
+/* The ~ combinator still works if card-section is between the image and popup. Also keep the popup open while the pointer is over it. */
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+> .card-popovers:hover {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1)
+        !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * SHOW ONLY THE FOUR COUNTERS
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+> .card-popovers
+> * {
+
+    display: none !important;
+}
+
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+> .card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+) {
+
+    display: flex !important;
+
+    flex: 1 1 0 !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * ICON AND COUNT
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+:is(
+    a,
+    button,
+    .btn
+),
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+> :is(
+    a,
+    button,
+    .btn
+) {
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 2px !important;
+}
+
+
+/* Icons */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+:is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+svg {
+
+    display: block !important;
+
+    width: 18px !important;
+    height: 18px !important;
+
+    min-width: 18px !important;
+
+    margin: 0 !important;
+}
+
+
+/* Counts */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+:is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+span {
+
+    display: block !important;
+
+    width: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #fff !important;
+
+    font-size: .68rem !important;
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    text-align: center !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * ENSURE THE POPUP IS NOT CLIPPED BY THE CARD
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card {
+
+    overflow: visible !important;
+
+    clip-path: none !important;
+}
+
+
+/* Allow the performer row to show overflowing popups as well */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers {
+
+    overflow: visible !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS
+ * REMOVE ONLY THE LARGE POPUP BACKGROUND
+ * Keep the individual icon boxes
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.scene-performers
+> .performer-card
+> .card-popovers {
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    outline: none !important;
+
+    box-shadow: none !important;
+
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS
+ * DARKER BACKGROUNDS ON HOVER ICON BOXES
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+:is(
+    a,
+    button,
+    .btn
+),
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-performers-row[data-perf-count]
+.performer-card
+.card-popovers
+> :is(
+    .scene-count,
+    .group-count,
+    .image-count,
+    .gallery-count
+)
+> :is(
+    a,
+    button,
+    .btn
+) {
+
+    background: rgba(8, 10, 14, 0.88) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+
+    border-radius: 9px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 2px 7px rgba(0, 0, 0, 0.45)
+        !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE EDIT
+ * COLLAPSE EMPTY / UNUSED FIELDS
+ * =========================================================
+ */
+
+
+/* An unused field in its collapsed state */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open) {
+
+    position: relative !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    min-height: 30px !important;
+
+    margin: 0 0 4px 0 !important;
+    padding: 0 30px 0 8px !important;
+
+    gap: 0 !important;
+
+    background: rgba(255,255,255,.018) !important;
+
+    border: 1px solid transparent !important;
+    border-radius: 7px !important;
+
+    transition:
+        background 140ms ease,
+        border-color 140ms ease !important;
+}
+
+
+/* Subtle hover feedback indicates that the row can be opened */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open):hover {
+
+    background: rgba(255,255,255,.045) !important;
+
+    border-color: rgba(255,255,255,.07) !important;
+}
+
+
+/* Label in the collapsed state */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open)
+> label {
+
+    width: auto !important;
+    max-width: calc(100% - 24px) !important;
+
+    flex: 1 1 auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: rgba(255,255,255,.48) !important;
+
+    font-size: .67rem !important;
+    font-weight: 550 !important;
+
+    line-height: 28px !important;
+
+    text-transform: uppercase !important;
+    letter-spacing: .075em !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+
+/* Hide the input section while the field is collapsed */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open)
+> :not(label):not(.lynx-field-toggle) {
+
+    display: none !important;
+}
+
+
+/*
+ * =========================================================
+ * ARROW BUTTON
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.lynx-field-toggle {
+
+    position: absolute !important;
+
+    top: 50% !important;
+    right: 7px !important;
+
+    transform: translateY(-50%) !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 22px !important;
+    height: 22px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+
+    border-radius: 50% !important;
+
+    box-shadow: none !important;
+
+    color: rgba(255,255,255,.45) !important;
+
+    cursor: pointer !important;
+}
+
+
+/* The chevron arrow */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.lynx-field-toggle::before {
+
+    content: "" !important;
+
+    width: 7px !important;
+    height: 7px !important;
+
+    border-right: 1.5px solid currentColor !important;
+    border-bottom: 1.5px solid currentColor !important;
+
+    transform:
+        rotate(-45deg)
+        !important;
+
+    transition:
+        transform 160ms ease,
+        color 160ms ease !important;
+}
+
+
+/* Hover */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.lynx-field-toggle:hover {
+
+    color: var(--accent-bright) !important;
+
+    background: rgba(255,255,255,.05) !important;
+}
+
+
+/*
+ * =========================================================
+ * EXPANDED EMPTY FIELD
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open {
+
+    position: relative !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    margin: 0 0 .85rem 0 !important;
+
+    padding: 0 !important;
+
+    gap: .3rem !important;
+}
+
+
+/* Leave room for the arrow beside the label */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+> label {
+
+    padding-right: 30px !important;
+}
+
+
+/* Point the arrow downward while the field is open */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+.lynx-field-toggle::before {
+
+    transform:
+        rotate(45deg)
+        translate(-1px, -1px)
+        !important;
+}
+
+
+/* Place the open-state arrow beside the label */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+.lynx-field-toggle {
+
+    top: 8px !important;
+    transform: none !important;
+}
+
+
+/* Fields with content must never show the custom arrow */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row:not(.lynx-unused-field)
+> .lynx-field-toggle {
+
+    display: none !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE EDIT
+ * KEEP THE CHEVRON AT THE SAME HEIGHT WHEN EXPANDING A FIELD
+ * =========================================================
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+.lynx-field-toggle {
+
+    top: -2px !important;
+    right: 7px !important;
+
+    transform: none !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE DETAILS
+ * LARGER STUDIO LOGO AND CENTERED TITLE
+ * =========================================================
+ */
+
+
+/*
+ * ---------------------------------------------------------
+ * LARGER STUDIO LOGO
+ * ---------------------------------------------------------
+ */
+
+/*
+ * =========================================================
+ * SCENE DETAILS — STUDIO LOGO: CORRECT OVERRIDE
+ * =========================================================
+ */
+
+body.stash-liquid-glass.refract-studio-banner
+.scene-tabs
+.scene-header-container
+h1.studio-logo
+img {
+
+    display: block !important;
+
+    width: auto !important;
+
+    height: 70px !important;
+    max-height: 70px !important;
+
+    max-width: 260px !important;
+
+    margin: 0 auto !important;
+
+    object-fit: contain !important;
+}
+
+
+/*
+ * ---------------------------------------------------------
+ * CENTER THE SCENE TITLE
+ * ---------------------------------------------------------
+ */
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container
+> h3.scene-header {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    flex: 0 0 auto !important;
+
+    text-align: center !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* Stash places the title text inside TruncatedText */
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container
+> h3.scene-header
+.TruncatedText,
+
+body.stash-liquid-glass
+.scene-tabs
+.scene-header-container
+> h3.scene-header
+.TruncatedText > div {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: center !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/*
+ * =========================================================
+ * SCENE DETAILS — STUDIO LOGO: CORRECT OVERRIDE
+ * =========================================================
+ */
+
+body.stash-liquid-glass.refract-studio-banner
+.scene-tabs
+.scene-header-container
+h1.studio-logo
+img {
+
+    display: block !important;
+
+    width: auto !important;
+
+    height: 90px !important;
+    max-height: 90px !important;
+
+    max-width: 360px !important;
+
+    margin: 0 auto !important;
+
+    object-fit: contain !important;
+}
+
+/*
+ * =========================================================
+ * LYNXTHEME — SCENE CARDS
+ * STYLED FALLBACK LOGO FOR STUDIOS WITHOUT AN IMAGE LOGO
+ * =========================================================
+ */
+
+
+/* Only target studio-overlay links without an image. Studios with actual logos are unaffected. */
+
+body.stash-liquid-glass
+.scene-card
+.studio-overlay
+> a:not(:has(img)) {
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 6px !important;
+
+    width: fit-content !important;
+    max-width: 155px !important;
+
+    min-height: 20px !important;
+
+    padding: 3px 5px !important;
+
+box-sizing: border-box !important;
+
+    /* Small dark wordmark plate */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 12, 16, 0.94),
+            rgba(24, 27, 34, 0.88)
+        ) !important;
+
+    /* Neutral border with an orange Lynx accent on the left */
+    border:
+        1px solid rgba(255, 255, 255, 0.16)
+        !important;
+
+    border-left:
+        0px solid var(--accent-bright)
+        !important;
+
+    border-radius: 7px !important;
+
+    color: rgba(255, 255, 255, 0.94) !important;
+
+    font-size: 0.70rem !important;
+    font-weight: 750 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0.075em !important;
+
+    text-transform: uppercase !important;
+
+    text-decoration: none !important;
+
+white-space: normal !important;
+
+overflow: visible !important;
+text-overflow: clip !important;
+
+overflow-wrap: normal !important;
+word-break: normal !important;
+
+text-align: center !important;
+line-height: 1.15 !important;
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.9)
+        !important;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06)
+        !important;
+
+    backdrop-filter: blur(7px) !important;
+    -webkit-backdrop-filter: blur(7px) !important;
+
+    transition:
+        border-color 140ms ease,
+        background 140ms ease,
+        transform 140ms ease,
+        box-shadow 140ms ease
+        !important;
+}
+
+
+/* Subtle hover effect */
+body.stash-liquid-glass
+.scene-card
+.studio-overlay
+> a:not(:has(img)):hover {
+
+    color: #fff !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 18, 23, 0.97),
+            rgba(29, 32, 39, 0.94)
+        ) !important;
+
+    border-color:
+        rgba(var(--accent-rgb), 0.55)
+        !important;
+
+    border-left-color:
+        var(--accent-bright)
+        !important;
+
+    box-shadow:
+        0 4px 13px rgba(0, 0, 0, 0.55),
+        0 0 10px rgba(var(--accent-rgb), 0.16)
+        !important;
+
+    transform: translateY(-1px) !important;
+}
+
+/*
+ * =========================================================
+ * LYNX — CLICK THE ENTIRE HEADER ROW TO OPEN COLLAPSED SCENE FIELDS
+ * =========================================================
+ */
+
+/* LynxTheme already adds a real .lynx-field-toggle button to each collapsed row. Enlarge this invisible button to cover the entire header row. */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open)
+> .lynx-field-toggle {
+    position: absolute !important;
+
+    /* Cover the entire collapsed row */
+    inset: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 10px !important;
+
+    /* Keep the arrow at the far right */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    transform: none !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+
+    cursor: pointer !important;
+    z-index: 5 !important;
+}
+
+/* The row handles the hover background. The button should only change the arrow color, without adding a separate circular background. */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open)
+> .lynx-field-toggle:hover {
+    background: transparent !important;
+    color: var(--accent-bright, #60a5fa) !important;
+}
+
+/* Make the entire row visibly clickable */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field:not(.lynx-field-open) {
+    cursor: pointer !important;
+}
+
+/*
+ * =========================================================
+ * LYNX — CLICK THE ENTIRE HEADER ROW TO CLOSE AN OPEN SCENE FIELD
+ * =========================================================
+ */
+
+/* When the field is open, the button covers only the header. Form controls and content below remain clickable. */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+> .lynx-field-toggle {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 30px !important;
+
+    margin: 0 !important;
+    padding: 0 10px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    transform: none !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+
+    cursor: pointer !important;
+    z-index: 5 !important;
+}
+
+/* No separate circular background when hovering the arrow button */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+> .lynx-field-toggle:hover {
+    background: rgba(255, 255, 255, 0.035) !important;
+    color: var(--accent-bright, #60a5fa) !important;
+}
+
+/* Give the open header a clear, consistent height. The text sits visually above the row while the button receives clicks. */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open
+> label {
+    position: relative !important;
+
+    min-height: 30px !important;
+    margin: 0 !important;
+    padding: 0 34px 0 8px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    line-height: 30px !important;
+
+    /* Clicks pass through the label to the large toggle button. Form controls below the heading are unaffected. */
+    pointer-events: none !important;
+}
+
+/* Show the pointer cursor across the entire header area */
+body.stash-liquid-glass
+.scene-tabs
+#scene-edit-details
+.form-group.row.lynx-unused-field.lynx-field-open {
+    position: relative !important;
+}
+
+/* Name fields beside Search in Performers → Tagger */
+body.stash-liquid-glass
+.PerformerTagger-details
+> .input-group:not(.PerformerTagger-box-link)
+> input.text-input.form-control {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    justify-self: stretch !important;
+}
+
+/* Tagger: do not apply a hover outline to the container holding the entire list */
+body.stash-liquid-glass .card:has(> .PerformerTagger),
+body.stash-liquid-glass .card:has(> .PerformerTagger):hover {
+    outline: none !important;
+    outline-offset: 0 !important;
+}
+
+/*
+ * ==================================================
+ * LYNX — READABLE DROPDOWNS
+ * Dark backgrounds and light text, including open option lists
+ * ==================================================
+ */
+
+/* The closed dropdown */
+body.stash-liquid-glass select {
+  background-color: #17191e !important;
+  color: #ffffff !important;
+  border-color: #414b5b !important;
+
+  /* Ask the browser to use dark native controls */
+  color-scheme: dark !important;
+}
+
+/* Options in the open dropdown */
+body.stash-liquid-glass select option,
+body.stash-liquid-glass select optgroup {
+  background-color: #17191e !important;
+  color: #ffffff !important;
+}
+
+/* Disabled options */
+body.stash-liquid-glass select option:disabled {
+  color: #8c95a5 !important;
+}
+
+/* Move the LocalFaces button to the far right */
+#localFaces {
+    position: absolute !important;
+    right: 0 !important;        /* Place at the far right */
+    top: 0 !important;          /* Adjust the vertical position as needed */
+    margin: 0 !important;
+    z-index: 20 !important;
+}
+
+/* Remove extra height from the scrubber's internal slider */
+.scrubber-slider,
+.scrubber-content,
+.scrubber-inner,
+.scrubber-track {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+}
+
+/* Keep thumbnails tight against the bottom */
+.scrubber-item {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Prevent the scrubber wrapper from adding extra height */
+.scrubber-wrapper {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    height: 100px !important;
+}
+
+/*
+ * =====================================================
+ * LYNX — SHOW TOTALS ON ALL LIST PAGES
+ * Applies with and without active filters
+ * =====================================================
+ */
+
+/* Show the container hidden by the floating page selector */
+body.stash-liquid-glass #root .pagination-index-container {
+  display: flex !important;
+  position: static !important;
+  transform: none !important;
+
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+
+  margin: 0.25rem 0 0.5rem !important;
+  padding: 0 !important;
+
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Keep the upper pagination controls hidden */
+body.stash-liquid-glass #root
+.pagination-index-container > .pagination {
+  display: none !important;
+}
+
+/* Show Stash's own item count and available totals */
+body.stash-liquid-glass #root
+.pagination-index-container .paginationIndex {
+  display: block !important;
+
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0.25rem 0.7rem !important;
+
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  color: #dddddd !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+  overflow: visible !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Also restore the original duration/size totals on Scenes */
+body.stash-liquid-glass #root
+.pagination-index-container .paginationIndex > .scenes-stats,
+body.stash-liquid-glass #root
+.pagination-index-container .paginationIndex > .images-stats {
+  display: inline !important;
+  font-size: inherit !important;
+}
+
+/* Hide the old extra Lynx Scenes totals to avoid duplication */
+body.stash-liquid-glass #root
+.pagination-index-container .refract-stats-overlay {
+  display: none !important;
+}
+
+--------------------
+
+/* --- Force compact layout on Missing Performer Images --- */
+
+/* Make cards smaller */
+.plugins-missing-performer-images .performer-card {
+  width: 130px !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 6px !important;
+  padding: 4px !important;
+  background: #1a1a1a !important;
+  border-radius: 6px !important;
+}
+
+/* Make images smaller */
+.plugins-missing-performer-images .performer-card img {
+  width: 100% !important;
+  height: 150px !important;
+  object-fit: cover !important;
+  border-radius: 4px !important;
+}
+
+/* More compact buttons */
+.plugins-missing-performer-images .performer-card button {
+  padding: 2px 4px !important;
+  font-size: 12px !important;
+  margin-top: 4px !important;
+}
+
+/* Allow wrapping to fit more cards */
+.plugins-missing-performer-images {
+  font-size: 0 !important; /* Remove whitespace between inline-block elements */
+}
+
+.plugins-missing-performer-images .performer-card {
+  font-size: 14px !important; /* Restore the text size inside cards */
+}
+
+/* ==================================================
+   LYNX — TURQUOISE GALLERY ICONS
+   ================================================== */
+
+/* Galleries in the navbar */
+body.stash-liquid-glass
+.nav-link[data-rb-event-key="/galleries"]
+.nav-menu-icon {
+  color: #45d6c8 !important;
+  stroke: #45d6c8 !important;
+}
+
+/* Gallery icons in card counter rows */
+body.stash-liquid-glass
+:is(
+  .scene-card,
+  .image-card,
+  .gallery-card,
+  .performer-card,
+  .group-card,
+  .movie-card,
+  .studio-card,
+  .tag-card
+)
+.card-popovers
+.gallery-count svg {
+  color: #45d6c8 !important;
+}
+
+/* Gallery icons on tag cards */
+body.stash-liquid-glass
+.tag-card
+.gallery-count svg {
+  color: #45d6c8 !important;
+}
+
+/* Matching accent in the studio page's gallery popup */
+body.stash-liquid-glass
+.lynx-studio-media-popup--gallery {
+  --lynx-studio-popup-accent: #45d6c8;
+}
+
+/* Selected filter operators: persistent contrast, not a hover/focus state. */
+html body.stash-liquid-glass .modal-dialog .criterion-editor
+.modifier-options > button.modifier-option.btn.selected,
+html body.stash-liquid-glass .criterion-list
+.modifier-options > button.modifier-option.btn.selected {
+  background: #29466d !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-color: #8bb8ff !important;
+  box-shadow:
+    inset 0 0 0 1px #8bb8ff,
+    0 0 9px rgba(96, 165, 250, 0.3) !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* A checkmark distinguishes selection even without color perception. */
+html body.stash-liquid-glass .modal-dialog .criterion-editor
+.modifier-options > button.modifier-option.btn.selected::before,
+html body.stash-liquid-glass .criterion-list
+.modifier-options > button.modifier-option.btn.selected::before {
+  content: "\2713\00a0" !important;
+  display: inline !important;
+  position: static !important;
+  color: #ffffff !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+

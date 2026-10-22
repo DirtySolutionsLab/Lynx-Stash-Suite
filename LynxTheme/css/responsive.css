@@ -1,0 +1,1137 @@
+/* ───────────────────────────────────────────────────────────────────
+   Mobile-only overrides. Loaded LAST so rules here win over desktop
+   defaults. Anything that should only apply on phone-sized viewports
+   (≤600px) goes here. Narrow-but-not-mobile rules (e.g. the navbar
+   fade) live in their topic partials, scoped by their own @media.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Navbar — library row becomes horizontally scrollable so every icon
+   is reachable via touch swipe. Scrollbar hidden visually; the
+   narrow-width fade in 02_navbar.css doubles as a "more content →"
+   hint. */
+@media (max-width: 600px) {
+    body.stash-liquid-glass nav.top-nav .navbar-collapse .navbar-nav {
+        overflow-x: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    body.stash-liquid-glass nav.top-nav .navbar-collapse .navbar-nav::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+/* Narrow viewports — bump top padding on the main content container
+   so content (especially settings-page sidebar tabs that collapse to
+   the top of the column on narrow widths) doesn't slide under the
+   floating navbar. The navbar's effective bottom is ~56px from the
+   top of the viewport (12px top inset + 2.4rem nav-btn-size + a few
+   px shadow). 4rem (≈64px) gives a safe gap. */
+@media (max-width: 991px) {
+    body.stash-liquid-glass .main.container-fluid {
+        padding-top: 5rem !important;
+    }
+}
+
+/* Narrow-width settings page — sidebar collapses to top; hide the
+   Bootstrap-native divider hr that appears at narrow widths and add
+   breathing room above the content panel. */
+@media (max-width: 767.98px) {
+    body.stash-liquid-glass.stash-route-settings .row > [class*="col-"]:not(:first-child) {
+        padding-top: 1.5rem !important;
+    }
+    body.stash-liquid-glass.stash-route-settings .col-md-3 hr,
+    body.stash-liquid-glass.stash-route-settings .col-md-3 .nav.nav-pills > hr,
+    body.stash-liquid-glass.stash-route-settings .row > [class*="col-"]:first-child hr {
+        display: none !important;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   Mobile navigation — touch-only, built ground-up.
+
+   Refract replaces Stash's navbar contents entirely on mobile:
+   - Stash's nav children are hidden (except .navbar-brand which stays
+     as the home link)
+   - We inject a custom .refract-burger button (3-line morphing X icon)
+   - We inject a body-level .refract-mobile-drawer with our own 3-col
+     tile grid (hardcoded Stash routes + our own SVG icons)
+   - A body-level .refract-burger-scrim provides the backdrop
+
+   Width-driven (not touch-gated): any narrow viewport gets this layout,
+   so iPad Split View and desktop snap/split windows get the compact UI
+   too — not just touch devices. The burger/drawer DOM is injected
+   unconditionally by refract.js, so width alone is enough to show it.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Defaults — hidden on wide viewports. */
+body.stash-liquid-glass nav.top-nav .refract-burger,
+body.stash-liquid-glass nav.top-nav .refract-mobile-new,
+body.stash-liquid-glass .refract-burger-scrim,
+body.stash-liquid-glass .refract-mobile-dock,
+body.stash-liquid-glass .refract-mobile-drawer {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    /* ── Forum-reported mobile fixes (obatzdamelt, thread 2026-07) ──
+       1. Detail-page tab strips (performer/scene/image pages) overflow
+          off-screen on narrow viewports; let them wrap.
+       2. The filter / saved-filters popover panes can't scroll or be
+          selected on the performers/tags pages; the theme's positioned
+          sidebar-pane traps them. Unset restores native behavior. */
+    body.stash-liquid-glass .nav-tabs {
+        flex-wrap: wrap !important;
+    }
+    body.stash-liquid-glass .detail-body .sidebar-pane {
+        position: unset !important;
+    }
+
+    /* ── No top bar on mobile (2026-07-28) ──────────────────────────
+       The bottom dock owns navigation; the floating top navbar (brand
+       orb + New mirror) is retired entirely and its top clearance is
+       reclaimed. */
+    body.stash-liquid-glass nav.top-nav.navbar {
+        display: none !important;
+    }
+    body.stash-liquid-glass .main.container-fluid {
+        padding-top: 12px !important;
+    }
+    /* The sticky filter toolbar pins below the navbar on desktop
+       (top: nav-btn-size + 2.6rem); with the top bar retired it should
+       hug the top edge instead. */
+    body.stash-liquid-glass .filtered-list-toolbar {
+        top: 0.5rem !important;
+    }
+    /* TagSidebar plugin panel: same story — its desktop offset clears
+       the navbar; on mobile start at the top and stop above the dock. */
+    body.stash-liquid-glass .tag-sidebar__panel {
+        top: 12px !important;
+        height: calc(100vh - 24px - 4.8rem - env(safe-area-inset-bottom, 0px)) !important;
+        max-height: calc(100vh - 24px - 4.8rem - env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    /* ── Refract settings section on phones ─────────────────────────
+       The desktop label/control split crams at phone width: labels
+       wrap word-per-line down the screen while wide controls (accent
+       swatches, segmented pills, the card preview) overflow off the
+       right edge. Stack every row vertically, controls under their
+       label, everything wrapping within the viewport. */
+    body.stash-liquid-glass #refract-settings-section .setting {
+        display: block !important;
+    }
+    body.stash-liquid-glass #refract-settings-section .refract-setting-control {
+        margin-left: 0 !important;
+        margin-top: 0.7rem !important;
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+    }
+    body.stash-liquid-glass #refract-settings-section .refract-accent-swatches {
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        max-width: 100% !important;
+    }
+    body.stash-liquid-glass #refract-settings-section .refract-card-elems {
+        justify-content: flex-start !important;
+        max-width: none !important;
+    }
+    /* Breathing room between a row's text and its control: the accent
+       swatches and chip grids aren't .refract-setting-control wrappers,
+       so the stacked-layout margin above missed them. */
+    body.stash-liquid-glass #refract-settings-section .refract-accent-swatches,
+    body.stash-liquid-glass #refract-settings-section .refract-dock-grid,
+    body.stash-liquid-glass #refract-settings-section .refract-card-elems {
+        margin-top: 0.8rem !important;
+    }
+    /* Stacked rows inside the customiser body ran together with no
+       visual separation; hairline dividers restore the rhythm the
+       side-by-side desktop layout gets from its row borders. */
+    body.stash-liquid-glass #refract-settings-section .refract-suggestion-body > .setting + .setting {
+        border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+        padding-top: 1rem !important;
+        margin-top: 0.2rem !important;
+    }
+    /* Card preview: cards cap at viewport width; the side padding that
+       reserves room for the corner shuffle button becomes TOP padding
+       so nothing is squeezed off-screen. */
+    body.stash-liquid-glass .refract-card-preview-real .refract-preview-cards {
+        padding: 2.6rem 0.25rem 0.25rem !important;
+    }
+    body.stash-liquid-glass .refract-card-preview-real .scene-card {
+        width: min(300px, 100%) !important;
+    }
+    body.stash-liquid-glass .refract-card-preview-real .performer-card {
+        width: min(190px, 100%) !important;
+    }
+
+    /* ── Burger button (RETIRED from the top nav 2026-07-28) ────────
+       The bottom dock's last tile is now the drawer opener; the
+       injected top-nav .refract-burger stays in the DOM but is never
+       shown (default display:none above, no re-show here). The
+       icon-line + X-morph styles below are shared by the dock burger. */
+
+    /* Icon wrapper + three line spans that morph into an X. `display`
+       is !important as a backstop against 02_navbar.css's global
+       `nav.top-nav span { display: none }` purge (only relevant for
+       the legacy nav instance; the dock lives outside nav.top-nav). */
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger) .refract-burger-icon {
+        position: relative;
+        width: 18px;
+        height: 14px;
+        display: block !important;
+    }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger) .refract-burger-line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 1.6px;
+        background: currentColor;
+        border-radius: 2px;
+        opacity: 0.82;
+        transform-origin: center;
+        display: block !important;
+        transition:
+            top 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.22s cubic-bezier(0.34, 1.2, 0.64, 1) 0.12s,
+            opacity 0.12s ease;
+    }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger).is-open .refract-burger-line {
+        opacity: 1;
+    }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger) .refract-burger-line:nth-child(1) { top: 0; }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger) .refract-burger-line:nth-child(2) { top: 6px; }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger) .refract-burger-line:nth-child(3) { top: 12px; }
+
+    /* X morph — top + bottom lines slide to middle then rotate */
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger).is-open .refract-burger-line:nth-child(1) {
+        top: 6px;
+        transform: rotate(45deg);
+    }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger).is-open .refract-burger-line:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+        transition-delay: 0s;
+    }
+    body.stash-liquid-glass :is(.refract-burger, .refract-dock-burger).is-open .refract-burger-line:nth-child(3) {
+        top: 6px;
+        transform: rotate(-45deg);
+    }
+
+    /* ── Bottom dock — iOS-style pill bar with the essential routes ──
+       Scenes / Performers / Studios / Tags / Settings one tap away,
+       burger tile at the end opening the full drawer. Sits above the
+       scrim (z 110 > 99) so the burger doubles as the close control
+       while the drawer is open. */
+    /* Edge-to-edge native tab bar, sized like binge mobile's bottom
+       nav (3.5rem content height, near-black, hairline top border,
+       12px blur, safe-area folded INSIDE the bar so it reads as part
+       of the device chrome rather than a floating element). */
+    body.stash-liquid-glass .refract-mobile-dock {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 110;
+        height: calc(4.6rem + env(safe-area-inset-bottom, 0px));
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-around;
+        gap: 0;
+        padding: 0 0.5rem env(safe-area-inset-bottom, 0px);
+        border-radius: 0;
+        /* Refract's own tab-bar material (the approved variant-A look);
+           only the SIZE comes from binge mobile. */
+        background: rgb(28, 26, 33);
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item {
+        flex: 1 1 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.1rem;
+        min-width: 3.1rem;
+        align-self: center;
+        /* Nudge the icons slightly ABOVE true centre — the bar reads
+           better with the visual weight sitting a touch high (margin
+           trick rather than transform, which :active's press-scale
+           would overwrite). */
+        margin-bottom: 10px;
+        border: none;
+        background: transparent;
+        color: var(--text-muted);
+        padding: 0;
+        cursor: pointer;
+        text-decoration: none;
+        position: relative;
+        isolation: isolate;
+        transition: color 0.16s ease, transform 0.14s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    /* Active/open highlight lives on a fixed-size CIRCLE centred behind
+       the icon — the item box itself is flex-stretched wide, so painting
+       the tint/glow on it produced a stretched rectangle pill. */
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 3.1rem;
+        height: 3.1rem;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: -1;
+        background: transparent;
+        transition: background 0.16s ease, box-shadow 0.16s ease;
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item svg {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item:active {
+        transform: scale(0.9);
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item.is-active {
+        color: var(--accent-bright);
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-item.is-active::before {
+        background: var(--accent-tint);
+        box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.3);
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-burger.is-open {
+        color: var(--accent);
+    }
+    body.stash-liquid-glass .refract-mobile-dock .refract-dock-burger.is-open::before {
+        background: var(--accent-tint);
+        box-shadow:
+            0 0 18px rgba(var(--accent-rgb), 0.45),
+            inset 0 0 0 1px rgba(var(--accent-rgb), 0.18);
+    }
+
+    /* Clear the dock: give the app's scroll content bottom breathing
+       room so the last row of cards isn't parked under the pill. */
+    body.stash-liquid-glass .main.container-fluid,
+    body.stash-liquid-glass main.container-fluid {
+        padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    /* Floating pager (09_buttons.css pins it at bottom: 1.5rem) would
+       sit behind the dock; lift it above the bar. */
+    body.stash-liquid-glass [data-pager-row="float"] {
+        bottom: calc(5.3rem + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    /* multiView's floating picking launcher: hidden on mobile for now
+       (fights the dock for the bottom edge; a proper mobile placement
+       is TBD). Desktop untouched. */
+    body.stash-liquid-glass #mv-launcher {
+        display: none !important;
+    }
+
+    /* ── Backdrop scrim ───────────────────────────────────────────── */
+    body.stash-liquid-glass .refract-burger-scrim {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.42);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 99;
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+        transition:
+            opacity 0.22s ease,
+            backdrop-filter 0.28s ease,
+            -webkit-backdrop-filter 0.28s ease;
+    }
+    body.stash-liquid-glass.refract-burger-open .refract-burger-scrim {
+        opacity: 1;
+        pointer-events: auto;
+        -webkit-backdrop-filter: var(--glass-blur-xs);
+        backdrop-filter: var(--glass-blur-xs);
+    }
+
+    /* ── Hide Stash's navbar children entirely on mobile ──────────────
+       Refract builds its own mobile nav from scratch. Keep .navbar-brand
+       (home link), the contextual /new button mirror, and our burger.
+       (A drawer opt-out was tried 2026-07-28 and pulled the same day:
+       an inline icon navbar overflows as soon as a few plugins add nav
+       items, and the drawer IS the overflow strategy. Needs a real
+       design — e.g. inline icons + overflow-only drawer — before it
+       comes back; see VersGeek's forum request.) */
+    body.stash-liquid-glass nav.top-nav > *:not(.navbar-brand):not(.refract-burger):not(.refract-mobile-new) {
+        display: none !important;
+    }
+
+    /* ── Mobile "New" button — mirror of Stash's /new contextual btn ─ */
+    body.stash-liquid-glass nav.top-nav .refract-mobile-new {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: var(--nav-btn-size);
+        height: var(--nav-btn-size);
+        flex: 0 0 auto;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-sm);
+        color: var(--text);
+        padding: 0;
+        cursor: pointer;
+        position: relative;
+        order: 98;
+        margin-left: auto;
+        margin-right: 0.4rem;
+        text-decoration: none;
+        transition:
+            background 0.18s ease,
+            border-color 0.18s ease,
+            color 0.18s ease,
+            transform 0.16s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    body.stash-liquid-glass nav.top-nav .refract-mobile-new + .refract-burger {
+        /* When New button is present it owns margin-left:auto, so reset
+           burger's so they sit flush together on the far right. */
+        margin-left: 0 !important;
+    }
+    body.stash-liquid-glass nav.top-nav .refract-mobile-new:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.20);
+    }
+    body.stash-liquid-glass nav.top-nav .refract-mobile-new:active {
+        background: var(--accent-tint);
+        border-color: var(--accent-glow);
+        color: var(--accent);
+        transform: scale(0.94);
+    }
+    body.stash-liquid-glass nav.top-nav .refract-mobile-new svg {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    /* ── Mobile drawer (body-level overlay, built ground-up) ───────── */
+    body.stash-liquid-glass .refract-mobile-drawer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* Fixed px values for gap + padding — iOS "Larger Text"
+           accessibility scaling inflates rem-based values, causing the
+           tile spacing to look wildly different on real phones vs
+           desktop RDM. px decouples from root font-size drift. */
+        gap: 9px;
+        padding: 13px;
+        position: fixed;
+        /* Anchored ABOVE the bottom dock (the drawer's opener) and
+           rising from it — not dropping from the retired top bar. */
+        top: auto;
+        bottom: calc(5.2rem + env(safe-area-inset-bottom, 0px));
+        left: 12px;
+        right: 12px;
+        background: rgba(20, 20, 24, 0.92);
+        -webkit-backdrop-filter: var(--glass-blur-md-sat);
+        backdrop-filter: var(--glass-blur-md-sat);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        box-shadow:
+            var(--shadow-xl),
+            inset 0 0 0 1px rgba(var(--accent-rgb), 0.08);
+        z-index: 100;
+        max-height: calc(100vh - 7rem);
+        overflow-y: auto;
+        /* Closed state — invisible, non-interactive; slides UP from the
+           dock on open. */
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+        transform-origin: bottom center;
+        pointer-events: none;
+        transition:
+            opacity 0.22s ease,
+            transform 0.22s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    body.stash-liquid-glass.refract-burger-open .refract-mobile-drawer {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    /* ── Drawer tiles ─────────────────────────────────────────────── */
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1 / 1;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        color: var(--text);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        transition:
+            background 0.18s ease,
+            border-color 0.18s ease,
+            color 0.18s ease,
+            transform 0.16s cubic-bezier(0.34, 1.2, 0.64, 1),
+            box-shadow 0.2s ease;
+    }
+    /* Count badge on drawer tiles (currently the multiview tile's
+       combined picks+filters number). Accent dot, top-right corner. */
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile-badge {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: 999px;
+        background: rgb(var(--accent-rgb));
+        color: #fff;
+        font-size: 0.6rem;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    /* Hardcoded tile for a menu item the user disabled in Stash's
+       Interface settings. refract.js adds this class when the route is
+       absent from the live navbar (Stash omits disabled items from the
+       navbar DOM). Hidden, not removed, so re-enabling restores it. */
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile.refract-drawer-tile-off {
+        display: none !important;
+    }
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* px-pinned so icon size doesn't drift with iOS font scaling. */
+        width: 28px;
+        height: 28px;
+    }
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile-icon svg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        display: block;
+    }
+    /* :active tap feedback */
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile:active {
+        background: var(--accent-tint);
+        border-color: var(--accent-glow);
+        color: var(--accent);
+        transform: scale(0.94);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            0 0 18px rgba(var(--accent-rgb), 0.3),
+            inset 0 0 0 1px rgba(var(--accent-rgb), 0.18);
+    }
+    /* Active route halo */
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile.is-active {
+        background: var(--accent-tint);
+        border-color: var(--accent-glow);
+        color: var(--accent);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 0 16px rgba(var(--accent-rgb), 0.32),
+            inset 0 0 0 1px rgba(var(--accent-rgb), 0.18);
+    }
+    body.stash-liquid-glass .refract-mobile-drawer .refract-drawer-tile.is-active svg {
+        filter:
+            drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.55))
+            drop-shadow(0 0 4px rgba(var(--accent-rgb), 0.4));
+    }
+
+    /* Stagger fade-in on open */
+    body.stash-liquid-glass.refract-burger-open .refract-mobile-drawer .refract-drawer-tile {
+        animation: refract-drawer-tile-in 0.32s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+    }
+    body.stash-liquid-glass.refract-burger-open .refract-mobile-drawer .refract-drawer-tile:nth-child(3n+2) {
+        animation-delay: 30ms;
+    }
+    body.stash-liquid-glass.refract-burger-open .refract-mobile-drawer .refract-drawer-tile:nth-child(3n+3) {
+        animation-delay: 60ms;
+    }
+    @keyframes refract-drawer-tile-in {
+        from { opacity: 0; transform: translateY(-6px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   Mobile scene-detail layout — player + compact details stacked.
+
+   Default narrow-window behavior (07_scene_details.css @media max-width
+   1199.98) locks the row to 100vh and hides the details panel — great
+   on a desktop browser shrunk down (player-only focus mode), but on a
+   real phone the user has no way to access scene details and the video
+   gets massive top/bottom letterboxing inside the tall portrait row.
+
+   This block triggers on portrait-phone widths (any device), so narrow
+   windows get the stacked player + accessible details instead of the
+   100vh focus-mode lock.
+   ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Scene-page container — zero out the global mobile padding-top
+       (5rem from earlier in this file) so the row owns navbar clearance.
+       Without this, container 80 + row top stack and create a huge gap. */
+    body.stash-liquid-glass .main.container-fluid:has(:is(.scene-tabs, .image-tabs)) {
+        padding-top: 0 !important;
+    }
+    /* Outer row: unlock viewport-height clamp, stack player above details.
+       Top padding = navbar bottom (~56px) + tight visual gap. */
+    body.stash-liquid-glass .main.container-fluid > .row:has(> :is(.scene-tabs, .image-tabs)) {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-template-rows: auto auto !important;
+        gap: 12px !important;
+        padding: 52px 12px 12px !important;
+        overflow: visible !important;
+    }
+
+    /* Player container: stop stretching to fill column height. */
+    body.stash-liquid-glass .scene-player-container,
+    body.stash-liquid-glass .scene-player-container .VideoPlayer {
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Video wrapper: natural 16:9 instead of flex-fill — kills the
+       black letterbox bands inside an over-tall flex column. */
+    body.stash-liquid-glass .video-wrapper,
+    body.stash-liquid-glass div.video-wrapper {
+        flex: 0 0 auto !important;
+        aspect-ratio: 16 / 9 !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    /* Re-show the details panel below the player. Beats the
+       1199.98 `display: none` because 12_mobile.css loads later. */
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs) {
+        display: block !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding: 0.9rem !important;
+    }
+    /* Inner tab-content was a flex column expecting a fixed-height
+       parent — relax it so content sizes naturally. */
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs) .tab-content,
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs) .tab-pane.active.show {
+        display: block !important;
+        min-height: 0 !important;
+        flex: initial !important;
+    }
+    /* Performer row inside the panel — kill the 56px chevron gutters
+       (no room for the chevrons on a phone; the row scrolls by touch). */
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs, .gallery-tabs) .scene-performers-row {
+        padding: 0 !important;
+    }
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs) .stash-perf-prev,
+    body.stash-liquid-glass :is(.scene-tabs, .image-tabs) .stash-perf-next {
+        display: none !important;
+    }
+
+    /* ─── Player control bar: two-row layout ─────────────────────────
+       Desktop layout (prev / play / next | time | progress | volume |
+       rate | source | fullscreen) overflows below ~600px. Split into:
+         Row 1: progress bar (full width)
+         Row 2: prev / play / next | current-time | volume | rate |
+                source | fullscreen
+       Duration + time-divider hidden — current time alone is enough.
+    */
+    body.stash-liquid-glass .video-js .vjs-control-bar {
+        flex-wrap: wrap !important;
+        height: auto !important;
+        min-height: 38px !important;
+        padding: 4px 0.6rem 6px !important;
+        gap: 2px !important;
+        row-gap: 2px !important;
+    }
+    /* Progress = first row, full width. Reorder ahead of order:1 skip-prev. */
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-progress-control {
+        order: 0 !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 10px !important;
+        margin: 0 !important;
+    }
+    /* Hide duration + divider — current time alone is enough on mobile. */
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-duration,
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-time-divider {
+        display: none !important;
+    }
+    /* Drop the volume's left auto-margin (was pushing it to far right of
+       a single row); use a margin-left:auto on the current-time block
+       instead so the time-then-volume separation lives on row 2. */
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-volume-panel {
+        margin-left: 0 !important;
+    }
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-current-time {
+        margin-right: auto !important;
+        padding: 0 0.35rem !important;
+        font-size: 0.85rem !important;
+        height: 32px !important;
+        line-height: 1 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-current-time .vjs-current-time-display,
+    body.stash-liquid-glass .video-js .vjs-control-bar > .vjs-current-time > * {
+        line-height: 1 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+    /* Tighten button sizing so all six fit on row 2 of a ~360px viewport. */
+    body.stash-liquid-glass .video-js button.vjs-button {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    body.stash-liquid-glass .video-js .vjs-menu-button {
+        height: 32px !important;
+    }
+    /* Match icon-glyph line-height to mobile button height. Default
+       (36px from 06_scene_player.css L381) is taller than the 32px
+       button and shifts the icon baseline down — out of sync with the
+       time-text baseline. */
+    body.stash-liquid-glass .video-js .vjs-icon-placeholder::before,
+    body.stash-liquid-glass .video-js .vjs-icon-placeholder:before,
+    body.stash-liquid-glass .video-js [class^="vjs-icon-"]::before,
+    body.stash-liquid-glass .video-js [class^="vjs-icon-"]:before,
+    body.stash-liquid-glass .video-js [class*=" vjs-icon-"]::before,
+    body.stash-liquid-glass .video-js [class*=" vjs-icon-"]:before {
+        line-height: 32px !important;
+    }
+    /* Source-selector / playback-rate dropdowns — anchor to RIGHT of
+       their button so they open leftward (toward viewport center)
+       instead of overflowing off the right edge. Cap width to viewport. */
+    body.stash-liquid-glass .video-js .vjs-menu .vjs-menu-content {
+        right: 0 !important;
+        left: auto !important;
+        max-width: calc(100vw - 32px) !important;
+    }
+    /* Volume panel — auto-hide the slider on mobile (tap toggles mute);
+       slider expansion is fiddly on touch and the slider eats horizontal
+       space the buttons need. */
+    body.stash-liquid-glass .video-js .vjs-volume-panel .vjs-volume-control {
+        display: none !important;
+    }
+}
+
+/* Toolbar slimming is promoted to the ≤900px (tablet / split-view) tier so
+   iPad Split View and snapped desktop windows get the clean, non-wrapping
+   mobile toolbar instead of the half-converted desktop one (which wrapped
+   the reshuffle + multiview filter-add button onto a second row that
+   spilled below the pill onto the cards). Scene-page stacking, the
+   2-column grid and the video control-bar split stay phone-only (≤768px). */
+@media (max-width: 900px) {
+    /* ── List-view filter toolbar slimming ─────────────────────────────
+       The desktop toolbar packs ~15 controls across two rows. On a 390px
+       viewport this looks crammed. Hide controls that have ergonomic
+       mobile replacements or are niche enough to live in settings. */
+
+    /* Zoom slider — has no mobile use (cards size to viewport anyway). */
+    body.stash-liquid-glass .filtered-list-toolbar .zoom-slider-container,
+    body.stash-liquid-glass .filtered-list-toolbar input[type="range"].zoom-slider {
+        display: none !important;
+    }
+
+    /* Play / autoplay button — niche cycling feature, rarely used on phone. */
+    body.stash-liquid-glass .filtered-list-toolbar .play-button {
+        display: none !important;
+    }
+
+    /* The random-sort reshuffle button is dead weight on mobile (you rarely
+       re-roll a random order on a phone) and the space is better spent on
+       the multiview filter-slot add button. Hide it unconditionally. DOM:
+       .sort-by-select > [.input-group-prepend (sort-by toggle)] [.dropdown-menu]
+       [direction caret <button>] [reshuffle <button> — only when sort=random].
+       The toggle is wrapped in .input-group-prepend, so the two bare buttons
+       (direction, reshuffle) are the only adjacent button siblings; `button +
+       button` therefore uniquely targets the reshuffle and never the caret
+       (which is preceded by a non-button), and matches nothing when the
+       reshuffle is absent (non-random sort). */
+    body.stash-liquid-glass .filtered-list-toolbar .sort-by-select > button + button {
+        display: none !important;
+    }
+
+    /* Keep the injected filter-slot add button a clean square. The search-
+       collapse rules zero out toolbar items' min-width, which lets the flex
+       layout compress this button (its content is just a single "+"/count
+       glyph, narrower than the funnel's icon) into a vertical oval. Pin it
+       to a fixed square matching the page-size pill's height. */
+    body.stash-liquid-glass.mv-picking-mode .filtered-list-toolbar #mv-filter-add-btn,
+    body.stash-liquid-glass.mv-picking-mode .filtered-list-toolbar .mv-filter-add-btn {
+        flex: 0 0 auto !important;
+        width: 2.2rem !important;
+        min-width: 2.2rem !important;
+        max-width: 2.2rem !important;
+        height: 2.2rem !important;
+        padding: 0 !important;
+    }
+
+    /* THE multiview-breaks-the-toolbar fix. The nested button groups (filter,
+       sort, view) ship with flex-wrap: wrap, and the search-collapse rules
+       zero their min-width so the search field can expand. Together that lets
+       the flex layout shrink a group below its content and wrap its buttons
+       onto a SECOND internal row, which spills out the bottom of the fixed-
+       height pill onto the scene cards the moment the toolbar gets tight
+       (e.g. when picking mode injects the filter-add button). Pin every
+       nested group to one non-shrinking line so the toolbar stays a single
+       clean row (it clips horizontally if it ever truly overflows, never
+       wraps downward). The search field keeps its own expand/collapse. */
+    body.stash-liquid-glass .filtered-list-toolbar .btn-group,
+    body.stash-liquid-glass .filtered-list-toolbar .sort-by-select,
+    body.stash-liquid-glass .filtered-list-toolbar .list-operations {
+        flex-wrap: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Page-size selector (per-page count) stays visible in the mobile
+       toolbar — users need to change how many scenes load per page (it
+       was previously hidden, which locked narrow/split views at the
+       default 40). Shrunk to a tiny number-only tile (no chevron) so it
+       barely costs any toolbar space. Base look from 09_buttons.css. */
+    body.stash-liquid-glass .filtered-list-toolbar .page-size-selector::after {
+        display: none !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar .page-size-selector select {
+        width: 2.5rem !important;
+        min-width: 2.5rem !important;
+        max-width: 2.5rem !important;
+        height: 2.2rem !important;
+        padding: 0 0.35rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    /* View-mode picker: refract replaces Stash's native grid/list/wall
+       btn-group with a custom .stash-view-wrap dropdown. Hide both the
+       wrap (mobile uses the burger/zoom instead) and the native view-mode
+       group. The ACTIVE view button carries .btn-primary, so
+       `:has(> .btn-primary)` uniquely targets that one group and never the
+       filter / saved-filter group (whose buttons are all .btn-secondary).
+       multiview's filter-slot add button (#mv-filter-add-btn) is appended
+       into the FILTER group, not this one, so it is unaffected and stays
+       visible. The picking-mode toggle is rescued as a standalone sibling
+       and stays visible too. */
+    body.stash-liquid-glass .filtered-list-toolbar .stash-view-wrap,
+    body.stash-liquid-glass [data-stash-filter] .stash-view-wrap,
+    body.stash-liquid-glass .filtered-list-toolbar .btn-group:has(> .btn-primary),
+    body.stash-liquid-glass [data-stash-filter] .btn-group:has(> .btn-primary) {
+        display: none !important;
+    }
+
+    /* Plus (+) button in toolbar — already mirrored next to burger in
+       the navbar via .refract-mobile-new. */
+    body.stash-liquid-glass .filtered-list-toolbar a[href$="/new"] {
+        display: none !important;
+    }
+
+    /* ── Toolbar layout — full-width with gutters, fixed height ─────
+       Refract's default `width: fit-content` sizes the toolbar to its
+       contents, which means hiding everything except the search makes
+       the toolbar collapse to a tiny strip. Force a near-full width with
+       12px side gutters so the pill never goes off-screen. Fixed height
+       prevents collapsed items from pushing the toolbar taller via
+       their own internal flex-wrap. */
+    body.stash-liquid-glass .filtered-list-toolbar {
+        width: calc(100% - 1.5rem) !important;
+        max-width: calc(100% - 1.5rem) !important;
+        height: 3rem !important;
+        min-height: 3rem !important;
+        max-height: 3rem !important;
+        margin: 0.3rem auto !important;
+        padding: 0.45rem 0.6rem !important;
+        /* Centre the whole button cluster. The toolbar is forced to full
+           width (below), and Stash's native justify-content: space-between
+           would otherwise pin search to the far left + the last button to
+           the far right with big gaps between. Centre packs them as one
+           group with the gap below. */
+        justify-content: center !important;
+        /* `overflow: clip` + margin keeps mid-transition items clipped
+           horizontally while letting button glows (box-shadow) extend
+           past the toolbar bounds without being cut off. */
+        overflow: clip !important;
+        overflow-clip-margin: 24px !important;
+        box-sizing: border-box !important;
+        gap: 0.35rem !important;
+        flex-wrap: nowrap !important;
+    }
+    /* Reset the ::before pill's negative inset so the painted background
+       matches toolbar bounds (the desktop -0.6rem extension is what was
+       pushing it past the viewport edge). Also drop the heavy elevation
+       shadow — it gets visible past the overflow-clip-margin and reads
+       as a harsh outer shadow on mobile. Inner highlight only. */
+    body.stash-liquid-glass .filtered-list-toolbar::before {
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+    }
+    /* Wrapper around search input — square 30×30 collapsed (matches the
+       other toolbar icon buttons). Stretches to flex: 1 100% on focus. */
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input,
+    body.stash-liquid-glass .filtered-list-toolbar .clearable-input-group {
+        flex: 0 0 30px !important;
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 0 !important;
+        position: relative !important;
+        transition: flex-basis 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input:focus-within {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+    /* Magnifier icon overlay — painted via mask-image so we can color it
+       with currentColor / background-color. mask-image is more reliable
+       than background-image (which was getting wiped by the `background:`
+       shorthand on the input in 09_buttons.css). Fades out on focus. */
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--text-muted);
+        -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / contain no-repeat;
+        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>") center / contain no-repeat;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.18s ease;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input:focus-within::after {
+        opacity: 0;
+    }
+    /* Hide the × clear button while the search bar is collapsed (no
+       focus) — otherwise it overlaps the magnifier icon when there's
+       still a term applied. */
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input:not(:focus-within) .clearable-text-field-clear {
+        display: none !important;
+    }
+    /* The input itself — collapsed = transparent text (icon shows
+       through), open = normal text input */
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input input,
+    body.stash-liquid-glass .filtered-list-toolbar .clearable-input-group input,
+    body.stash-liquid-glass [data-stash-filter] .search-term-input input,
+    body.stash-liquid-glass [data-stash-filter] .clearable-input-group input {
+        width: 100% !important;
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+        padding: 0 !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+        caret-color: transparent !important;
+        cursor: pointer;
+        transition:
+            padding 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            color 0.12s ease 0.08s !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar .search-term-input:focus-within input,
+    body.stash-liquid-glass .filtered-list-toolbar .clearable-input-group:focus-within input,
+    body.stash-liquid-glass [data-stash-filter] .search-term-input:focus-within input,
+    body.stash-liquid-glass [data-stash-filter] .clearable-input-group:focus-within input {
+        padding: 0 14px !important;
+        color: var(--text) !important;
+        -webkit-text-fill-color: var(--text) !important;
+        caret-color: var(--text) !important;
+        background-image: none !important;
+        cursor: text;
+    }
+
+    /* Other toolbar items — animate width AND inner buttons to zero
+       when search opens. Using width-collapse instead of display:none
+       keeps items in flow so transitions stay smooth. max-height clamps
+       the collapsed items to a single row's worth so they can't push
+       the toolbar taller via their own internal wrap behavior. */
+    body.stash-liquid-glass .filtered-list-toolbar > *:not(.search-term-input) {
+        /* Override refract's min-width: 30px on .btn-secondary in BASE
+           state so max-width: 0 can actually shrink items to zero —
+           otherwise CSS resolves used width = min(max-width, max(min-width, ...))
+           which clamps to 30px and we never get a smooth collapse. */
+        min-width: 0 !important;
+        transition:
+            max-width 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            max-height 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.18s ease,
+            margin 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            padding 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+        max-width: 200px;
+        max-height: 30px;
+        overflow: clip;
+        overflow-clip-margin: 16px;
+    }
+    /* Also kill the inner buttons' min-width so the collapse propagates. */
+    body.stash-liquid-glass .filtered-list-toolbar > *:not(.search-term-input) .btn-secondary,
+    body.stash-liquid-glass .filtered-list-toolbar > *:not(.search-term-input) .dropdown-toggle {
+        min-width: 0 !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar:has(.search-term-input:focus-within) > *:not(.search-term-input) {
+        max-width: 0 !important;
+        max-height: 0 !important;
+        opacity: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: scale(0.9);
+        pointer-events: none;
+    }
+    /* Also collapse the toolbar's gap when search is open — otherwise
+       the gaps between hidden items still reserve horizontal space. */
+    body.stash-liquid-glass .filtered-list-toolbar:has(.search-term-input:focus-within) {
+        gap: 0 !important;
+    }
+
+    /* Hide the "Search..." placeholder text when input isn't focused —
+       the magnifier background icon is the only thing visible in
+       collapsed state. */
+    body.stash-liquid-glass .filtered-list-toolbar input[placeholder*="Search"]:not(:focus)::placeholder {
+        color: transparent !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar input[placeholder*="Search"]:focus::placeholder {
+        color: var(--text-muted) !important;
+    }
+
+    /* When a dropdown inside the toolbar opens (sort-by, etc.), lift the
+       `overflow: clip` / `max-height` on every ancestor between the menu
+       and the toolbar, plus the toolbar itself, so the menu can render
+       below. Without this the menu is clipped by the toolbar's 24px
+       clip-margin + the wrapper item's 30px max-height + any
+       intermediate Bootstrap wrappers (.input-group-prepend, .btn-group). */
+    body.stash-liquid-glass .filtered-list-toolbar:has(.dropdown-menu.show),
+    body.stash-liquid-glass .filtered-list-toolbar:has([aria-expanded="true"]) {
+        overflow: visible !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar:has(.dropdown-menu.show) *,
+    body.stash-liquid-glass .filtered-list-toolbar:has([aria-expanded="true"]) * {
+        overflow: visible !important;
+    }
+    body.stash-liquid-glass .filtered-list-toolbar > *:has(.dropdown-menu.show),
+    body.stash-liquid-glass .filtered-list-toolbar > *:has([aria-expanded="true"]) {
+        max-height: none !important;
+        max-width: none !important;
+    }
+    /* On mobile, render Bootstrap dropdowns inside the toolbar as
+       centered modal panels. `position: fixed` + explicit top/left
+       override Popper's `inset: 0 auto auto 0`; `transform` overrides
+       Popper's translate3d. Paired with the body-level
+       `.refract-toolbar-dropdown-scrim` injected by refract.js. */
+    body.stash-liquid-glass .filtered-list-toolbar .dropdown-menu.show {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
+        width: calc(100vw - 3rem) !important;
+        max-width: 340px !important;
+        min-width: 0 !important;
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        /* Prevent scroll chain to body — without this, scrolling past
+           the menu's end propagates to the page on iOS, which then
+           recomputes the scrim's backdrop-filter every frame and the
+           blur visibly flickers/clears. */
+        overscroll-behavior: contain !important;
+        -webkit-overflow-scrolling: touch !important;
+        z-index: 1050 !important;
+        padding: 0.5rem !important;
+        border-radius: var(--radius) !important;
+        /* Opaque modal — the scrim already provides the blurred page
+           backdrop, so the menu itself should be solid (otherwise the
+           menu's own backdrop-filter blurs the scrim through its
+           translucent fill and the contents read as hazy). */
+        background: rgb(22, 22, 27) !important;
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+    /* Make rows inside the modal touch-friendly */
+    body.stash-liquid-glass .filtered-list-toolbar .dropdown-menu.show .dropdown-item {
+        padding: 0.75rem 0.9rem !important;
+        font-size: 1rem !important;
+    }
+
+    /* Backdrop scrim — fades in / out, blurs the page behind. Same
+       pattern as .refract-burger-scrim. */
+    body.stash-liquid-glass .refract-toolbar-dropdown-scrim {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1040;
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+        /* Promote to its own GPU layer — iOS Safari otherwise drops
+           backdrop-filter rendering when a scrolling element (the modal)
+           sits over the scrim. translateZ + will-change + isolation
+           together pin the scrim onto a compositor layer that survives
+           scroll repaints. */
+        transform: translateZ(0);
+        will-change: backdrop-filter, transform;
+        isolation: isolate;
+        transition:
+            opacity 0.22s ease,
+            backdrop-filter 0.28s ease,
+            -webkit-backdrop-filter 0.28s ease;
+    }
+    body.stash-liquid-glass.refract-toolbar-dropdown-open .refract-toolbar-dropdown-scrim {
+        opacity: 1;
+        pointer-events: auto;
+        -webkit-backdrop-filter: var(--glass-blur-xs);
+        backdrop-filter: var(--glass-blur-xs);
+    }
+    /* Lift the toolbar's stacking context above the scrim while the
+       modal is open. Without this, the menu's `z-index: 1050` is local
+       to the toolbar's `z-index: 90` stacking context, so at root the
+       menu effectively renders below the scrim (1040) — and the scrim's
+       backdrop-filter blurs over the menu. */
+    body.stash-liquid-glass.refract-toolbar-dropdown-open .filtered-list-toolbar {
+        z-index: 1060 !important;
+    }
+    /* Lock the page behind the modal — stops the scrim's backdrop-filter
+       from flickering as scroll events propagate to the body. */
+    body.stash-liquid-glass.refract-toolbar-dropdown-open {
+        overflow: hidden !important;
+        overscroll-behavior: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ── 2-column card grid on mobile list pages ─────────────────────
+       Use CSS Grid on the card row — more deterministic than flex for
+       forcing a fixed column count, and not affected by inherited
+       width/zoom rules on cards. */
+    body.stash-liquid-glass .row.justify-content-center {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+        margin: 0.9rem 0 0 !important;
+        padding: 0 0.6rem !important;
+    }
+    /* Cards fill their grid cell — defeat Stash's .zoom-1 width rules */
+    body.stash-liquid-glass .row.justify-content-center > .grid-card,
+    body.stash-liquid-glass .row.justify-content-center > .card,
+    body.stash-liquid-glass .row.justify-content-center > .performer-card,
+    body.stash-liquid-glass .row.justify-content-center > .scene-card,
+    body.stash-liquid-glass .row.justify-content-center > [class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: initial !important;
+        margin: 0 !important;
+    }
+}

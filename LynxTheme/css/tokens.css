@@ -1,0 +1,271 @@
+/* ───────────────────────────────────────────────────────────────────
+   Stash Theme — iOS Liquid Glass
+   Minimalist dark theme, glass surfaces, orange accent only.
+   Targets Stash + Bootstrap 5.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Albert Sans Variable — self-hosted from /fonts/. Single variable
+   file covers weights 100–900 (and italic counterpart). Stash exposes
+   plugin static files under `/plugin/LynxTheme/assets/<path>` (the
+   `ui.assets./: .` mapping in refract.yml — the `/assets/` segment is
+   added by Stash, not us). The plain `/plugin/LynxTheme/<path>` route
+   only serves the CSS/JS files listed in the manifest — everything else
+   404s, which is why the original v1.10.2 was silently falling back to
+   system-ui until we tested with Moirai One on 2026-05-20. */
+@font-face {
+    font-family: "Albert Sans";
+    src: url("/plugin/LynxTheme/assets/fonts/AlbertSans-Variable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Albert Sans";
+    src: url("/plugin/LynxTheme/assets/fonts/AlbertSans-Variable-Italic.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: block;
+}
+
+body.stash-liquid-glass {
+    --theme-font-stack: "Albert Sans", system-ui, sans-serif;
+    --bg-0: #060a0c;
+    /*--bg-1: #060a0c;*/
+    --text: rgba(255, 255, 255, 0.92);
+    --text-muted: rgba(255, 255, 255, 0.55);
+
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-strong: rgba(255, 255, 255, 0.10);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-border-bright: rgba(255, 255, 255, 0.22);
+    --glass-blur: blur(24px);             /* legacy alias — equals --glass-blur-xl */
+
+    /* Backdrop blur tiers. Each unique backdrop-filter expression compiles
+       to its own HLSL shader on Windows Chromium / D3D11; consolidating
+       to a fixed token set caps the shader count (was 22, now 11) and
+       stops the HLSLCompiler recompile churn on home-page navigation. */
+    --glass-blur-xs:      blur(6px);
+    --glass-blur-sm:      blur(10px);
+    --glass-blur-md:      blur(14px);
+    --glass-blur-lg:      blur(20px);
+    --glass-blur-xl:      blur(24px);
+    --glass-blur-2xl:     blur(32px);
+    --glass-blur-sm-sat:  blur(10px) saturate(140%);
+    --glass-blur-md-sat:  blur(14px) saturate(140%);
+    --glass-blur-lg-sat:  blur(20px) saturate(140%);
+    --glass-blur-xl-sat:  blur(24px) saturate(140%);
+    --glass-blur-2xl-sat: blur(32px) saturate(140%);
+
+    --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+
+    /* Depth shadows — graduated single-layer drop shadows. Tokenized
+       so light-mode (14_light.css) can swap to soft light variants in
+       one place rather than per-selector. Composites that include
+       accent halos compose `var(--shadow-X)` with inline accent layers. */
+    --shadow-xs: 0 1px 4px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 8px 26px rgba(0, 0, 0, 0.32);
+    --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.55);
+    --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+    /* Inset track shadow — used on player/scrubber grooves where a
+       dark dent + bright top-rim creates the "carved" look. */
+    --shadow-inset-track:
+        inset 0 1px 2px rgba(0, 0, 0, 0.45),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+
+    /* Navbar composite — depth drop + hairline + inner highlight, plus
+       a tighter accent glow halo so it doesn't extend past the
+       viewport's left/right edges (where Stash's main wrapper / body
+       overflow-x clipping cuts the wide far-halo layer off
+       asymmetrically). Keeps the close + mid layers for the
+       illuminated feel without the visible cutoff. */
+    --shadow-navbar:
+        0 12px 36px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 0 18px rgba(var(--accent-rgb), 0.28),
+        0 0 40px rgba(var(--accent-rgb), 0.16);
+
+    --radius: 16px;
+    --radius-sm: 12px;
+    --radius-pill: 9999px;
+
+    /* Accent palette — orange by default. Override the four `--accent`
+       vars on `body.stash-liquid-glass.refract-<preset>` to retheme the
+       entire UI; the preset classes at the bottom of this file ship
+       seven alternates (blue / pink / red / yellow / purple / green /
+       teal). The plugin's "Accent colour" setting + JS toggle the
+       class on <body> at page load. */
+    --accent: #f97316;
+    --accent-bright: #fb923c;
+    --accent-light: #ffd4b0;
+    --accent-rgb: 249, 115, 22;
+    --accent-glow: rgba(var(--accent-rgb), 0.28);
+    --accent-tint: rgba(var(--accent-rgb), 0.12);
+
+    --nav-btn-size: 2.4rem;
+    --nav-icon-size: 1rem;
+    --nav-gap: 0.2rem;
+
+    --bs-body-bg: var(--bg-0);
+    --bs-body-color: var(--text);
+    --bs-body-font-family: var(--theme-font-stack);
+    --bs-font-sans-serif: var(--theme-font-stack);
+    --bs-card-bg: var(--glass-bg);
+    --bs-border-color: var(--glass-border);
+    --bs-border-color-translucent: var(--glass-border);
+
+    /* Override Bootstrap's blue link defaults */
+    --bs-link-color: rgba(255, 255, 255, 0.85);
+    --bs-link-color-rgb: 255, 255, 255;
+    --bs-link-hover-color: var(--accent-bright);
+    --bs-link-hover-color-rgb: 251, 146, 60;
+
+    /* Override Bootstrap table color variables */
+    --bs-table-color: var(--text);
+    --bs-table-bg: transparent;
+    --bs-table-striped-color: var(--text);
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+    --bs-table-hover-color: #fff;
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.045);
+    --bs-table-border-color: rgba(255, 255, 255, 0.06);
+
+    /* Override Bootstrap popover variables at body level so they cascade everywhere */
+    --bs-popover-bg: rgba(20, 20, 24, 0.97);
+    --bs-popover-border-color: rgba(255, 255, 255, 0.12);
+    --bs-popover-border-radius: 12px;
+    --bs-popover-inner-border-radius: 11px;
+    --bs-popover-body-color: rgba(255, 255, 255, 0.92);
+    --bs-popover-header-bg: rgba(255, 255, 255, 0.05);
+    --bs-popover-header-color: rgba(255, 255, 255, 0.92);
+
+    color: var(--text);
+    background:
+        radial-gradient(120% 80% at 20% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 55%),
+        radial-gradient(100% 60% at 100% 30%, rgba(var(--accent-rgb), 0.04) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+    background-attachment: fixed;
+
+    font-family: var(--theme-font-stack);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.005em;
+}
+
+/* ROOT element background. Stash leaves <html> white and only darkens
+   body/.main — iOS Safari exposes the html background in the strip
+   under the expanded URL bar and on rubber-band overscroll, painting a
+   white band above/below the dark theme on phones. Match the theme's
+   top-edge colour (and the light variant). */
+html:has(body.stash-liquid-glass) {
+    background-color: var(--bg-1, #060a0c) !important;
+}
+html:has(body.stash-liquid-glass.refract-light) {
+    background-color: #fafafa !important;
+}
+
+/* Some Stash views set explicit fonts; force them back to theme font. */
+body.stash-liquid-glass .card-section-title,
+body.stash-liquid-glass .TruncatedText,
+body.stash-liquid-glass .performer-name {
+    font-family: var(--theme-font-stack) !important;
+}
+body.stash-liquid-glass .card-section-title *,
+body.stash-liquid-glass .TruncatedText *,
+body.stash-liquid-glass .performer-name * {
+    font-family: var(--theme-font-stack) !important;
+}
+
+/* Force font cascade across themed UI to beat Stash/Bootstrap component fonts. */
+body.stash-liquid-glass,
+body.stash-liquid-glass *:not(code):not(pre):not(kbd):not(samp) {
+    font-family: var(--theme-font-stack) !important;
+}
+
+body.stash-liquid-glass .min-vh-100,
+body.stash-liquid-glass .main.container-fluid {
+    background: transparent;
+    /* Stash native already provides ~60px top offset for the original
+       fixed navbar. Floating navbar sits 4px lower (top:12) so we add
+       a touch more breathing room below it. Horizontal 12px aligns with
+       the floating navbar's left/right inset for a flush visual gutter. */
+    padding-top: 2.5rem !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+/* Bootstrap rows have -15px horizontal margins that would push content
+   3px outside the container's 12px gutter. Zero them on the top-level row
+   inside .container-fluid so detail-page content respects the inset. */
+body.stash-liquid-glass .main.container-fluid > .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Scene page: only top padding so the row's own 20px padding is the only
+   outer spacing on the sides + bottom. The 1.5rem here adds gap below
+   the floating navbar; sides/bottom symmetry preserved. */
+body.stash-liquid-glass .main.container-fluid:has(> .row > :is(.scene-tabs, .image-tabs)) {
+    padding: 1.5rem 0 0 0 !important;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   Navbar scaling — bumps icon + button size on larger viewports so
+   the navbar doesn't feel cramped on 1440p / 4K / ultrawide displays.
+   Defaults (above) are tuned for 13-15" laptops at 100% scaling.
+   ─────────────────────────────────────────────────────────────────── */
+@media (min-width: 1441px) {
+    body.stash-liquid-glass {
+        --nav-btn-size: 2.7rem;
+        --nav-icon-size: 1.15rem;
+    }
+}
+@media (min-width: 1921px) {
+    body.stash-liquid-glass {
+        --nav-btn-size: 3rem;
+        --nav-icon-size: 1.3rem;
+        --nav-gap: 0.3rem;
+    }
+}
+@media (min-width: 2561px) {
+    body.stash-liquid-glass {
+        --nav-btn-size: 3.4rem;
+        --nav-icon-size: 1.5rem;
+        --nav-gap: 0.4rem;
+    }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    body.stash-liquid-glass {
+        --glass-bg: rgba(28, 28, 30, 0.95);
+        --glass-bg-strong: rgba(36, 36, 40, 0.97);
+    }
+    body.stash-liquid-glass .navbar,
+    body.stash-liquid-glass .card,
+    body.stash-liquid-glass .grid-card,
+    body.stash-liquid-glass .dropdown-menu,
+    body.stash-liquid-glass .modal-content,
+    body.stash-liquid-glass .toast,
+    body.stash-liquid-glass .detail-header,
+    body.stash-liquid-glass .detail-header .detail-group {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   Accent presets
+   refract.js reads the "accent" plugin setting and adds the
+   matching `refract-<name>` class to <body>. Each preset overrides
+   the 4 accent tokens; everything in the rest of the CSS resolves
+   through them.
+   ─────────────────────────────────────────────────────────────────── */
+body.stash-liquid-glass.refract-blue   { --accent: #3b82f6; --accent-bright: #60a5fa; --accent-light: #bfdbfe; --accent-rgb: 59, 130, 246; }
+body.stash-liquid-glass.refract-pink   { --accent: #ec4899; --accent-bright: #f472b6; --accent-light: #fbcfe8; --accent-rgb: 236, 72, 153; }
+body.stash-liquid-glass.refract-red    { --accent: #ef4444; --accent-bright: #f87171; --accent-light: #fecaca; --accent-rgb: 239, 68, 68; }
+body.stash-liquid-glass.refract-yellow { --accent: #eab308; --accent-bright: #facc15; --accent-light: #fef08a; --accent-rgb: 234, 179, 8; }
+body.stash-liquid-glass.refract-purple { --accent: #a855f7; --accent-bright: #c084fc; --accent-light: #e9d5ff; --accent-rgb: 168, 85, 247; }
+body.stash-liquid-glass.refract-green  { --accent: #22c55e; --accent-bright: #4ade80; --accent-light: #bbf7d0; --accent-rgb: 34, 197, 94; }
+body.stash-liquid-glass.refract-teal   { --accent: #14b8a6; --accent-bright: #2dd4bf; --accent-light: #99f6e4; --accent-rgb: 20, 184, 166; }
