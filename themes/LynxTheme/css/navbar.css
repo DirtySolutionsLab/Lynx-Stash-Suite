@@ -608,9 +608,8 @@ html.stash-liquid-glass nav.navbar.fixed-top .navbar-brand > a > button {
         border-color 0.22s ease,
         filter 0.22s ease;
 }
-/* Custom logo (refract.customLogoUrl) — masked span tinted to --text so
-   the logo matches the soft-white tone of the surrounding navbar icons.
-   65% of the brand button leaves visible padding around it. */
+/* Shared logo element. The final image rules below apply to both the
+   bundled logo and a user-supplied URL; legacy class names are retained. */
 body.stash-liquid-glass nav .navbar-brand .refract-custom-logo {
     display: block !important;
     width: 65% !important;
@@ -844,7 +843,7 @@ body.stash-liquid-glass.refract-tasks-running nav.top-nav a[href="/settings"] sv
     transform-origin: center;
 }
 
-/* Lynx-logotyp i navbarens hemcirkel */
+/* Bundled or custom image inside the navbar home circle. */
 body.stash-liquid-glass nav .navbar-brand .refract-custom-logo {
   width: 82% !important;
   height: 82% !important;
@@ -854,21 +853,21 @@ body.stash-liquid-glass nav .navbar-brand .refract-custom-logo {
   -webkit-mask-image: none !important;
   background-color: transparent !important;
 
-  /* Visa Lynx-logotypen som vanlig bakgrundsbild */
+  /* JavaScript supplies the selected image; the bundled asset is a fallback. */
   background-image:
-    url("/plugin/LynxTheme/assets/img/LynxLogo2026.png") !important;
+    var(--lynx-logo-image, url("/plugin/LynxTheme/assets/img/LynxLogo2026.png?v=0.2.12")) !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: contain !important;
 
-  /* Blend away black while keeping white visible. */
-  mix-blend-mode: screen;
+  /* Preserve original image colors and transparent areas. */
+  mix-blend-mode: normal;
 
   border-radius: 50%;
   filter: none;
 }
 
-/* Lite tydligare cirkel bakom logotypen */
+/* Slightly stronger circle behind the logo. */
 body.stash-liquid-glass nav .navbar-brand .brand-link,
 body.stash-liquid-glass nav .navbar-brand > a > button {
   background: rgba(var(--accent-rgb), 0.42) !important;

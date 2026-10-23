@@ -726,7 +726,7 @@
                             R.createElement("div", null,
                                 R.createElement("h3", null, "Custom logo"),
                                 R.createElement("div", { className: "sub-heading" },
-                                    "Image URL displayed in the navbar home button. Leave empty for the default Lynx orb. Hosted URLs and ",
+                                    "Image URL displayed in the navbar home button. Leave empty to use the bundled Lynx logo. Hosted URLs and ",
                                     R.createElement("code", null, "data:image/..."),
                                     " URIs are both supported.")
                             ),
@@ -869,6 +869,7 @@
     var STORAGE_KEY_API = "refract.apiKey";
     var VIEW_MINIMISER_STORAGE_KEY = "refract.viewMinimiser";
     var LOGO_URL_STORAGE_KEY = "refract.customLogoUrl";
+    var DEFAULT_LOGO_URL = "/plugin/LynxTheme/assets/img/LynxLogo2026.png?v=0.2.12";
     var LITE_MODE_STORAGE_KEY = "refract.liteMode";
     var LIGHT_MODE_STORAGE_KEY = "refract.lightMode";
     var LIGHT_TOGGLE_NAVBAR_KEY = "refract.lightToggleNavbar";
@@ -1742,7 +1743,7 @@
         });
     }
 
-    /* ── Navbar brand: textless home orb ─────────────────────────── */
+    /* ── Navbar brand: bundled logo or custom image ──────────────── */
 
     function refineBrandHomeOrb() {
         var brand =
@@ -1763,42 +1764,18 @@
         if (!btn) {
             return false;
         }
-        var logoUrl = getStoredLogoUrl();
+        var logoUrl = getStoredLogoUrl() || DEFAULT_LOGO_URL;
         var existingLogo = btn.querySelector(".refract-custom-logo");
-        if (logoUrl) {
-            /* Custom logo set — render a masked <span> tinted to the same
-               --text white as the rest of the navbar icons. The image is
-               used as a CSS mask, not a foreground bitmap, so any
-               opaque pixel paints in the accent-aware text colour. Skip
-               rebuild if URL unchanged. */
-            if (!existingLogo || existingLogo.dataset.src !== logoUrl) {
-                if (btn.tagName === "A") {
-                    while (btn.firstChild) { btn.removeChild(btn.firstChild); }
-                } else {
-                    btn.innerHTML = "";
-                }
-                var logo = document.createElement("span");
-                logo.className = "refract-custom-logo";
-                logo.dataset.src = logoUrl;
-                var maskUrl = 'url("' + logoUrl.replace(/"/g, '\\"') + '")';
-                logo.style.maskImage = maskUrl;
-                logo.style.webkitMaskImage = maskUrl;
-                btn.appendChild(logo);
-            }
-        } else {
-            /* Default orb — strip any text/svg/img so Refract's CSS
-               renders the empty styled circle. */
-            if (btn.tagName === "A") {
-                var aText = (btn.textContent || "").replace(/\s+/g, " ").trim();
-                if (aText || btn.querySelector("svg, img")) {
-                    while (btn.firstChild) { btn.removeChild(btn.firstChild); }
-                }
-            } else {
-                var text = (btn.textContent || "").replace(/\s+/g, " ").trim();
-                if (text || btn.querySelector("svg, img")) {
-                    btn.innerHTML = "";
-                }
-            }
+        /* The bundled logo is the default; a custom URL takes precedence.
+           Display the actual image to retain its colors and transparency. */
+        if (!existingLogo || existingLogo.dataset.src !== logoUrl) {
+            while (btn.firstChild) { btn.removeChild(btn.firstChild); }
+            var logo = document.createElement("span");
+            logo.className = "refract-custom-logo";
+            logo.dataset.src = logoUrl;
+            logo.setAttribute("aria-hidden", "true");
+            logo.style.setProperty("--lynx-logo-image", 'url(' + JSON.stringify(logoUrl) + ')');
+            btn.appendChild(logo);
         }
         var aria = (btn.getAttribute("aria-label") || "").trim();
         var low = aria.toLowerCase();

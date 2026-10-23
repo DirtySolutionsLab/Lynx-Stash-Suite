@@ -1,6 +1,6 @@
 name: LynxTheme
 description: Modular dark glass theme for Stash with responsive navigation, cards, filters, details and player styling.
-version: 0.2.11
+version: 0.2.12
 ui:
   assets:
     /: .

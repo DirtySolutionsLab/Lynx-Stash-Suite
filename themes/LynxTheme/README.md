@@ -22,6 +22,8 @@ The plugin does not include media files, metadata scrapers, renaming tools or th
 
 ## Compatibility notes
 
+The simplified transparent Lynx logo is bundled and displayed automatically. Leave **Custom logo** empty to use it, or enter your own image URL under **Settings → Interface → Lynx**. Clearing a custom URL restores the bundled logo. Existing custom-logo settings are preserved.
+
 Some internal CSS classes and browser-storage keys retain their Refract-era names so existing settings and selectors continue to work. These internal names do not mean that a second plugin must be installed. Stash UI markup can change between releases; visual and interaction testing on your own Stash version is recommended.
 
 ## Credits and licenses

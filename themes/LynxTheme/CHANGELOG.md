@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.12 — 2026-10-23 — Public preview
+
+- Show the bundled Lynx logo when Custom logo is empty, rather than an empty orb.
+- Include the simplified transparent navbar logo for small-size readability.
+- Respect custom image URLs instead of overriding them with a hardcoded CSS image.
+- Preserve custom image colors and transparency; retain the existing storage key.
+- Clarify the English Custom logo setting description.
+
+Syntax, packaged assets and mocked logo-selection tests checked. Live Stash visual acceptance remains pending.
+
 ## 0.2.11 — 2026-10-22 — Public preview
 
 - Translate the remaining Swedish source comments into English.

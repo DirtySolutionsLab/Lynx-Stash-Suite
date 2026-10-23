@@ -1,19 +1,25 @@
-## Lynx Theme v0.2.11 — Public Preview
+## Lynx Theme v0.2.12 — Public Preview
 
-Lynx Theme is a dark, glass-inspired UI theme for Stash, with styling for navigation, cards, filters, detail pages and the video player.
+The simplified transparent Lynx logo now appears automatically in the navbar home button. No Custom logo URL is needed for the bundled identity.
 
-This preview keeps the appearance and behavior of 0.2.10 while completing the English source comments and placing installation instructions, credits and licensing information inside the theme folder.
+### What changed
 
-Other Lynx plugins are separate and are not required to install the theme.
+- Use the bundled logo when Custom logo is empty instead of showing an empty orb.
+- Include the simplified transparent navbar image for better small-size readability.
+- Correct custom-logo rendering so a user-supplied image URL takes precedence over the bundled asset.
+- Preserve custom image colors and transparency.
+- Update the English setting description; existing settings and storage keys are retained.
 
-### Installation
+To use the new default after updating, clear Custom logo under Settings → Interface → Lynx. Existing non-empty custom URLs are deliberately preserved.
 
-Copy the `LynxTheme` folder into your Stash plugins directory, reload plugins, enable LynxTheme and refresh your browser. Disable older theme copies to avoid duplicate loading. See `INSTALLATION.md` for details.
+### Installation and updates
 
-### Preview status
+Update through the Lynx plugin source after its publication workflow succeeds, or copy the complete LynxTheme folder from the manual ZIP into Stash's plugins directory. Keep only one active copy. Reload plugins and hard-refresh the browser.
 
-The package has passed JavaScript syntax, asset and source-equivalence checks. A fresh installation and complete live visual testing have not yet been verified as part of this release review. Please report any layout or compatibility issues.
+### Validation
 
-### Credits
+JavaScript syntax, manifest assets and mocked logo-selection tests checked, including default/custom/clear transitions, data URLs, repeated calls and anchor/button navigation variants. Fresh-install and live visual acceptance remain pending.
 
-Based in part on Refract by ordureconnoisseur. Theme code is distributed under AGPL-3.0, with the bundled Albert Sans font under the SIL Open Font License 1.1.
+### Credits and licenses
+
+Based in part on Refract by ordureconnoisseur. Theme code remains AGPL-3.0. Albert Sans retains the SIL Open Font License 1.1. See CREDITS.md and the bundled license notices.
