@@ -1,6 +1,6 @@
 ## Lynx Missing Performer Images v1.2.1 — Public Preview
 
-**Review draft: baseline provenance and licensing remain unresolved; see CREDITS.md.**
+Developed and maintained by **DirtySolutionsLab with AI assistance**. Distributed under the **MIT License**. See `CREDITS.md` for source history.
 
 This is a Lynx-maintained version of the supplied Missing Performer Images installation, developed further with AI assistance. A separate upstream author has not been verified.
 
@@ -16,4 +16,4 @@ Keep the `missing_performer_images.yml` manifest filename unchanged and avoid du
 
 ### Preview status
 
-The package is checked with offline regression tests and static validation. A fresh installation and live image assignment have not yet been verified for this review. Original attribution and license verification remain pending.
+The package is checked with offline regression tests and static validation. A fresh installation and live image assignment have not yet been verified for this review. No third-party upstream project has been identified; earlier development history is not fully documented.

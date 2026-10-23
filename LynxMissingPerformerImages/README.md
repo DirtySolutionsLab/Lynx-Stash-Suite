@@ -2,9 +2,9 @@
 
 A Lynx-maintained version of the supplied **Missing Performer Images** installation, developed further with AI assistance.
 
-**Version 1.2.1 — release-review draft**
+**Version 1.2.1 — Public Preview 1**
 
-**Provenance status:** the supplied files do not identify a separate original author, repository or license. The maintainer is unsure whether the baseline was created with AI assistance or adapted from an existing plugin. This review draft does not invent an upstream author or license. See [CREDITS.md](CREDITS.md).
+Developed and maintained by DirtySolutionsLab with AI assistance. No third-party upstream project has been identified; earlier development history is not fully documented. See [CREDITS.md](CREDITS.md). Licensed under the [MIT License](LICENSE).
 
 ## What it does
 

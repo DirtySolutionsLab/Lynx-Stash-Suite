@@ -1,21 +1,15 @@
-# Credits and provenance — verification pending
+# Credits and source history
 
-## Supplied base
+Developed and maintained by **DirtySolutionsLab with AI assistance**.
 
-The reviewed input is the user's modified **Missing Performer Images 1.2.0-lynx.1** installation, supplied in a folder named `MissingPerformerImages-1.2.0`.
+No third-party upstream project has been identified for the supplied baseline. Its earlier development history is not fully documented. If you recognize code originating from another project, please open an issue with a source reference so the attribution and any applicable license notices can be reviewed and corrected.
 
-The maintainer reports that the baseline may have been created with AI assistance or may have developed an existing plugin. The supplied files do not include an original author's name, an upstream repository link, a license or a copyright notice identifying third-party upstream work.
+This is not presented as a confirmed fork of another project.
 
-No external upstream has been verified. Do not infer an author from a similar plugin name, and do not claim a confirmed third-party fork or an entirely original implementation without evidence.
+## License
 
-## Lynx changes
+DirtySolutionsLab makes its code and contributions available under the [MIT License](LICENSE). This license does not override applicable rights or license terms in third-party material, should such material be identified.
 
-The locally supplied Lynx version contains the English review interface, local-image selection, installed-scraper search, profile-photo lookup, direct downloads, uploads and explicit image approval.
+## Release history
 
-The public-review revision **1.2.1, prepared 2026-10-23**, adds the visible Lynx name, portable installation instructions, clearer library-task descriptions and release documentation. The image-selection and saving implementation is retained from the supplied version.
-
-## Required before publication
-
-If an external baseline is identified, confirm its author, source revision and license, retain its notices, and update this document and the release description. If project history establishes that the baseline was created for this project, document that evidence and choose a license for the maintainer's code.
-
-This document records the current evidence. It does not grant redistribution rights, and this review draft is not marked ready for public upload.
+The supplied baseline was Missing Performer Images 1.2.0-lynx.1. Version 1.2.1 adds the Lynx name, English documentation, clearer library-task descriptions and licensing. The image-selection and saving implementation is unchanged.

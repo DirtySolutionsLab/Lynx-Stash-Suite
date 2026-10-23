@@ -1,6 +1,6 @@
 # Installation and use
 
-This is a review draft with unresolved baseline provenance. See `CREDITS.md` before treating it as a publication-ready release.
+This public preview includes the MIT license and a source-history note. See [CREDITS.md](CREDITS.md) and [LICENSE](LICENSE).
 
 ## Install for local testing
 
@@ -44,7 +44,7 @@ After a connection error, refresh to check the actual saved state. Updates are n
 - Blocked source: try the scraper in normal Stash scraping, another source or an upload.
 - Unknown plugin: keep `missing_performer_images.yml` unchanged and reload plugins.
 - Existing image protected: the performer already has a portrait; this workflow does not replace it.
-- Lock file: the backend creates `missing_performer_images.lock`. Its existence does not mean a task is running; the operating-system lock controls concurrency. Generated lock files are not included in the release draft.
+- Lock file: the backend creates `missing_performer_images.lock`. Its existence does not mean a task is running; the operating-system lock controls concurrency. Generated lock files are not included in the release package.
 
 ## Upgrade and rollback
 
