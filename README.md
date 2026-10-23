@@ -100,14 +100,23 @@ Accent choices, card previews and visible-element controls.
 
 </details>
 
-### Video previews
+### Animated previews
 
-Two silent screen recordings, kept at their original resolution and 30 fps. Click a preview image or its link to open the MP4 file; use the file page's download control if your browser does not play it directly.
+Looping WebP previews display directly in the README as animated images. For the original resolution, smoother motion and playback controls, download the linked MP4 files and open them in your browser or media player.
 
-| Performer page · 48 seconds · 3.7 MB | Scene page · 38 seconds · 4.1 MB |
-| --- | --- |
-| [![Open the Performer page video preview](docs/screenshots/lynx-theme/performer.png)](docs/videos/lynx-theme/Performer-compressed.mp4) | [![Open the Scene page video preview](docs/screenshots/lynx-theme/scene.png)](docs/videos/lynx-theme/Scene-compressed.mp4) |
-| [▶ Open Performer preview](docs/videos/lynx-theme/Performer-compressed.mp4) | [▶ Open Scene preview](docs/videos/lynx-theme/Scene-compressed.mp4) |
+**Performer page — approximately 48 seconds**
+
+[![Animated Lynx performer page walkthrough](docs/videos/lynx-theme/performer-preview.webp)](docs/videos/lynx-theme/performer-preview.webp)
+
+[Download full-resolution Performer MP4 · 3.7 MB](docs/videos/lynx-theme/Performer-compressed.mp4)
+
+**Scene page — approximately 38 seconds**
+
+[![Animated Lynx scene page walkthrough](docs/videos/lynx-theme/scene-preview.webp)](docs/videos/lynx-theme/scene-preview.webp)
+
+[Download full-resolution Scene MP4 · 4.1 MB](docs/videos/lynx-theme/Scene-compressed.mp4)
+
+*Animations are silent and loop automatically. They contain the same visible content as the recordings; no additional masking has been applied.*
 
 
 [Documentation](themes/LynxTheme/README.md) · [Installation](themes/LynxTheme/INSTALLATION.md) · [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases)
