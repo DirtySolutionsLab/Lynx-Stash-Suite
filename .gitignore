@@ -1,0 +1,6 @@
+# Generated installation source; published by GitHub Actions, not committed.
+/_site/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+/scripts/tmp*/

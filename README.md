@@ -194,6 +194,21 @@ A small workflow utility based on **edit-unorganized by feederbox826**. The inte
 
 Read the [suite installation and upgrade guide](INSTALLATION.md) for folder layout, requirements and safe updates, then follow your component's specific instructions.
 
+### Install from a Stash source
+
+The repository includes automated plugin/theme and scraper indexes. **The addresses below require successful GitHub Pages publication first.** See the [source setup and migration guide](docs/INSTALLATION-SOURCES.md).
+
+| Add source under | Name | Source URL | Local path |
+| --- | --- | --- | --- |
+| Settings → Plugins | Lynx Stash Suite | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/index.yml` | `lynx` |
+| Settings → Metadata Providers | Lynx Scrapers | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/scrapers/index.yml` | `lynx` |
+
+Choose the components you want, enable their modules and refresh the browser. Python requirements still apply. Do not install duplicate copies alongside existing manual installations; read the migration guide first.
+
+These sources track published `main` builds as public previews. Manual release downloads remain available.
+
+### Manual ZIP installation
+
 1. Open [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) and choose the component you want.
 2. Download its attached component ZIP, rather than assuming GitHub's automatic “Source code” archive is an installable plugin.
 3. Read the component's `INSTALLATION.md` and back up any existing installation.

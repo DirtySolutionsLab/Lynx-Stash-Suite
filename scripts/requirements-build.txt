@@ -1,0 +1,2 @@
+# Build-time only; not required by Stash users.
+ruamel.yaml==0.18.16

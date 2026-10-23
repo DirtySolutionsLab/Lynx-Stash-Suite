@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/DirtySolutionsLab/Lynx-Stash-Suite",
+  "packages": [
+    {"kind": "plugin", "directory": "themes/LynxTheme", "manifest": "LynxTheme.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxPerformerSuite", "manifest": "LynxPerformerSuite.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxSceneCard", "manifest": "LynxSceneCard.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxTools", "manifest": "LynxTools.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxScrapingSuite", "manifest": "LynxScrapingSuite.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxRenamer", "manifest": "LynxRenamer.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxMissingPerformerImages", "manifest": "missing_performer_images.yml"},
+    {"kind": "plugin", "directory": "plugins/LynxDefaultTabs", "manifest": "edit-unorganized.yml"},
+    {"kind": "scraper", "directory": "scrapers/LynxXLGirls", "manifest": "LynxXLGirls-scraper.yml", "version": "0.1.2", "description": "XL Girls performer scraper. Python 3.9+ required; companion to Lynx Scraping Suite."},
+    {"kind": "scraper", "directory": "scrapers/LynxMatureNL", "manifest": "LynxMatureNL.yml", "version": "1.1.0", "description": "Mature.nl performer scraper. Python 3.9+ required; companion to Lynx Scraping Suite."}
+  ]
+}

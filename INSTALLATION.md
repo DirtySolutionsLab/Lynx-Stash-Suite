@@ -6,6 +6,14 @@ Install only the Lynx components you want. This repository is a collection of se
 
 ## 1. Choose a component
 
+### Source-based installation
+
+After GitHub Pages has been enabled and the publication workflow succeeds, you can add the Lynx sources directly in Stash. Follow the [installation source guide](docs/INSTALLATION-SOURCES.md) for both URLs and migration precautions.
+
+The plugin source includes themes and functional plugins. Companion scrapers use a separate source under Metadata Providers. Do not install duplicate manual and source-managed copies. Runtime Python requirements still apply.
+
+### Manual release installation
+
 Open [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) and choose the release for the component you want. Download its attached component ZIP. GitHub's automatic Source code archives contain the repository snapshot, not necessarily an installation-ready component.
 
 Some releases are public previews. Read the release notes and component-specific instructions before installing.
