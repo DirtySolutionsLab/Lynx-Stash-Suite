@@ -67,9 +67,42 @@ A dark, glass-inspired interface with colored navigation icons, compact cards an
 
 The theme handles presentation. The functional tools below are separate plugins and are not required to use the theme.
 
-<!-- Screenshot: upload docs/screenshots/lynx-theme/scene-overview.png, then uncomment:
-![Lynx Theme — navigation and library cards](docs/screenshots/lynx-theme/scene-overview.png)
--->
+[![Lynx Theme — home page and coordinated navigation](docs/screenshots/lynx-theme/front-page.png)](docs/screenshots/lynx-theme/front-page.png)
+
+*Home page — dark glass navigation and coordinated scene, group and performer cards.*
+
+> **Preview note:** these examples show a customized Stash installation. Some views also include optional companion plugins, including Lynx Scene Card and Supporting Images from Lynx Performer Suite; those functions are not all supplied by the theme alone. Previews contain adult-oriented metadata and imagery. Many screenshot thumbnails are blurred, but the video recordings are not fully masked. Library artwork and metadata are examples, not bundled theme content.
+
+### Screenshots
+
+<details>
+<summary><strong>Explore all screenshots — seven more views</strong></summary>
+
+Click any screenshot to open the full-size image.
+
+| Library views | Detail views |
+| --- | --- |
+| **Scenes**<br>[![Scenes — Lynx Theme](docs/screenshots/lynx-theme/scenes.png)](docs/screenshots/lynx-theme/scenes.png)<br>Compact cards, yellow titles, performer/tag chips and colored counters. | **Scene details**<br>[![Scene details — Lynx Theme](docs/screenshots/lynx-theme/scene.png)](docs/screenshots/lynx-theme/scene.png)<br>Player layout, metadata sidebar and performer links. |
+| **Performers**<br>[![Performers — Lynx Theme](docs/screenshots/lynx-theme/performers.png)](docs/screenshots/lynx-theme/performers.png)<br>Consistent portrait cards, country flags and library counters. | **Performer details**<br>[![Performer details — Lynx Theme](docs/screenshots/lynx-theme/performer.png)](docs/screenshots/lynx-theme/performer.png)<br>Grouped information, a dedicated tag row and a companion Supporting Images panel. |
+| **Studios**<br>[![Studios — Lynx Theme](docs/screenshots/lynx-theme/studios.png)](docs/screenshots/lynx-theme/studios.png)<br>Studio logo cards with compact, color-coordinated counters. | **Tags**<br>[![Tags — Lynx Theme](docs/screenshots/lynx-theme/tags.png)](docs/screenshots/lynx-theme/tags.png)<br>Centered labels, parent relationships and related-item counters. |
+
+**Theme settings**
+
+Accent choices, card previews and visible-element controls.
+
+[![Lynx Theme settings and card customizer](docs/screenshots/lynx-theme/settings.png)](docs/screenshots/lynx-theme/settings.png)
+
+</details>
+
+### Video previews
+
+Two silent screen recordings, kept at their original resolution and 30 fps. Click a preview image or its link to open the MP4 file; use the file page's download control if your browser does not play it directly.
+
+| Performer page · 48 seconds · 3.7 MB | Scene page · 38 seconds · 4.1 MB |
+| --- | --- |
+| [![Open the Performer page video preview](docs/screenshots/lynx-theme/performer.png)](docs/videos/lynx-theme/Performer-compressed.mp4) | [![Open the Scene page video preview](docs/screenshots/lynx-theme/scene.png)](docs/videos/lynx-theme/Scene-compressed.mp4) |
+| [▶ Open Performer preview](docs/videos/lynx-theme/Performer-compressed.mp4) | [▶ Open Scene preview](docs/videos/lynx-theme/Scene-compressed.mp4) |
+
 
 [Documentation](themes/LynxTheme/README.md) · [Installation](themes/LynxTheme/INSTALLATION.md) · [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases)
 
