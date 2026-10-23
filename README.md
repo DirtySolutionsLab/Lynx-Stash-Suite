@@ -8,7 +8,7 @@
 
 A glass-inspired theme and a collection of practical tools for [Stash](https://github.com/stashapp/stash).
 
-[Browse the plugins](#explore-the-suite) · [Download releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) · [Installation guide](INSTALLATION.md) · [Credits](CREDITS.md) · [Report an issue](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/issues)
+[Install directly in Stash](#install-directly-in-stash) · [Browse the plugins](#explore-the-suite) · [Download releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) · [Installation guide](INSTALLATION.md) · [Credits](CREDITS.md) · [Report an issue](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/issues)
 
 </div>
 
