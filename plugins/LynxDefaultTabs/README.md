@@ -1,5 +1,8 @@
 # Lynx Default Tabs
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 A Lynx adaptation of **[edit-unorganized by feederbox826](https://github.com/feederbox826/plugins/tree/main/plugins/edit-unorganized)**. Credit for the original plugin and default-tab workflow belongs to feederbox826.
 
 **Version 0.3.1 — public preview**

@@ -1,5 +1,11 @@
 # Lynx Theme
 
+> [!WARNING]
+> **NSFW content advisory.** Screenshots, videos, example metadata and linked previews may contain adult-oriented imagery, explicit titles or sexual terminology. Open previews only if you are comfortable viewing this material. Visual masking is not guaranteed to hide every detail.
+
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 A dark, glass-inspired theme for [Stash](https://github.com/stashapp/stash). Lynx Theme styles the navigation, cards, filters, detail pages and video player. The theme is based in part on [Refract](https://github.com/ordureconnoisseur/stash-refract) and includes substantial Lynx-specific styling and behavior.
 
 The theme is one Stash UI plugin. Other Lynx plugins are separate projects and are **not required** to install it.

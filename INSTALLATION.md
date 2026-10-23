@@ -1,5 +1,8 @@
 # Installation and upgrades
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** Back up your configuration, database and affected files before installing or updating. Test in a separate Stash instance first. The software is provided AS IS, subject to the applicable component licenses. Read the [full disclaimer](DISCLAIMER.md).
+
 Install only the Lynx components you want. This repository is a collection of separate themes, plugins and companion scrapers, not one all-in-one Stash plugin.
 
 [Suite overview](README.md) · [Credits and licenses](CREDITS.md)

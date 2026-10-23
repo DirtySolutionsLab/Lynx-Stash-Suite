@@ -1,5 +1,8 @@
 # Lynx Scraping Suite
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 Search public performer profiles from **XL Girls** and **Mature.nl**, compare source data with your Stash metadata, and import the fields you choose.
 
 **Version 1.0.0-rc.4 — public preview**

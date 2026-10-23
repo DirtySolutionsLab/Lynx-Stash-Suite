@@ -1,5 +1,8 @@
 # Lynx Scene Card
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 Custom scene titles, performer and tag chips, compact overflow lists and portrait previews for Stash.
 
 **Version 0.1.9 — public preview**

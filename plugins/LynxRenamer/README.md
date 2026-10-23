@@ -1,5 +1,8 @@
 # Lynx Renamer
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 Build filenames and destination folders from your scene metadata in Stash, with guided settings and a preview before you apply changes.
 
 **Version 1.1.1 — public preview**

@@ -12,6 +12,12 @@ A glass-inspired theme and a collection of practical tools for [Stash](https://g
 
 </div>
 
+> [!WARNING]
+> **NSFW content advisory.** Screenshots, videos, example metadata and linked previews may contain adult-oriented imagery, explicit titles or sexual terminology. Open previews only if you are comfortable viewing this material. Visual masking is not guaranteed to hide every detail.
+
+> [!WARNING]
+> **Pre-release software — use at your own risk.** Lynx themes, plugins and scrapers are experimental and provided **AS IS**, without warranties or guarantees. Back up your Stash configuration, database and affected files; test in a separate instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component licenses, the maintainer accepts no liability for loss or damage arising from their use. Read the [full disclaimer](DISCLAIMER.md).
+
 ---
 
 ## Welcome to Lynx
@@ -22,7 +28,7 @@ This is my first GitHub project. I am new to publishing code, but I have been an
 
 Feedback, reproducible bug reports and suggestions are welcome.
 
-> **Public previews:** these projects are under active development. Read each component's release notes, back up your configuration and database, and test changes on a small selection before enabling automation.
+Read each component's release notes and installation guide before use. See the [pre-release disclaimer and content advisory](DISCLAIMER.md).
 
 ## Quick navigation
 

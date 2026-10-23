@@ -1,5 +1,8 @@
 # Lynx Performer Suite
 
+> [!WARNING]
+> **Pre-release software — use at your own risk.** This component is experimental and provided **AS IS**, without warranties or guarantees. It may cause errors, compatibility problems or unintended changes to your Stash installation or data. Back up your configuration, database and any affected files, and test in a separate Stash instance before enabling automatic or bulk operations. To the extent permitted by applicable law and the component's license, the maintainer accepts no liability for loss or damage arising from its use.
+
 A Stash plugin for reviewing performer metadata, maintaining attribute tags, transferring tags and performer associations, matching performers to images or galleries, and displaying supporting images on performer pages.
 
 This plugin works independently of Lynx Theme. Each feature has its own enable switch in **Settings → Plugins → Lynx Performer Suite**.
