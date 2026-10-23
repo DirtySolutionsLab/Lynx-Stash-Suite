@@ -1,0 +1,647 @@
+.lynx-settings-editor-open {
+  overflow: hidden !important;
+}
+
+.lynx-settings-editor-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147482900 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 1rem !important;
+  background: rgba(3, 7, 13, 0.78) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.lynx-settings-editor {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(1100px, calc(100vw - 2rem)) !important;
+  height: min(820px, calc(100vh - 2rem)) !important;
+  min-height: 420px !important;
+  overflow: hidden !important;
+  color: #f5f8ff !important;
+  border: 1px solid rgba(120, 158, 220, 0.34) !important;
+  border-radius: 1.15rem !important;
+  background: linear-gradient(145deg, rgba(28, 35, 48, 0.99), rgba(9, 13, 20, 0.995)) !important;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.64), 0 0 34px rgba(77, 141, 255, 0.14) !important;
+}
+
+.lynx-settings-editor__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  flex: 0 0 auto !important;
+  padding: 1rem 1.1rem 0.9rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+  background: linear-gradient(90deg, rgba(77, 141, 255, 0.12), transparent 54%) !important;
+}
+
+.lynx-settings-editor__title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+
+.lynx-settings-editor__icon {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 2.55rem !important;
+  width: 2.55rem !important;
+  height: 2.55rem !important;
+  color: #fff !important;
+  font: 800 0.9rem/1 ui-monospace, SFMono-Regular, Consolas, monospace !important;
+  border: 1px solid rgba(93, 151, 255, 0.72) !important;
+  border-radius: 0.82rem !important;
+  background: rgba(52, 105, 200, 0.24) !important;
+  box-shadow: inset 0 0 18px rgba(77, 141, 255, 0.12) !important;
+}
+
+.lynx-settings-editor__title {
+  margin: 0 !important;
+  color: #ffd83d !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+}
+
+.lynx-settings-editor__subtitle {
+  margin: 0.2rem 0 0 !important;
+  color: rgba(226, 233, 245, 0.68) !important;
+  font-size: 0.82rem !important;
+}
+
+.lynx-settings-editor__close {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 2.35rem !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
+  padding: 0 !important;
+  color: rgba(242, 246, 255, 0.76) !important;
+  font-size: 1.55rem !important;
+  line-height: 1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+}
+
+.lynx-settings-editor__close:hover {
+  color: #fff !important;
+  border-color: rgba(255, 216, 61, 0.65) !important;
+  background: rgba(255, 216, 61, 0.1) !important;
+}
+
+.lynx-settings-editor__toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  flex: 0 0 auto !important;
+  min-height: 3.15rem !important;
+  padding: 0.65rem 1rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  background: rgba(5, 8, 13, 0.42) !important;
+}
+
+.lynx-settings-editor__enabled {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+}
+
+.lynx-settings-editor__enabled input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.lynx-settings-editor__switch {
+  position: relative !important;
+  width: 2.25rem !important;
+  height: 1.25rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  transition: 140ms ease !important;
+}
+
+.lynx-settings-editor__switch::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0.16rem !important;
+  left: 0.17rem !important;
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+  border-radius: 50% !important;
+  background: rgba(235, 241, 251, 0.72) !important;
+  transition: 140ms ease !important;
+}
+
+.lynx-settings-editor__enabled input:checked + .lynx-settings-editor__switch {
+  border-color: rgba(77, 141, 255, 0.75) !important;
+  background: rgba(77, 141, 255, 0.42) !important;
+  box-shadow: 0 0 12px rgba(77, 141, 255, 0.2) !important;
+}
+
+.lynx-settings-editor__enabled input:checked + .lynx-settings-editor__switch::after {
+  transform: translateX(0.98rem) !important;
+  background: #fff !important;
+}
+
+.lynx-settings-editor__enabled input:focus-visible + .lynx-settings-editor__switch {
+  outline: 2px solid #ffd83d !important;
+  outline-offset: 2px !important;
+}
+
+.lynx-settings-editor__enabled-text {
+  color: rgba(239, 244, 253, 0.86) !important;
+  font-size: 0.82rem !important;
+  font-weight: 750 !important;
+}
+
+.lynx-settings-editor__hint {
+  color: rgba(204, 216, 235, 0.5) !important;
+  font-size: 0.76rem !important;
+}
+
+.lynx-settings-editor__textarea {
+  display: block !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 1rem 1.1rem !important;
+  resize: none !important;
+  overflow: auto !important;
+  color: #eaf1ff !important;
+  caret-color: #ffd83d !important;
+  font: 500 0.84rem/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace !important;
+  tab-size: 2 !important;
+  white-space: pre !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(77, 141, 255, 0.035), transparent 4rem),
+    #080c12 !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025) !important;
+  scrollbar-color: rgba(88, 143, 241, 0.72) rgba(255, 255, 255, 0.045) !important;
+}
+
+.lynx-settings-editor__textarea:focus {
+  background:
+    linear-gradient(90deg, rgba(77, 141, 255, 0.055), transparent 4rem),
+    #080c12 !important;
+}
+
+.lynx-settings-editor__footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  flex: 0 0 auto !important;
+  min-height: 4.1rem !important;
+  padding: 0.75rem 1rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.085) !important;
+  background: rgba(15, 20, 29, 0.96) !important;
+}
+
+.lynx-settings-editor__status {
+  color: rgba(200, 212, 231, 0.58) !important;
+  font-size: 0.76rem !important;
+}
+
+.lynx-settings-editor__status.is-dirty {
+  color: #ffd83d !important;
+}
+
+.lynx-settings-editor__buttons {
+  display: flex !important;
+  gap: 0.55rem !important;
+  flex: 0 0 auto !important;
+}
+
+.lynx-settings-review-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147482900 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 1rem !important;
+  background: rgba(3, 7, 13, 0.78) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.lynx-settings-review {
+  --lynx-settings-accent: var(--accent-color, #4d8dff);
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(1180px, calc(100vw - 2rem)) !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow: hidden !important;
+  color: #f5f8ff !important;
+  border: 1px solid rgba(120, 158, 220, 0.32) !important;
+  border-radius: 1.15rem !important;
+  background:
+    linear-gradient(145deg, rgba(28, 35, 48, 0.98), rgba(10, 14, 21, 0.99)) !important;
+  box-shadow:
+    0 26px 80px rgba(0, 0, 0, 0.62),
+    0 0 32px rgba(77, 141, 255, 0.13) !important;
+}
+
+.lynx-settings-review__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  flex: 0 0 auto !important;
+  padding: 1rem 1.1rem 0.9rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+  background: linear-gradient(90deg, rgba(77, 141, 255, 0.11), transparent 52%) !important;
+}
+
+.lynx-settings-review__title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+
+.lynx-settings-review__icon {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 2.55rem !important;
+  width: 2.55rem !important;
+  height: 2.55rem !important;
+  color: #fff !important;
+  font-size: 1.35rem !important;
+  border: 1px solid rgba(93, 151, 255, 0.72) !important;
+  border-radius: 0.82rem !important;
+  background: rgba(52, 105, 200, 0.24) !important;
+  box-shadow: inset 0 0 18px rgba(77, 141, 255, 0.12) !important;
+}
+
+.lynx-settings-review__title {
+  margin: 0 !important;
+  color: #ffd83d !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+}
+
+.lynx-settings-review__subtitle {
+  margin: 0.2rem 0 0 !important;
+  color: rgba(226, 233, 245, 0.68) !important;
+  font-size: 0.82rem !important;
+}
+
+.lynx-settings-review__close {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 2.35rem !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
+  padding: 0 !important;
+  color: rgba(242, 246, 255, 0.76) !important;
+  font-size: 1.55rem !important;
+  line-height: 1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+}
+
+.lynx-settings-review__close:hover {
+  color: #fff !important;
+  border-color: rgba(255, 216, 61, 0.65) !important;
+  background: rgba(255, 216, 61, 0.1) !important;
+}
+
+.lynx-settings-filters {
+  display: flex !important;
+  gap: 0.55rem !important;
+  flex: 0 0 auto !important;
+  padding: 0.75rem 1rem !important;
+  overflow-x: auto !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  background: rgba(5, 8, 13, 0.42) !important;
+}
+
+.lynx-settings-filter {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex: 0 0 auto !important;
+  min-height: 2.25rem !important;
+  padding: 0.4rem 0.7rem !important;
+  color: rgba(232, 238, 249, 0.72) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+}
+
+.lynx-settings-filter:hover:not(:disabled),
+.lynx-settings-filter.is-active {
+  color: #fff !important;
+  border-color: rgba(77, 141, 255, 0.68) !important;
+  background: rgba(77, 141, 255, 0.18) !important;
+}
+
+.lynx-settings-filter:disabled {
+  opacity: 0.38 !important;
+}
+
+.lynx-settings-filter__count,
+.lynx-settings-count {
+  display: inline-grid !important;
+  place-items: center !important;
+  min-width: 1.45rem !important;
+  height: 1.45rem !important;
+  padding: 0 0.35rem !important;
+  color: #111722 !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  border-radius: 999px !important;
+  background: #ffd83d !important;
+}
+
+.lynx-settings-review__content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  padding: 1rem !important;
+  overflow: auto !important;
+  scrollbar-color: rgba(88, 143, 241, 0.72) rgba(255, 255, 255, 0.045) !important;
+}
+
+.lynx-settings-section + .lynx-settings-section {
+  margin-top: 1.35rem !important;
+  padding-top: 1.35rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
+}
+
+.lynx-settings-section__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  margin-bottom: 0.7rem !important;
+}
+
+.lynx-settings-section__title {
+  margin: 0 !important;
+  color: #f6f9ff !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+}
+
+.lynx-settings-section__description {
+  margin: 0.18rem 0 0 !important;
+  color: rgba(220, 229, 244, 0.62) !important;
+  font-size: 0.78rem !important;
+}
+
+.lynx-settings-pair {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0.75rem !important;
+}
+
+.lynx-settings-pair + .lynx-settings-pair,
+.lynx-settings-single + .lynx-settings-single {
+  margin-top: 0.75rem !important;
+}
+
+.lynx-settings-single {
+  max-width: calc(50% - 0.375rem) !important;
+}
+
+.lynx-settings-scene {
+  display: grid !important;
+  grid-template-columns: minmax(145px, 36%) minmax(0, 1fr) !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.095) !important;
+  border-radius: 0.9rem !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+}
+
+.lynx-settings-scene__media {
+  position: relative !important;
+  display: block !important;
+  min-height: 100% !important;
+  overflow: hidden !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #070a0f !important;
+}
+
+.lynx-settings-scene__image,
+.lynx-settings-scene__placeholder {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 185px !important;
+  object-fit: cover !important;
+}
+
+.lynx-settings-scene__placeholder {
+  display: grid !important;
+  place-items: center !important;
+  color: rgba(221, 229, 242, 0.43) !important;
+  font-size: 0.8rem !important;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(77, 141, 255, 0.15), transparent 55%),
+    #080c13 !important;
+}
+
+.lynx-settings-scene__badge {
+  position: absolute !important;
+  top: 0.55rem !important;
+  left: 0.55rem !important;
+  padding: 0.25rem 0.48rem !important;
+  color: #10151e !important;
+  font-size: 0.68rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  border-radius: 999px !important;
+  background: #ffd83d !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.38) !important;
+}
+
+.lynx-settings-scene__body {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  padding: 0.75rem !important;
+}
+
+.lynx-settings-scene__title {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  color: #ffd83d !important;
+  font-size: 0.94rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  text-decoration: none !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+.lynx-settings-scene__title:hover {
+  color: #fff0a0 !important;
+}
+
+.lynx-settings-scene__details {
+  display: grid !important;
+  gap: 0.3rem !important;
+  margin-top: 0.6rem !important;
+}
+
+.lynx-settings-detail {
+  display: grid !important;
+  grid-template-columns: 4.2rem minmax(0, 1fr) !important;
+  gap: 0.5rem !important;
+  min-width: 0 !important;
+  font-size: 0.72rem !important;
+}
+
+.lynx-settings-detail__label {
+  color: rgba(190, 204, 225, 0.48) !important;
+  font-weight: 700 !important;
+}
+
+.lynx-settings-detail__value {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  color: rgba(235, 241, 251, 0.76) !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.lynx-settings-detail__value.is-mono {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important;
+  font-size: 0.68rem !important;
+}
+
+.lynx-settings-scene__actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  margin-top: auto !important;
+  padding-top: 0.7rem !important;
+}
+
+.lynx-settings-action {
+  min-height: 2rem !important;
+  padding: 0.35rem 0.58rem !important;
+  color: rgba(237, 243, 253, 0.82) !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(110, 157, 235, 0.32) !important;
+  border-radius: 0.58rem !important;
+  background: rgba(77, 141, 255, 0.1) !important;
+}
+
+.lynx-settings-action:hover:not(:disabled) {
+  color: #fff !important;
+  border-color: rgba(94, 153, 255, 0.76) !important;
+  background: rgba(77, 141, 255, 0.22) !important;
+}
+
+.lynx-settings-action.is-danger {
+  color: #ffb4be !important;
+  border-color: rgba(255, 89, 111, 0.31) !important;
+  background: rgba(166, 37, 55, 0.12) !important;
+}
+
+.lynx-settings-action.is-danger:hover:not(:disabled) {
+  color: #fff !important;
+  border-color: rgba(255, 92, 115, 0.72) !important;
+  background: rgba(190, 42, 62, 0.28) !important;
+}
+
+.lynx-settings-action:disabled {
+  opacity: 0.38 !important;
+}
+
+@media (max-width: 850px) {
+  .lynx-settings-pair {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .lynx-settings-single {
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .lynx-settings-editor-overlay,
+  .lynx-settings-review-overlay {
+    padding: 0 !important;
+  }
+
+  .lynx-settings-editor,
+  .lynx-settings-review {
+    width: 100vw !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+
+  .lynx-settings-editor__subtitle,
+  .lynx-settings-editor__hint {
+    display: none !important;
+  }
+
+  .lynx-settings-editor__textarea {
+    padding: 0.8rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .lynx-settings-editor__footer {
+    align-items: stretch !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+  }
+
+  .lynx-settings-editor__buttons > button {
+    flex: 1 1 0 !important;
+  }
+
+  .lynx-settings-review__content {
+    padding: 0.7rem !important;
+  }
+
+  .lynx-settings-scene {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .lynx-settings-scene__media {
+    aspect-ratio: 16 / 9 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .lynx-settings-scene__image,
+  .lynx-settings-scene__placeholder {
+    min-height: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lynx-settings-editor-overlay,
+  .lynx-settings-editor,
+  .lynx-settings-review-overlay,
+  .lynx-settings-review,
+  .lynx-settings-action,
+  .lynx-settings-filter {
+    transition: none !important;
+    animation: none !important;
+  }
+}

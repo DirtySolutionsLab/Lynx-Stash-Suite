@@ -1,0 +1,497 @@
+/* Lynx Renamer — visual settings panel */
+#lynx-renamer-settings .lrx-intro,#lynx-renamer-settings .lrx-scene-preview{padding:1.1rem 1.4rem;border-bottom:1px solid #334459;background:#141c26;color:#bfcde0}
+#lynx-renamer-settings .lrx-intro ol{display:flex;flex-wrap:wrap;gap:.8rem 2rem;padding-left:1.2rem}
+#lynx-renamer-settings .lrx-intro li{flex:1;min-width:200px}
+#lynx-renamer-settings .lrx-intro strong,#lynx-renamer-settings .lrx-scene-preview h3{color:#ffd43b}
+#lynx-renamer-settings [data-workflow-status]{padding:.7rem;border-left:3px solid #79aaff;background:#1a293a;font-size:.85rem;line-height:1.5}
+#lynx-renamer-settings .lrx-guided-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:end;margin:.65rem 0}
+#lynx-renamer-settings .lrx-guided-row>.lrx-field{flex:1;min-width:180px}
+#lynx-renamer-settings .lrx-options{padding:.8rem;border:1px solid #334459;border-radius:9px;margin:.5rem 0}
+#lynx-renamer-settings .lrx-options summary{cursor:pointer;color:#c3d9f4;font-weight:600;margin-bottom:.6rem}
+#lynx-renamer-settings .lrx-options .lrx-field{margin:.75rem 0}
+#lynx-renamer-settings .lrx-tokens code{display:block;font-size:.7rem;opacity:.7;color:inherit}
+#lynx-renamer-settings .lrx-rule-list .lrx-rule-row{grid-template-columns:minmax(140px,1fr) minmax(180px,1.6fr) 110px;align-items:end}
+#lynx-renamer-settings .lrx-rule-tools{display:flex;gap:3px;align-items:center}
+#lynx-renamer-settings .lrx-rule-tools button{width:32px;min-width:32px;padding:5px}
+#lynx-renamer-settings .lrx-preview-file{border:1px solid #385370;border-radius:9px;background:#102032;padding:1rem;margin:.8rem 0}
+#lynx-renamer-settings .lrx-preview-file dl{display:grid;grid-template-columns:150px minmax(0,1fr);gap:.5rem;margin:.6rem 0}
+#lynx-renamer-settings .lrx-preview-file dd{margin:0;overflow-wrap:anywhere;white-space:pre-wrap}
+#lynx-renamer-settings .lrx-preview-file code{color:#b8d8ff}
+#lynx-renamer-settings .lrx-scene-preview small{color:#a5b7cc}
+@media(max-width:800px){#lynx-renamer-settings .lrx-rule-list .lrx-rule-row{grid-template-columns:1fr}#lynx-renamer-settings .lrx-preview-file dl{grid-template-columns:1fr}#lynx-renamer-settings .lrx-guided-row{align-items:stretch}}
+
+#lynx-renamer-settings {
+  --lrx-bg: rgba(12, 17, 23, 0.97);
+  --lrx-panel: rgba(22, 29, 38, 0.94);
+  --lrx-panel-2: rgba(10, 15, 21, 0.92);
+  --lrx-border: rgba(126, 153, 188, 0.24);
+  --lrx-border-strong: rgba(75, 141, 248, 0.58);
+  --lrx-blue: #4b8df8;
+  --lrx-blue-soft: rgba(75, 141, 248, 0.16);
+  --lrx-yellow: #ffd43b;
+  --lrx-text: #f3f6fa;
+  --lrx-muted: #9ca9b8;
+  --lrx-green: #38a169;
+  --lrx-red: #ef5b62;
+  color: var(--lrx-text);
+  margin: 0 0 2rem;
+}
+
+#lynx-renamer-settings * {
+  box-sizing: border-box;
+}
+
+#lynx-renamer-settings .lrx-shell {
+  overflow: hidden;
+  background: var(--lrx-bg);
+  border: 1px solid var(--lrx-border);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 24px rgba(75, 141, 248, 0.08);
+}
+
+#lynx-renamer-settings .lrx-header,
+#lynx-renamer-settings .lrx-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(14, 20, 27, 0.96);
+}
+
+#lynx-renamer-settings .lrx-header {
+  border-bottom: 1px solid var(--lrx-border);
+}
+
+#lynx-renamer-settings .lrx-footer {
+  border-top: 1px solid var(--lrx-border);
+}
+
+#lynx-renamer-settings .lrx-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+#lynx-renamer-settings .lrx-logo {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  color: #fff;
+  background: radial-gradient(circle at 30% 25%, #7bb0ff, #376fd2 58%, #193d7b);
+  border: 2px solid #72a9ff;
+  border-radius: 50%;
+  font-weight: 800;
+  box-shadow: 0 0 14px rgba(75, 141, 248, 0.5);
+}
+
+#lynx-renamer-settings h2,
+#lynx-renamer-settings h3,
+#lynx-renamer-settings p {
+  margin: 0;
+}
+
+#lynx-renamer-settings h2 {
+  color: var(--lrx-yellow);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+#lynx-renamer-settings h3 {
+  color: var(--lrx-text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#lynx-renamer-settings .lrx-brand p,
+#lynx-renamer-settings .lrx-section-title p,
+#lynx-renamer-settings .lrx-help {
+  color: var(--lrx-muted);
+  font-size: 0.8rem;
+}
+
+#lynx-renamer-settings .lrx-hook {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  color: #baf1ce;
+  background: rgba(56, 161, 105, 0.14);
+  border: 1px solid rgba(56, 161, 105, 0.45);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#lynx-renamer-settings .lrx-hook input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#lynx-renamer-settings .lrx-hook-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--lrx-green);
+  border-radius: 50%;
+  box-shadow: 0 0 7px rgba(56, 161, 105, 0.75);
+}
+
+#lynx-renamer-settings.hook-off .lrx-hook {
+  color: #ffc7ca;
+  background: rgba(239, 91, 98, 0.12);
+  border-color: rgba(239, 91, 98, 0.4);
+}
+
+#lynx-renamer-settings.hook-off .lrx-hook-dot {
+  background: var(--lrx-red);
+  box-shadow: 0 0 7px rgba(239, 91, 98, 0.65);
+}
+
+#lynx-renamer-settings .lrx-body {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  min-height: 510px;
+}
+
+#lynx-renamer-settings .lrx-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem;
+  background: rgba(15, 21, 29, 0.82);
+  border-right: 1px solid var(--lrx-border);
+}
+
+#lynx-renamer-settings .lrx-nav button {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  color: var(--lrx-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.14s ease;
+}
+
+#lynx-renamer-settings .lrx-nav button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#lynx-renamer-settings .lrx-nav button.active {
+  color: #fff;
+  background: var(--lrx-blue-soft);
+  border-color: rgba(75, 141, 248, 0.38);
+  box-shadow: inset 3px 0 var(--lrx-blue);
+}
+
+#lynx-renamer-settings .lrx-content {
+  min-width: 0;
+  padding: 1rem;
+}
+
+#lynx-renamer-settings .lrx-tab {
+  display: none;
+}
+
+#lynx-renamer-settings .lrx-tab.active {
+  display: block;
+}
+
+#lynx-renamer-settings .lrx-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+#lynx-renamer-settings .lrx-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.8fr);
+  gap: 0.9rem;
+}
+
+#lynx-renamer-settings .lrx-card,
+#lynx-renamer-settings .lrx-preview {
+  background: var(--lrx-panel);
+  border: 1px solid var(--lrx-border);
+  border-radius: 12px;
+  padding: 0.95rem;
+}
+
+#lynx-renamer-settings .lrx-preview {
+  align-self: start;
+  background: var(--lrx-panel-2);
+  position: sticky;
+  top: 0.5rem;
+}
+
+#lynx-renamer-settings .lrx-preview > span,
+#lynx-renamer-settings .lrx-preview small {
+  display: block;
+  color: var(--lrx-muted);
+  font-size: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+#lynx-renamer-settings .lrx-preview strong {
+  display: block;
+  color: var(--lrx-yellow);
+  overflow-wrap: anywhere;
+  margin-bottom: 1rem;
+}
+
+#lynx-renamer-settings .lrx-preview code {
+  display: block;
+  color: #94c5ff;
+  background: transparent;
+  padding: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+#lynx-renamer-settings .lrx-form-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+#lynx-renamer-settings .lrx-inline,
+#lynx-renamer-settings .lrx-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+#lynx-renamer-settings .lrx-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#lynx-renamer-settings .lrx-field {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  color: var(--lrx-text);
+  font-size: 0.82rem;
+}
+
+#lynx-renamer-settings .lrx-field > span {
+  color: #dce4ee;
+  font-weight: 600;
+}
+
+#lynx-renamer-settings input[type="text"],
+#lynx-renamer-settings input[type="number"],
+#lynx-renamer-settings select,
+#lynx-renamer-settings textarea {
+  width: 100%;
+  min-height: 36px;
+  color: var(--lrx-text) !important;
+  background: rgba(7, 11, 16, 0.84) !important;
+  border: 1px solid var(--lrx-border) !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  padding: 0.45rem 0.6rem !important;
+}
+
+#lynx-renamer-settings textarea {
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+#lynx-renamer-settings input:focus,
+#lynx-renamer-settings select:focus,
+#lynx-renamer-settings textarea:focus {
+  border-color: var(--lrx-blue) !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 2px rgba(75, 141, 248, 0.16) !important;
+}
+
+#lynx-renamer-settings textarea.invalid {
+  border-color: var(--lrx-red) !important;
+}
+
+#lynx-renamer-settings .lrx-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: #dde5ef;
+  cursor: pointer;
+}
+
+#lynx-renamer-settings .lrx-switch input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  accent-color: var(--lrx-blue);
+}
+
+#lynx-renamer-settings .lrx-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+#lynx-renamer-settings .lrx-tokens button {
+  padding: 0.25rem 0.45rem;
+  color: #c4d9ff;
+  background: rgba(75, 141, 248, 0.1);
+  border: 1px solid rgba(75, 141, 248, 0.3);
+  border-radius: 999px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+#lynx-renamer-settings .lrx-tokens button:hover {
+  color: #fff;
+  border-color: var(--lrx-blue);
+  background: rgba(75, 141, 248, 0.2);
+}
+
+#lynx-renamer-settings .lrx-rule-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+#lynx-renamer-settings .lrx-rule-row,
+#lynx-renamer-settings .lrx-exclude-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.6fr) minmax(220px, 1.4fr) 34px;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#lynx-renamer-settings .lrx-exclude-row {
+  grid-template-columns: minmax(120px, 0.65fr) 95px minmax(180px, 1.2fr) 34px;
+}
+
+#lynx-renamer-settings .lrx-empty {
+  color: var(--lrx-muted);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+#lynx-renamer-settings .lrx-button,
+#lynx-renamer-settings .lrx-icon-button {
+  min-height: 35px;
+  color: var(--lrx-text);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--lrx-border);
+  border-radius: 7px;
+  padding: 0.42rem 0.7rem;
+  cursor: pointer;
+}
+
+#lynx-renamer-settings .lrx-button:hover,
+#lynx-renamer-settings .lrx-icon-button:hover {
+  border-color: var(--lrx-border-strong);
+  background: rgba(75, 141, 248, 0.1);
+}
+
+#lynx-renamer-settings .lrx-button.primary {
+  color: #fff;
+  background: linear-gradient(135deg, #4b8df8, #376fd2);
+  border-color: #6da5ff;
+  box-shadow: 0 0 12px rgba(75, 141, 248, 0.24);
+}
+
+#lynx-renamer-settings .lrx-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+#lynx-renamer-settings .lrx-icon-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  min-height: 34px;
+  padding: 0;
+  font-size: 1.15rem;
+}
+
+#lynx-renamer-settings .lrx-icon-button.danger {
+  color: #ffc1c4;
+  border-color: rgba(239, 91, 98, 0.3);
+}
+
+#lynx-renamer-settings .lrx-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#lynx-renamer-settings .lrx-message {
+  color: var(--lrx-muted);
+  font-size: 0.8rem;
+}
+
+#lynx-renamer-settings .lrx-message[data-type="success"] {
+  color: #a9eac0;
+}
+
+#lynx-renamer-settings .lrx-message[data-type="error"] {
+  color: #ffb0b4;
+}
+
+@media (max-width: 900px) {
+  #lynx-renamer-settings .lrx-body {
+    grid-template-columns: 1fr;
+  }
+
+  #lynx-renamer-settings .lrx-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--lrx-border);
+  }
+
+  #lynx-renamer-settings .lrx-nav button {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  #lynx-renamer-settings .lrx-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  #lynx-renamer-settings .lrx-preview {
+    position: static;
+  }
+}
+
+@media (max-width: 620px) {
+  #lynx-renamer-settings .lrx-header,
+  #lynx-renamer-settings .lrx-footer,
+  #lynx-renamer-settings .lrx-section-title {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #lynx-renamer-settings .lrx-inline,
+  #lynx-renamer-settings .lrx-grid-3,
+  #lynx-renamer-settings .lrx-rule-row,
+  #lynx-renamer-settings .lrx-exclude-row {
+    grid-template-columns: 1fr;
+  }
+
+  #lynx-renamer-settings .lrx-icon-button {
+    width: 100%;
+  }
+
+  #lynx-renamer-settings .lrx-actions {
+    justify-content: stretch;
+  }
+
+  #lynx-renamer-settings .lrx-actions .lrx-button {
+    flex: 1 1 auto;
+  }
+}

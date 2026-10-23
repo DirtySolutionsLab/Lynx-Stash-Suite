@@ -1,1 +1,0 @@
-Blue=Blue Eyes;Brown=Brown Eyes;Green=Green Eyes;Hazel=Hazel Eyes;Grey=Grey Eyes;Gray=Grey Eyes;Amber=Amber Eyes

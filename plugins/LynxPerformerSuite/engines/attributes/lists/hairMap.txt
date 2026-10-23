@@ -1,0 +1,1 @@
+Blonde=Blond;Blond=Blond;Brunette=Brunette;Black=Black Hair;Red=Red Hair;Redhead=Red Hair;Auburn=Auburn Hair;Brown=Brown Hair;Grey=Grey Hair;Gray=Grey Hair;White=White Hair;Bald=Bald;Various=Various Hair;Green=Green Hair;Blue=Blue Hair;Pink=Pink Hair;Purple=Purple Hair;Orange=Orange Hair;Silver=Silver Hair

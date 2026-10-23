@@ -1,0 +1,66 @@
+/* Scoped: no changes to native Tagger inputs or the rest of LynxTheme. */
+.lxg-source-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin: .45rem 0 0; padding: .3rem .7rem; border: 1px solid #426596;
+  border-radius: .65rem; background: #172334; color: #f4d83f; font-size: .82rem;
+  cursor: pointer; line-height: 1.3;
+}
+.lxg-source-button:hover { background: #203552; border-color: #609be8; }
+.lxg-dialog {
+  position: fixed; inset: 0; margin: auto; width: min(880px, calc(100vw - 32px));
+  max-width: 880px; max-height: calc(100vh - 32px); overflow: auto; box-sizing: border-box;
+  border: 1px solid #425067; border-radius: 18px; padding: 22px;
+  background: #171a20; color: #f1f3f8; box-shadow: 0 20px 70px #000a;
+  font-size: .95rem; text-align: left;
+}
+.lxg-dialog:not([open]) { display: none; }
+.lxg-dialog::backdrop { background: #000a; }
+.lxg-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+.lxg-dialog h2 { font-size: 1.18rem; margin: 0; color: #f4d83f; }
+.lxg-dialog h3 { font-size: 1.05rem; margin: 12px 0 6px; color: #f4d83f; }
+.lxg-dialog label { margin: 0; color: #edf1f8; }
+.lxg-dialog .lxg-search { display: flex; align-items: flex-end; gap: 12px; }
+.lxg-dialog .lxg-search label { flex: 1; min-width: 0; font-size: .86rem; }
+.lxg-dialog .lxg-search input {
+  display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 9px 12px;
+  background: #10141c !important; color: #f4f6fa !important; border: 1px solid #4b6080;
+  border-radius: 9px; min-height: 39px; font-size: .95rem;
+}
+.lxg-dialog button {
+  color: #eef4ff; background: #222c3b; border: 1px solid #4c6588; border-radius: 9px;
+  padding: 8px 12px; min-height: 39px; cursor: pointer; font-size: .9rem; line-height: 1.35;
+}
+.lxg-dialog button:hover { background: #304362; }
+.lxg-dialog button:disabled { opacity: .45; cursor: default; }
+.lxg-dialog .lxg-primary { background: #24466e; border-color: #6394d2; }
+.lxg-dialog a { color: #83b9ff; text-decoration: none; }
+.lxg-dialog a:hover { text-decoration: underline; }
+.lxg-dialog .lxg-status { font-size: .88rem; color: #bbcee7; margin: 14px 0; white-space: pre-wrap; }
+.lxg-dialog .lxg-note { color: #aeb9cb; font-size: .84rem; margin: 10px 0; }
+.lxg-dialog .lxg-result { display: block; width: 100%; text-align: left; margin: 7px 0; }
+.lxg-dialog .lxg-field {
+  display: grid; grid-template-columns: 1.1fr 1fr 1.1fr; gap: 12px; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid #303843; overflow-wrap: anywhere;
+}
+.lxg-dialog .lxg-field > label { display: flex; align-items: center; gap: 9px; }
+.lxg-dialog .lxg-field input { accent-color: #639de7; flex: 0 0 auto; width: 16px; height: 16px; }
+.lxg-dialog .lxg-field-header { color: #97a8bf; font-size: .8rem; }
+.lxg-dialog .lxg-image-cell { min-width: 0; }
+.lxg-dialog .lxg-image-cell img {
+  display: block; width: auto; max-width: 100%; height: 145px; object-fit: contain;
+  border-radius: 10px; background: #10141c; border: 1px solid #384557;
+}
+.lxg-dialog details { padding: 10px 0 15px; color: #acbcd2; font-size: .85rem; }
+.lxg-dialog summary { cursor: pointer; color: #f4d83f; margin-bottom: 7px; }
+.lxg-dialog :focus-visible, .lxg-source-button:focus-visible { outline: 2px solid #83b9ff; outline-offset: 3px; }
+@media (max-width: 580px) {
+  .lxg-dialog { padding: 15px; }
+  .lxg-dialog .lxg-search { flex-direction: column; align-items: stretch; }
+  .lxg-dialog .lxg-field { grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+  .lxg-dialog .lxg-field > label { grid-column: 1 / -1; }
+  .lxg-dialog .lxg-field-header { display: none; }
+  .lxg-dialog .lxg-field > span::before { content: 'Nu: '; color: #97a8bf; }
+  .lxg-dialog .lxg-field > strong::before { content: 'XL Girls: '; font-weight: 400; color: #97a8bf; }
+  .lxg-dialog .lxg-image-cell::before { display: block; content: 'Nuvarande bild'; color: #97a8bf; font-size: .8rem; margin-bottom: 6px; }
+  .lxg-dialog .lxg-image-cell:last-child::before { content: 'XL Girls'; }
+}

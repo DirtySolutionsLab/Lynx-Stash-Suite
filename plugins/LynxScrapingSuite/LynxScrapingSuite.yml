@@ -1,0 +1,69 @@
+name: Lynx Scraping Suite
+description: Search XL Girls and Mature.nl from Performer Tagger, compare metadata and import selected fields or profile images.
+version: 1.0.0-rc.4
+settings:
+  mature_enabled:
+    displayName: Enable Mature.nl
+    description: Add Mature.nl search and reviewed imports to Performer Tagger. Reload the page after changing this switch.
+    type: BOOLEAN
+  mature__bodyField:
+    displayName: Body Type custom field
+    description: 'Default: Body Type. Stores the source category, optionally translated by Body Type mappings.'
+    type: STRING
+  mature__breastField:
+    displayName: Breast Size custom field
+    description: 'Default: Breast Size. Stores a size category, not a bra cup or band size.'
+    type: STRING
+  mature__bodyMap:
+    displayName: Body Type mappings
+    description: 'Optional source=value rules, separated by semicolons. Example: Normal weight=Average;Slim=Slim. Empty means preserve the source wording. Existing tag rules must recognize the imported value.'
+    type: STRING
+  mature__breastMap:
+    displayName: Breast Size mappings
+    description: 'Optional source=value rules. Example: Small breasts=Small Tits;Normal breasts=Normal Tits;Big breasts=Big Tits;Huge breasts=Huge Tits. Empty preserves the source wording.'
+    type: STRING
+  xl_enabled:
+    displayName: Enable XL Girls
+    type: BOOLEAN
+    description: Add XL Girls search and reviewed imports to Performer Tagger. Reload the page after changing this switch.
+  xl__automaticBraSize:
+    displayName: Automatic bra size
+    description: Fill Bra Size from a unique saved XL Girls profile when relevant performer metadata changes. Off unless explicitly enabled.
+    type: BOOLEAN
+  xl__replaceBraSize:
+    displayName: Replace bra size
+    description: Allow the automatic hook to replace an existing Bra Size value. Off preserves existing values.
+    type: BOOLEAN
+  xl__verification:
+    displayName: XL Girls public-site verification cookie
+    description: Send the existing tsg_verified=true cookie with public metadata requests. It does not provide an account login. Enabled when no explicit value is saved.
+    type: BOOLEAN
+  xl__bodyField:
+    displayName: Body Type field name
+    description: Custom field storage name. Changing this name does not move existing
+      stored data. Keep the current name unless you intend to migrate the field.
+    type: STRING
+  xl__braField:
+    displayName: Bra Size field name
+    description: Custom field storage name. Changing this name does not move existing
+      stored data. Keep the current name unless you intend to migrate the field.
+    type: STRING
+ui:
+  javascript:
+  - runtime.js
+  - settings-ui.js
+  - loader.js
+  css:
+  - settings-ui.css
+  assets:
+    /: .
+exec:
+- python
+- '{pluginDir}/dispatch.py'
+interface: raw
+hooks:
+- name: Lynx module update queue
+  description: Queue changes for enabled modules only.
+  triggeredBy:
+  - Performer.Create.Post
+  - Performer.Update.Post

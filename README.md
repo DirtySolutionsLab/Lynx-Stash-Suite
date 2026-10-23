@@ -8,7 +8,7 @@
 
 A glass-inspired theme and a collection of practical tools for [Stash](https://github.com/stashapp/stash).
 
-[Browse the plugins](#explore-the-suite) · [Download releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) · [Installation](#installation) · [Report an issue](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/issues)
+[Browse the plugins](#explore-the-suite) · [Download releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) · [Installation guide](INSTALLATION.md) · [Credits](CREDITS.md) · [Report an issue](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/issues)
 
 </div>
 
@@ -43,14 +43,14 @@ Feedback, reproducible bug reports and suggestions are welcome.
 
 | Component | What it adds | Documentation |
 | --- | --- | --- |
-| **Lynx Theme** | Dark glass styling for navigation, cards, filters, detail pages and the player. | [Read more](LynxTheme/README.md) |
-| **Lynx Performer Suite** | Attribute tags, tag transfer, performer matching, performer links and supporting images. | [Read more](LynxPerformerSuite/README.md) |
-| **Lynx Scene Card** | Custom titles, performer and tag chips, overflow lists and hover previews. | [Read more](LynxSceneCard/README.md) |
-| **Lynx Tools** | Context menus, image cropping and single-eye VR viewing modes. | [Read more](LynxTools/README.md) |
-| **Lynx Scraping Suite** | Performer scraping and reviewed batch imports from XL Girls and Mature.nl. | [Read more](LynxScrapingSuite/README.md) |
-| **Lynx Renamer** | Guided filename and destination rules, previews and optional automation. | [Read more](LynxRenamer/README.md) |
-| **Lynx Missing Performer Images** | Find, review and approve portraits for performers without an image. | [Read more](LynxMissingPerformerImages/README.md) |
-| **Lynx Default Tabs** | Open scenes, images and galleries on your preferred tab. | [Read more](LynxDefaultTabs/README.md) |
+| **Lynx Theme** | Dark glass styling for navigation, cards, filters, detail pages and the player. | [Read more](themes/LynxTheme/README.md) |
+| **Lynx Performer Suite** | Attribute tags, tag transfer, performer matching, performer links and supporting images. | [Read more](plugins/LynxPerformerSuite/README.md) |
+| **Lynx Scene Card** | Custom titles, performer and tag chips, overflow lists and hover previews. | [Read more](plugins/LynxSceneCard/README.md) |
+| **Lynx Tools** | Context menus, image cropping and single-eye VR viewing modes. | [Read more](plugins/LynxTools/README.md) |
+| **Lynx Scraping Suite** | Performer scraping and reviewed batch imports from XL Girls and Mature.nl. | [Read more](plugins/LynxScrapingSuite/README.md) |
+| **Lynx Renamer** | Guided filename and destination rules, previews and optional automation. | [Read more](plugins/LynxRenamer/README.md) |
+| **Lynx Missing Performer Images** | Find, review and approve portraits for performers without an image. | [Read more](plugins/LynxMissingPerformerImages/README.md) |
+| **Lynx Default Tabs** | Open scenes, images and galleries on your preferred tab. | [Read more](plugins/LynxDefaultTabs/README.md) |
 
 Download individual component ZIPs from [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases). Release titles identify the component; the repository's single “Latest” label does not necessarily identify the newest version of every plugin.
 
@@ -67,11 +67,11 @@ A dark, glass-inspired interface with colored navigation icons, compact cards an
 
 The theme handles presentation. The functional tools below are separate plugins and are not required to use the theme.
 
-<!-- Screenshot: upload docs/screenshots/lynx-theme.png, then uncomment:
-![Lynx Theme — navigation and library cards](docs/screenshots/lynx-theme.png)
+<!-- Screenshot: upload docs/screenshots/lynx-theme/scene-overview.png, then uncomment:
+![Lynx Theme — navigation and library cards](docs/screenshots/lynx-theme/scene-overview.png)
 -->
 
-[Documentation](LynxTheme/README.md) · [Installation](LynxTheme/INSTALLATION.md) · [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases)
+[Documentation](themes/LynxTheme/README.md) · [Installation](themes/LynxTheme/INSTALLATION.md) · [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases)
 
 ## Lynx Performer Suite
 
@@ -85,11 +85,11 @@ Keep performer information and related library items organized with modules you 
 
 Preview rule changes before applying them. Measurement-based categories are optional estimates, not objective descriptions of people.
 
-<!-- Screenshot: upload docs/screenshots/performer-suite.png, then uncomment:
-![Lynx Performer Suite — performer details and supporting images](docs/screenshots/performer-suite.png)
+<!-- Screenshot: upload docs/screenshots/performer-suite/supporting-images.png, then uncomment:
+![Lynx Performer Suite — performer details and supporting images](docs/screenshots/performer-suite/supporting-images.png)
 -->
 
-[Documentation](LynxPerformerSuite/README.md) · [Installation](LynxPerformerSuite/INSTALLATION.md) · [Rule formats](LynxPerformerSuite/RULE-FORMATS.md)
+[Documentation](plugins/LynxPerformerSuite/README.md) · [Installation](plugins/LynxPerformerSuite/INSTALLATION.md) · [Rule formats](plugins/LynxPerformerSuite/RULE-FORMATS.md)
 
 ## Lynx Scene Card
 
@@ -102,11 +102,11 @@ Bring more useful information into the scene grid without overcrowding each card
 
 Enable the card elements you want in plugin settings. Disable other plugins that replace the same scene-card components.
 
-<!-- Screenshot: upload docs/screenshots/scene-card.png, then uncomment:
-![Lynx Scene Card — performer chips and compact overflow](docs/screenshots/scene-card.png)
+<!-- Screenshot: upload docs/screenshots/scene-card/scene-cards.png, then uncomment:
+![Lynx Scene Card — performer chips and compact overflow](docs/screenshots/scene-card/scene-cards.png)
 -->
 
-[Documentation](LynxSceneCard/README.md) · [Installation](LynxSceneCard/INSTALLATION.md)
+[Documentation](plugins/LynxSceneCard/README.md) · [Installation](plugins/LynxSceneCard/INSTALLATION.md)
 
 ## Lynx Tools
 
@@ -119,11 +119,11 @@ Optional utilities for everyday actions in Stash.
 
 Display crops do not rewrite original image files. Saving a performer crop updates the performer's portrait. The VR viewer changes the visible region; it does not transcode media or guarantee smoother playback.
 
-<!-- Screenshot: upload docs/screenshots/lynx-tools.png, then uncomment:
-![Lynx Tools — searchable context-menu picker](docs/screenshots/lynx-tools.png)
+<!-- Screenshot: upload docs/screenshots/lynx-tools/performer-picker.png, then uncomment:
+![Lynx Tools — searchable context-menu picker](docs/screenshots/lynx-tools/performer-picker.png)
 -->
 
-[Documentation](LynxTools/README.md) · [Installation](LynxTools/INSTALLATION.md)
+[Documentation](plugins/LynxTools/README.md) · [Installation](plugins/LynxTools/INSTALLATION.md)
 
 ## Lynx Scraping Suite
 
@@ -140,11 +140,11 @@ Available data depends on the source profile and website access. Website changes
 
 **Install both parts:** the plugin belongs in Stash's plugins directory; the companion definitions in the repository's `scrapers` folder belong in Stash's scrapers directory.
 
-<!-- Screenshot: upload docs/screenshots/scraping-suite.png, then uncomment:
-![Lynx Scraping Suite — review source metadata before importing](docs/screenshots/scraping-suite.png)
+<!-- Screenshot: upload docs/screenshots/scraping-suite/batch-review.png, then uncomment:
+![Lynx Scraping Suite — review source metadata before importing](docs/screenshots/scraping-suite/batch-review.png)
 -->
 
-[Documentation](LynxScrapingSuite/README.md) · [Installation](LynxScrapingSuite/INSTALLATION.md) · [Companion scrapers](scrapers/)
+[Documentation](plugins/LynxScrapingSuite/README.md) · [Installation](plugins/LynxScrapingSuite/INSTALLATION.md) · [Companion scrapers](scrapers/)
 
 ## Lynx Renamer
 
@@ -157,11 +157,11 @@ Build scene filenames and destination folders from metadata using guided setting
 
 **Live operations rename or move files and update Stash's database directly.** Keep dry-run enabled while testing and back up your database and media before live processing.
 
-<!-- Screenshot: upload docs/screenshots/renamer.png, then uncomment:
-![Lynx Renamer — filename rules and path preview](docs/screenshots/renamer.png)
+<!-- Screenshot: upload docs/screenshots/renamer/filename-preview.png, then uncomment:
+![Lynx Renamer — filename rules and path preview](docs/screenshots/renamer/filename-preview.png)
 -->
 
-[Documentation](LynxRenamer/README.md) · [Installation](LynxRenamer/INSTALLATION.md) · [Rules](LynxRenamer/RULES.md)
+[Documentation](plugins/LynxRenamer/README.md) · [Installation](plugins/LynxRenamer/INSTALLATION.md) · [Rules](plugins/LynxRenamer/RULES.md)
 
 ## Lynx Missing Performer Images
 
@@ -174,11 +174,11 @@ Fill missing portrait slots with a review-first workflow.
 
 The review imports only the image, not other performer metadata. Google Images opens as an external search shortcut. Separate library assignment tasks use their own ranked candidates, not review-page selections.
 
-<!-- Screenshot: upload docs/screenshots/missing-performer-images.png, then uncomment:
-![Lynx Missing Performer Images — review and approve portraits](docs/screenshots/missing-performer-images.png)
+<!-- Screenshot: upload docs/screenshots/missing-performer-images/portrait-review.png, then uncomment:
+![Lynx Missing Performer Images — review and approve portraits](docs/screenshots/missing-performer-images/portrait-review.png)
 -->
 
-[Documentation](LynxMissingPerformerImages/README.md) · [Installation](LynxMissingPerformerImages/INSTALLATION.md) · [Credits and source history](LynxMissingPerformerImages/CREDITS.md)
+[Documentation](plugins/LynxMissingPerformerImages/README.md) · [Installation](plugins/LynxMissingPerformerImages/INSTALLATION.md) · [Credits and source history](plugins/LynxMissingPerformerImages/CREDITS.md)
 
 ## Lynx Default Tabs
 
@@ -186,11 +186,13 @@ Open scenes, images and galleries on your preferred tab, including the edit tab 
 
 A small workflow utility based on **edit-unorganized by feederbox826**. The internal manifest remains `edit-unorganized.yml` for compatibility.
 
-[Documentation](LynxDefaultTabs/README.md) · [Installation](LynxDefaultTabs/INSTALLATION.md) · [Credits](LynxDefaultTabs/CREDITS.md)
+[Documentation](plugins/LynxDefaultTabs/README.md) · [Installation](plugins/LynxDefaultTabs/INSTALLATION.md) · [Credits](plugins/LynxDefaultTabs/CREDITS.md)
 
 ---
 
 ## Installation
+
+Read the [suite installation and upgrade guide](INSTALLATION.md) for folder layout, requirements and safe updates, then follow your component's specific instructions.
 
 1. Open [Releases](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases) and choose the component you want.
 2. Download its attached component ZIP, rather than assuming GitHub's automatic “Source code” archive is an installable plugin.
@@ -198,6 +200,8 @@ A small workflow utility based on **edit-unorganized by feederbox826**. The inte
 4. Extract and copy the actual plugin folder into your Stash plugins directory. Keep its manifest directly inside that folder.
 5. Reload plugins in Stash, enable the plugin or desired modules, then refresh your browser.
 6. Start with a small preview before enabling automatic updates.
+
+Repository layout: themes are in `themes/`, functional plugins in `plugins/`, and companion scrapers in `scrapers/`. These are repository categories, not extra directories to copy into Stash. Lynx Theme still installs in Stash's plugins directory.
 
 Do not install this entire repository as a single plugin. Do not leave duplicate or backup plugin copies inside Stash's plugins directory.
 
@@ -220,6 +224,8 @@ Do not install this entire repository as a single plugin. Do not leave duplicate
 Remove API keys, private URLs, personal file paths and other sensitive information before sharing logs or screenshots.
 
 ## Credits and licenses
+
+See the [suite credits and license overview](CREDITS.md) for original projects, authors and links to the full component notices.
 
 Lynx is an independent community project, not an official Stash product.
 
