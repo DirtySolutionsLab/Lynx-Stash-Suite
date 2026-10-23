@@ -2,7 +2,7 @@
 
 A Lynx-maintained version of the supplied **Missing Performer Images** installation, developed further with AI assistance.
 
-**Version 1.2.1 — Public Preview 1**
+**Version 1.2.1 — Public Preview 2**
 
 Developed and maintained by DirtySolutionsLab with AI assistance. No third-party upstream project has been identified; earlier development history is not fully documented. See [CREDITS.md](CREDITS.md). Licensed under the [MIT License](LICENSE).
 
