@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/images/lynx-logo.png" alt="Lynx Stash Suite logo" width="190">
+
 # Lynx Stash Suite
 
 **A darker look. A clearer workflow. Your Stash, your way.**
