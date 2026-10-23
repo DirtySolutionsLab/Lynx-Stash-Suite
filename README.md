@@ -194,18 +194,47 @@ A small workflow utility based on **edit-unorganized by feederbox826**. The inte
 
 Read the [suite installation and upgrade guide](INSTALLATION.md) for folder layout, requirements and safe updates, then follow your component's specific instructions.
 
-### Install from a Stash source
+### Install directly in Stash
 
-The repository includes automated plugin/theme and scraper indexes. **The addresses below require successful GitHub Pages publication first.** See the [source setup and migration guide](docs/INSTALLATION-SOURCES.md).
+Add the Lynx sources to Stash to browse, install and update individual components without downloading ZIP files manually.
 
-| Add source under | Name | Source URL | Local path |
-| --- | --- | --- | --- |
-| Settings → Plugins | Lynx Stash Suite | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/index.yml` | `lynx` |
-| Settings → Metadata Providers | Lynx Scrapers | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/scrapers/index.yml` | `lynx` |
+#### Themes and plugins
 
-Choose the components you want, enable their modules and refresh the browser. Python requirements still apply. Do not install duplicate copies alongside existing manual installations; read the migration guide first.
+Open **Settings → Plugins**, find **Available Plugins**, and choose **Add Source**.
 
-These sources track published `main` builds as public previews. Manual release downloads remain available.
+| Field | Value |
+| --- | --- |
+| **Name** | `Lynx Stash Suite` |
+| **Source URL** | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/index.yml` |
+| **Local path** | `lynx` |
+
+Confirm the source, install the components you want, then enable the relevant plugins or modules and refresh your browser.
+
+**Lynx Theme is included in this source.** Stash installs themes as UI plugins.
+
+#### Companion scrapers
+
+For the XL Girls and Mature.nl scrapers, open **Settings → Metadata Providers**, find **Available Scrapers**, and choose **Add Source**.
+
+| Field | Value |
+| --- | --- |
+| **Name** | `Lynx Scrapers` |
+| **Source URL** | `https://dirtysolutionslab.github.io/Lynx-Stash-Suite/main/scrapers/index.yml` |
+| **Local path** | `lynx` |
+
+Install the scraper sources you want to use with Lynx Scraping Suite. The plugin and its companion scrapers are installed separately.
+
+#### Before you install
+
+- **Choose only what you need.** Installing the entire suite is optional.
+- **Python requirements still apply.** The sources install package files, not Python or additional Python dependencies.
+- **Avoid duplicate installations.** If you already installed a component manually, read the migration guide before installing its source-managed copy.
+- **Back up before updating.** Performer Suite has runtime databases that must be preserved when migrating an existing installation.
+- **These are public-preview sources.** They publish catalog-listed builds from the repository’s `main` branch and may be updated independently of GitHub releases.
+
+See the [installation source and migration guide](docs/INSTALLATION-SOURCES.md) for detailed instructions.
+
+Prefer manual installation? Component ZIP downloads remain available on the [Releases page](https://github.com/DirtySolutionsLab/Lynx-Stash-Suite/releases).
 
 ### Manual ZIP installation
 
