@@ -20,37 +20,35 @@ The theme is one Stash UI plugin. Other Lynx plugins are separate projects and a
 
 ### Screenshots
 
-Click any screenshot to open the full-size image.
+All eight views are visible below. Click a thumbnail to open the full-size screenshot.
 
-| Library views | Detail views |
-| --- | --- |
-| **Scenes**<br>[![Scenes — Lynx Theme](../../docs/screenshots/lynx-theme/scenes.png)](../../docs/screenshots/lynx-theme/scenes.png)<br>Compact cards, yellow titles, performer/tag chips and colored counters. | **Scene details**<br>[![Scene details — Lynx Theme](../../docs/screenshots/lynx-theme/scene.png)](../../docs/screenshots/lynx-theme/scene.png)<br>Player layout, metadata sidebar and performer links. |
-| **Performers**<br>[![Performers — Lynx Theme](../../docs/screenshots/lynx-theme/performers.png)](../../docs/screenshots/lynx-theme/performers.png)<br>Consistent portrait cards, country flags and library counters. | **Performer details**<br>[![Performer details — Lynx Theme](../../docs/screenshots/lynx-theme/performer.png)](../../docs/screenshots/lynx-theme/performer.png)<br>Grouped information, a dedicated tag row and a companion Supporting Images panel. |
-| **Studios**<br>[![Studios — Lynx Theme](../../docs/screenshots/lynx-theme/studios.png)](../../docs/screenshots/lynx-theme/studios.png)<br>Studio logo cards with compact, color-coordinated counters. | **Tags**<br>[![Tags — Lynx Theme](../../docs/screenshots/lynx-theme/tags.png)](../../docs/screenshots/lynx-theme/tags.png)<br>Centered labels, parent relationships and related-item counters. |
-
-**Theme settings**
-
-Accent choices, card previews and visible-element controls.
-
-[![Lynx Theme settings and card customizer](../../docs/screenshots/lynx-theme/settings.png)](../../docs/screenshots/lynx-theme/settings.png)
+<table>
+<tr>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/front-page.png"><img src="../../docs/screenshots/lynx-theme/front-page.png" alt="Lynx Theme — Home page" width="220"></a><br><strong>Home page</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/scenes.png"><img src="../../docs/screenshots/lynx-theme/scenes.png" alt="Lynx Theme — Scenes" width="220"></a><br><strong>Scenes</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/scene.png"><img src="../../docs/screenshots/lynx-theme/scene.png" alt="Lynx Theme — Scene details" width="220"></a><br><strong>Scene details</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/settings.png"><img src="../../docs/screenshots/lynx-theme/settings.png" alt="Lynx Theme — Theme settings" width="220"></a><br><strong>Theme settings</strong></td>
+</tr>
+<tr>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/performers.png"><img src="../../docs/screenshots/lynx-theme/performers.png" alt="Lynx Theme — Performers" width="220"></a><br><strong>Performers</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/performer.png"><img src="../../docs/screenshots/lynx-theme/performer.png" alt="Lynx Theme — Performer details" width="220"></a><br><strong>Performer details</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/studios.png"><img src="../../docs/screenshots/lynx-theme/studios.png" alt="Lynx Theme — Studios" width="220"></a><br><strong>Studios</strong></td>
+<td align="center" width="25%"><a href="../../docs/screenshots/lynx-theme/tags.png"><img src="../../docs/screenshots/lynx-theme/tags.png" alt="Lynx Theme — Tags" width="220"></a><br><strong>Tags</strong></td>
+</tr>
+</table>
 
 ### Animated previews
 
-Looping WebP previews display directly in the README as animated images. For the original resolution, smoother motion and playback controls, download the linked MP4 files and open them in your browser or media player.
+Two silent, looping previews shown side by side. Click either animation to open it at a larger size, or download the original-resolution MP4 for sharper text and playback controls.
 
-**Performer page — approximately 48 seconds**
+<table>
+<tr>
+<td align="center" width="50%"><strong>Performer page · 48 seconds</strong><br><a href="../../docs/videos/lynx-theme/performer-preview.webp"><img src="../../docs/videos/lynx-theme/performer-preview.webp" alt="Animated Lynx performer page walkthrough" width="440"></a><br><a href="../../docs/videos/lynx-theme/Performer-compressed.mp4">Download full-resolution MP4 · 3.7 MB</a></td>
+<td align="center" width="50%"><strong>Scene page · 38 seconds</strong><br><a href="../../docs/videos/lynx-theme/scene-preview.webp"><img src="../../docs/videos/lynx-theme/scene-preview.webp" alt="Animated Lynx scene page walkthrough" width="440"></a><br><a href="../../docs/videos/lynx-theme/Scene-compressed.mp4">Download full-resolution MP4 · 4.1 MB</a></td>
+</tr>
+</table>
 
-[![Animated Lynx performer page walkthrough](../../docs/videos/lynx-theme/performer-preview.webp)](../../docs/videos/lynx-theme/performer-preview.webp)
-
-[Download full-resolution Performer MP4 · 3.7 MB](../../docs/videos/lynx-theme/Performer-compressed.mp4)
-
-**Scene page — approximately 38 seconds**
-
-[![Animated Lynx scene page walkthrough](../../docs/videos/lynx-theme/scene-preview.webp)](../../docs/videos/lynx-theme/scene-preview.webp)
-
-[Download full-resolution Scene MP4 · 4.1 MB](../../docs/videos/lynx-theme/Scene-compressed.mp4)
-
-*Animations are silent and loop automatically. They contain the same visible content as the recordings; no additional masking has been applied.*
+*Animations loop automatically and contain the same visible content as the recordings. No additional masking has been applied.*
 
 
 ## Installation
