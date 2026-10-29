@@ -39,6 +39,27 @@ def run(payload,configuration=None,invoke=None):
         if settings.get(engine['enabled']) is not True:
             if hook:continue
             raise ValueError('Module disabled: '+name)
+        if hook:
+            # Decide before launching a child Python process. Full edit forms may
+            # contain unrelated fields; unknown/absent fields remain conservative.
+            fields = set(hook.get('inputFields') or [])
+            incoming = hook.get('input') or {}
+            origin = incoming.get('clientMutationId')
+            kind = str(hook.get('type', '')).split('.')[0]
+            if name == 'performerLinks':
+                if settings.get('links__automatic') is not True:
+                    continue
+                if origin in ('LynxPerformerBridge', 'LynxPerformerMatcher'):
+                    continue
+                relevant = {'performer_ids', 'gallery_ids'}
+                if kind == 'Gallery': relevant |= {'image_ids', 'studio_id'}
+                if fields and '.Update.' in hook.get('type', '') and not fields & relevant:
+                    continue
+            if name == 'tagTransfer':
+                if settings.get('tags__automatic') is not True or origin == 'LynxTagBridge':
+                    continue
+                if fields and '.Update.' in hook.get('type', '') and not fields & {'tag_ids','performer_ids','gallery_ids','organized'}:
+                    continue
         child={**payload,'args':{key:value for key,value in args.items() if key!='module'}}
         if invoke is not None:
             outputs.append(invoke(name,engine,child));continue

@@ -143,6 +143,7 @@ class API:
         name = 'bulk' + kind + 'Update'
         query = 'mutation($input:Bulk%sUpdateInput!){%s(input:$input){id}}' % (kind, name)
         self.gql(query, {'input': {'ids': [str(identifier) for identifier in identifiers],
+                                   'clientMutationId': PLUGIN_ID,
                                    'tag_ids': {'mode': 'ADD', 'ids': sorted(tag_ids)}}})
 
     def schedule(self):
@@ -154,6 +155,7 @@ class API:
         name = 'bulk' + kind + 'Update'
         query = 'mutation($input:Bulk%sUpdateInput!){%s(input:$input){id}}' % (kind, name)
         self.gql(query, {'input': {'ids': [str(identifier) for identifier in identifiers],
+                                  'clientMutationId': PLUGIN_ID,
                                   'tag_ids': {'mode': 'REMOVE', 'ids': sorted(tag_ids)}}})
 
 
@@ -253,6 +255,8 @@ def schedule_pending(api, state, lock_path):
 
 
 def relevant_hook(hook):
+    if (hook.get('input') or {}).get('clientMutationId') == PLUGIN_ID:
+        return False
     fields = hook.get('inputFields')
     return not (fields and '.Update.' in hook['type'] and not set(fields) & {
         'tag_ids', 'performer_ids', 'gallery_ids', 'organized'})
@@ -268,13 +272,17 @@ def queue_hook(api, state, hook, root=ROOT):
 
 
 def drain(bridge):
-    while True:
+    # Freeze the work budget at entry: later independent edits get another
+    # coalesced worker, instead of extending this worker without a boundary.
+    remaining = bridge.state.db.execute('SELECT COUNT(*) FROM pending').fetchone()[0]
+    while remaining > 0:
         hook = bridge.state.take()
         if hook is None:
             break
         hooks = [hook]
         if hook['type'].split('.')[0] == 'Image':
-            hooks.extend(bridge.state.take_kind('Image', BATCH_SIZE - 1))
+            hooks.extend(bridge.state.take_kind('Image', min(BATCH_SIZE, remaining) - 1))
+        remaining -= len(hooks)
         try:
             if hook['type'].split('.')[0] == 'Image':
                 bridge.hook_images(hooks)

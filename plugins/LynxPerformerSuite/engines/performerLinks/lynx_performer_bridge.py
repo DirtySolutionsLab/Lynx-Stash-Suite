@@ -123,6 +123,22 @@ class State:
             CREATE TABLE IF NOT EXISTS job(id INTEGER PRIMARY KEY,expires REAL);
             CREATE TABLE IF NOT EXISTS inherited_studio(image_id TEXT PRIMARY KEY,gallery_id TEXT,studio_id TEXT);
         ''')
+        # Upgrade the queue, not library metadata or provenance. Old backlog is
+        # retained for inspection but must not be replayed by a new user edit.
+        self.db.execute('CREATE TABLE IF NOT EXISTS queue_version (version INTEGER PRIMARY KEY)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS archived_pending '
+                        '(kind TEXT,object_id TEXT,revision INTEGER,archived_at REAL)')
+        self.db.commit()
+        self.db.execute('BEGIN IMMEDIATE')
+        if not self.db.execute('SELECT 1 FROM queue_version WHERE version=2').fetchone():
+            count = self.db.execute('SELECT COUNT(*) FROM pending').fetchone()[0]
+            self.db.execute('INSERT INTO archived_pending SELECT kind,object_id,revision,? FROM pending', (time.time(),))
+            self.db.execute('DELETE FROM pending')
+            self.db.execute('DELETE FROM job')
+            self.db.execute('INSERT INTO queue_version VALUES(2)')
+            if count:
+                log('Archived %s legacy queue entries; no library metadata was changed.' % count)
+        self.db.commit()
 
     def owned(self, kind, identifier):
         return {r[0] for r in self.db.execute('SELECT performer_id FROM inherited WHERE kind=? AND object_id=?', (kind, str(identifier)))}
@@ -188,8 +204,10 @@ def studio_id(obj):
 
 
 class Bridge:
-    def __init__(self, api, state, preview=False):
+    def __init__(self, api, state, preview=False, settings=None):
         self.api, self.state, self.preview = api, state, preview
+        self.settings = {'galleryToImages': True, 'imagesToGallery': False,
+                         'galleryStudio': True, **(settings or {})}
         self.overlay = {}
         self.objects = self.links = self.calls = 0
         self.studio_images = self.studio_calls = self.studio_conflicts = 0
@@ -283,15 +301,20 @@ class Bridge:
         if not self.preview:
             self.state.prune('Gallery', identifier, ids(gallery))
         down = self.direct('Gallery', gallery)
+        if not any(self.settings[key] for key in ('galleryToImages', 'imagesToGallery', 'galleryStudio')):
+            return
         # Gallery reads are cached only inside this pass; ADD never overwrites edits.
         for images in self.api.images(identifier):
-            self.copy_gallery_studio(gallery, images)
-            self.add_many('Image', images, down)
+            if self.settings['galleryStudio']:
+                self.copy_gallery_studio(gallery, images)
+            if self.settings['galleryToImages']:
+                self.add_many('Image', images, down)
             up = set()
-            for image in images:
-                up.update(self.direct('Image', image))
-            self.add_many('Gallery', [gallery], up)
-            if not self.preview:
+            if self.settings['imagesToGallery']:
+                for image in images:
+                    up.update(self.direct('Image', image))
+                self.add_many('Gallery', [gallery], up)
+            if not self.preview and self.settings['imagesToGallery'] and up:
                 gallery = self.api.get('Gallery', identifier)
                 if not gallery:
                     break
@@ -310,11 +333,13 @@ class Bridge:
             if gallery:
                 if studio_id(gallery):
                     studio_galleries.append(gallery)
-                down.update(self.direct('Gallery', gallery))
-                self.add_many('Gallery', [gallery], up)
-        if len({studio_id(gallery) for gallery in studio_galleries}) == 1 and studio_galleries:
+                if self.settings['galleryToImages']:
+                    down.update(self.direct('Gallery', gallery))
+                if self.settings['imagesToGallery']:
+                    self.add_many('Gallery', [gallery], up)
+        if self.settings['galleryStudio'] and len({studio_id(gallery) for gallery in studio_galleries}) == 1 and studio_galleries:
             self.copy_gallery_studio(studio_galleries[0], [image], agreed_multi_gallery=True)
-        elif len({studio_id(gallery) for gallery in studio_galleries}) > 1:
+        elif self.settings['galleryStudio'] and len({studio_id(gallery) for gallery in studio_galleries}) > 1:
             self.studio_conflicts += 1
         # Newly linked images inherit explicit gallery performers, too.
         self.add_many('Image', [image], down)
@@ -383,14 +408,16 @@ def main(payload):
         with lock(path, wait=True) as acquired:
             if not acquired:
                 return {'output': 'Another performer transfer is running. The queue is preserved.'}
-            bridge = Bridge(api, state, preview=mode == 'preview')
+            bridge = Bridge(api, state, preview=mode == 'preview', settings=settings)
             if not bridge.preview:
                 state.release()
             for identifier in selected:
                 bridge.gallery(identifier)
-            # A manually started queue task also resumes failed work when auto is off.
-            if mode == 'queued' or mode == 'apply' and settings.get('automatic') is True:
-                while (event := state.take()) is not None:
+            # A selected-gallery operation never drains unrelated work. A worker
+            # processes one bounded snapshot, not hooks generated during its run.
+            if mode == 'queued':
+                events = state.db.execute('SELECT kind,object_id,revision FROM pending ORDER BY rowid LIMIT 100').fetchall()
+                for event in events:
                     kind, identifier, revision = event
                     (bridge.gallery if kind == 'Gallery' else bridge.image)(identifier)
                     state.ack(event)
@@ -400,7 +427,7 @@ def main(payload):
                            bridge.studio_images, 'planned' if bridge.preview else 'set', bridge.studio_calls,
                            bridge.studio_conflicts)
             log(summary)
-        if mode != 'preview' and settings.get('automatic') is True:
+        if mode == 'queued' and settings.get('automatic') is True:
             schedule(api, state, path)
         return {'output': summary}
     finally:

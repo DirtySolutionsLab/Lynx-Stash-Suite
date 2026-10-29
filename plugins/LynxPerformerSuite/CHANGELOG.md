@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.3 — scoped performer transfers
+
+- Add independent Gallery → Images and Images → Gallery performer directions. The reverse direction defaults to OFF; gallery studio inheritance has a separate switch.
+- Archive pre-upgrade performer backlog once, inside the existing runtime database, without modifying library metadata or provenance.
+- Keep manual selected-gallery work isolated from unrelated waiting work; use bounded queue snapshots and preserve failed performer events.
+- Filter unrelated hooks, disabled automation and own performer writes before launching child engines. Preserve tag follow-up for performer assignments.
+- Mark tag-transfer mutations and skip their own follow-up hooks, including removals. Bound tag worker passes.
+- Add an English setup guide, visible route status and one-click downward performer setup. Explicitly label tag-copying routes.
+- Add offline transfer regression tests. Live installation, real hook payloads and visual acceptance are not verified by these tests.
+
 ## 1.1.2 — public review candidate
 
 - Removed local settings backups, SQLite databases, lock files, Python caches and development-only build files from the distributable.

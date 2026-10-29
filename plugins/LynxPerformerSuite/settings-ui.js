@@ -6,9 +6,9 @@
   const h=R.createElement,ID='LynxPerformerSuite';
   // Explicit safe scope: never include inference, automation, removal or transfer.
   const attributeRuleKeys=['country','hair','eyes','ethnicity','body','breasts','breastSize','tattoos','piercings','age'].map(name=>'attributes__'+name);
-  const titles={attributes:'Performer Attributes',matcher:'Performer Matcher',tags:'Tag Transfer',links:'Performer Links',images:'Supporting Images'};
+  const titles={attributes:'Performer Attributes - create tags',matcher:'Performer Matcher',links:'Performer Links - copy people',tags:'Tag Transfer - copy tags only',images:'Supporting Images'};
   const purposes={attributes:'Turn performer information into tags. Edit dropdown choices and tagging rules here.',matcher:'Use Match performers above the Images or Galleries list. Scan selected items, the current page or the current filter. Review grouped name proposals, search existing performers, and explicitly create missing names. Only reviewed items are linked by default; forwarding through Performer Links is optional.',tags:'Copy tags between performers, scenes, images and galleries in the directions you choose.',links:'Copy performer associations between galleries and their images. This is separate from copying tags.',images:'Choose supporting-image categories and customize the image panel.'};
-  const catalogPromise=fetch('/plugin/'+ID+'/assets/settings-catalog.json').then(r=>{if(!r.ok)throw Error('Settings catalog could not be loaded.');return r.json();});
+  const catalogPromise=fetch('/plugin/'+ID+'/assets/settings-catalog.json?v=1.1.3').then(r=>{if(!r.ok)throw Error('Settings catalog could not be loaded.');return r.json();});
   function Fold({id,title,note,search,children}){
     let remembered={};try{remembered=JSON.parse(localStorage.getItem('lynx-performer-folds-v2')||'{}');}catch{}
     return h('details',{className:'lynx-p-fold',open:search?true:!!remembered[id],onToggle:e=>{if(search)return;remembered[id]=e.currentTarget.open;localStorage.setItem('lynx-performer-folds-v2',JSON.stringify(remembered));}},h('summary',null,title,note&&h('small',null,note)),children);
@@ -111,6 +111,25 @@
         setRulesStatus(onlyKey?'Attribute rule saved.':enabled?'All 10 attribute rules enabled.':'All 10 attribute rules disabled.');
       }catch(error){setRulesStatus('Could not save: '+error.message);}finally{setRulesBusy(false);}
     }
+    async function saveTransfer(patch){
+      if(rulesBusy)return;
+      setRulesBusy(true);setRulesStatus('');
+      try{setConfiguration(await D.save(patch));setRulesStatus('Transfer settings saved. No library task was started.');}
+      catch(error){setRulesStatus('Could not save: '+error.message);}finally{setRulesBusy(false);}
+    }
+    const current=configuration[ID]||{};
+    const linkDefault={links__galleryToImages:true,links__imagesToGallery:false,links__galleryStudio:true};
+    const transferGuide=h('div',{className:'lynx-p-transfer-guide'},
+      h('h4',null,'What do you want to copy?'),
+      h('p',null,'Performer Links copies people assigned to media. Tag Transfer copies labels. These are separate features.'),
+      h('ul',null,
+        h('li',null,h('strong',null,'People: '),'Gallery → its images: '+((current.links__galleryToImages??true)?'ON':'OFF')+' · Images → their galleries: '+(current.links__imagesToGallery?'ON':'OFF')+'. Automatic performer copying: '+(current.links_enabled&&current.links__automatic?'ON':'OFF')+'.'),
+        h('li',null,h('strong',null,'Tags: '),'Automatic tag copying is '+(current.tags_enabled&&current.tags__automatic?'ON':'OFF')+'. Choose label-copying directions under Tag Transfer. Updating a performer may check all media linked to that performer, not the entire library.')),
+      h('div',{className:'lynx-p-actions'},
+        h('button',{type:'button',disabled:rulesBusy,onClick:()=>saveTransfer({links_enabled:true,links__automatic:true,links__galleryToImages:true,links__imagesToGallery:false})},'Set performer copying: Gallery → Images'),
+        current.tags_enabled&&current.tags__automatic&&h('button',{type:'button',disabled:rulesBusy,onClick:()=>saveTransfer({tags__automatic:false})},'Turn off automatic tag copying')),
+      h('small',null,'The performer preset does not change tags or studio inheritance. It only saves settings; it does not scan or update your library.'),
+      h('p',{role:'status','aria-live':'polite'},rulesStatus));
     const quickActions=h('div',{className:'lynx-p-editor',style:{border:'1px solid #354151',borderRadius:'10px',padding:'1rem',margin:'1rem 0'}},
       h('h4',null,'Attribute rules — quick setup'),
       h('p',null,enabledRuleCount+' of '+attributeRuleKeys.length+' rules enabled. Enable them together, then switch off any individual rules you do not want.'),
@@ -135,6 +154,9 @@
       for(const entry of entries){const group=entry[0].endsWith('_enabled')?'Module':entry[1].group;if(!groups.has(group))groups.set(group,[]);groups.get(group).push(entry);}
       return h(Fold,{key:module,id:module,title,note:enabled?'Enabled':'Disabled',search},h('p',{className:'lynx-p-purpose'},purposes[module]),[...groups].map(([group,items])=>h(Fold,{key:group,id:module+'/'+group,title:group,note:items.length+' settings',search},items.map(([key,meta])=>{
         const native=nativeSettings.get(key);
+        if(module==='links'&&meta.type==='BOOLEAN')return h('div',{key,className:'lynx-p-editor'},
+          h('label',null,h('input',{type:'checkbox',role:'switch',checked:current[key]??linkDefault[key]??false,disabled:rulesBusy,
+            style:{width:'auto',marginRight:'.65rem'},onChange:event=>saveTransfer({[key]:event.target.checked})}),meta.displayName),h('p',null,meta.description));
         // Controlled switches stay synchronized after a bulk save. Unrelated native controls remain unchanged.
         if(attributeRuleKeys.includes(key))return h('div',{key,className:'lynx-p-editor'},
           h('label',null,h('input',{type:'checkbox',role:'switch',checked:configuration[ID]?.[key]===true,disabled:rulesBusy,
@@ -145,7 +167,7 @@
         return h(Fold,{key,id:key,title:meta.displayName,note:/Map$|Rules$|Choices$/.test(name)?value.split(';').filter(x=>x.trim()).length+' rules / choices':value?'Configured':'Not restricted',search},h(Editor,{settingKey:key,meta,configuration,onSaved:setConfiguration}));
       }))));
     });
-    return h('section',{className:'lynx-p-settings'},h('h3',null,'Lynx Performer Suite'),h('p',null,'Choose a module, then open only the settings you need. Existing custom rules are kept. Starter lists are used when no custom list is saved.'),quickActions,configuration[ID]?.attributes__automatic&&h('p',{className:'lynx-p-warning'},'Automatic attribute processing is enabled. Preview your rules before updating performer metadata.'),h('label',null,'Find a setting',h('input',{type:'search',placeholder:'Country, hair, body type, transfer…',value:query,onChange:e=>setQuery(e.target.value)})),sections.some(Boolean)?sections:h('p',null,'No matching settings.'),h('p',{className:'lynx-p-footer'},'Preview first: use Attributes — Preview selected performers or Tag Transfer — Preview transfer in Tasks. Reload the page after changing a module switch.'));
+    return h('section',{className:'lynx-p-settings'},h('h3',null,'Lynx Performer Suite'),h('p',null,'Choose a module, then open only the settings you need. Existing custom rules are kept. Starter lists are used when no custom list is saved.'),transferGuide,quickActions,configuration[ID]?.attributes__automatic&&h('p',{className:'lynx-p-warning'},'Automatic attribute processing is enabled. Preview your rules before updating performer metadata.'),h('label',null,'Find a setting',h('input',{type:'search',placeholder:'Country, hair, body type, transfer…',value:query,onChange:e=>setQuery(e.target.value)})),sections.some(Boolean)?sections:h('p',null,'No matching settings.'),h('p',{className:'lynx-p-footer'},'Preview first: use Attributes — Preview selected performers, Performer Links — Preview transfer, or Tag Transfer — Preview transfer in Tasks. Manual tag transfer can cover the library; manual performer transfer requires gallery IDs. Reload the page after changing a module switch.'));
   }
   api.patch.after('PluginSettings',(...args)=>{
     if(args[0]?.pluginID!==ID)return args.at(-1);

@@ -16,4 +16,6 @@
 .lynx-p-settings .lynx-p-warning{border-left:3px solid #e8ba50;padding:.6rem .9rem;background:#29251a;color:#ead6a8}
 .lynx-p-settings .lynx-p-footer{font-size:.84rem;border-top:1px solid #354151;padding-top:.8rem}
 .lynx-p-settings .setting{background:transparent!important;box-shadow:none!important}
+.lynx-p-settings .lynx-p-transfer-guide{padding:1rem;margin:1rem 0;border:1px solid #466782;border-left:3px solid #65c9c1;border-radius:10px;background:rgba(24,42,54,.55)}
+.lynx-p-settings .lynx-p-transfer-guide li{margin:.45rem 0;line-height:1.5}
 @media(max-width:650px){.lynx-p-settings summary small{float:none;display:block;margin:.25rem 0 0 1rem}}

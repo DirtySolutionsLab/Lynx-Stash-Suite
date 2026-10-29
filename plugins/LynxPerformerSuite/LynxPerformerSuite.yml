@@ -1,7 +1,7 @@
 name: Lynx Performer Suite
 description: Performer metadata to tags, controlled tag transfer, performer links
   and supporting images. Includes editable starter rules and legacy-list recovery.
-version: 1.1.2
+version: 1.1.3
 settings:
   matcher_enabled:
     displayName: Enable Performer Matcher
@@ -220,14 +220,24 @@ settings:
     description: Enable this module. Reload the page after changing this switch. Existing
       automation switches are kept separately.
   links__automatic:
-    displayName: Process changes automatically
-    description: Queue updates automatically when saved metadata changes. Preview
-      before enabling.
+    displayName: Automatically copy performer links for changed items
+    description: Process only changed galleries or images and their related items. Does not scan the library. This copies performer associations, not tags. Choose the directions below.
+    type: BOOLEAN
+  links__galleryToImages:
+    displayName: Copy performers - Gallery to its images
+    description: Recommended ON. Add a gallery's directly assigned performers to its own images. Does not copy tags or remove existing performers. If unset, this direction is enabled.
+    type: BOOLEAN
+  links__imagesToGallery:
+    displayName: Copy performers - Images to their galleries
+    description: Optional reverse direction. Add directly assigned image performers to their linked galleries. Does not spread image-inherited performers back to other images. Default OFF.
+    type: BOOLEAN
+  links__galleryStudio:
+    displayName: Also copy gallery studio to its images
+    description: Independent of performer and tag transfer. Preserve a different manually assigned studio and skip conflicting galleries. If unset, existing studio inheritance remains enabled.
     type: BOOLEAN
   links__galleryIds:
     displayName: Limit to gallery IDs
-    description: Optional comma-separated gallery IDs for manual performer-link transfer.
-      Blank uses the module's normal scope. Preview before applying.
+    description: Required only for manual Preview transfer or Transfer selected galleries. Enter 1-100 comma-separated gallery IDs. Blank never means the whole library. Does not limit automatic processing.
     type: STRING
   tags_enabled:
     displayName: Enable Tag Transfer
@@ -235,9 +245,8 @@ settings:
     description: Enable this module. Reload the page after changing this switch. Existing
       automation switches are kept separately.
   tags__automatic:
-    displayName: Process changes automatically
-    description: Queue updates automatically when saved metadata changes. Preview
-      before enabling.
+    displayName: Automatically copy tags for changed items
+    description: Copy tag labels only, using the routes below. Does not assign performers. A performer change can check its linked media; gallery changes are limited to that gallery and its images.
     type: BOOLEAN
   tags__removeStale:
     displayName: Remove outdated tags added by Lynx
@@ -250,32 +259,32 @@ settings:
       tags. WARNING: matching manually assigned tags may be removed; preview first.'
     type: STRING
   tags__performerScenes:
-    displayName: Performer → Scenes
+    displayName: Copy tags - Performer to scenes
     type: BOOLEAN
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.
   tags__performerImages:
-    displayName: Performer → Images
+    displayName: Copy tags - Performer to images
     type: BOOLEAN
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.
   tags__performerGalleries:
-    displayName: Performer → Galleries
+    displayName: Copy tags - Performer to galleries
     type: BOOLEAN
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.
   tags__galleryImages:
-    displayName: Gallery → Images
+    displayName: Copy tags - Gallery to images
     type: BOOLEAN
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.
   tags__galleryPerformerImages:
-    displayName: Gallery performers → Images
+    displayName: Copy tags - Gallery performers to images
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.
     type: BOOLEAN
   tags__imagesGallery:
-    displayName: Images → Gallery
+    displayName: Copy tags - Images to gallery
     type: BOOLEAN
     description: Transfer source tags in this direction. Only enabled routes run;
       allow-lists and exclusions also apply.

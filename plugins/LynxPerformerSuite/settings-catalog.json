@@ -301,18 +301,33 @@
     "module": "links"
   },
   "links__automatic": {
-    "displayName": "Process changes automatically",
-    "description": "Queue updates automatically when saved metadata changes. Preview before enabling.",
+    "displayName": "Automatically copy performer links for changed items",
+    "description": "Only changed galleries/images and related items. Does not copy tags or scan the library.",
     "type": "BOOLEAN",
     "group": "Scope & Automation",
     "module": "links"
   },
   "links__galleryIds": {
-    "displayName": "Limit to gallery IDs",
-    "description": "Optional comma-separated gallery IDs for manual performer-link transfer. Blank uses the module's normal scope. Preview before applying.",
+    "displayName": "Manual transfer - gallery IDs",
+    "description": "Required for manual preview/apply only: 1-100 comma-separated IDs. Blank never means the whole library. Does not limit automatic processing.",
     "type": "STRING",
     "group": "Scope & Automation",
     "module": "links"
+  },
+  "links__galleryToImages": {
+    "displayName": "Copy performers - Gallery to its images",
+    "description": "Recommended ON. Add directly assigned gallery performers to its own images. No tags are copied; no existing performers are removed.",
+    "type": "BOOLEAN", "group": "Performer directions", "module": "links"
+  },
+  "links__imagesToGallery": {
+    "displayName": "Copy performers - Images to their galleries",
+    "description": "Optional reverse direction, default OFF. Add directly assigned image performers to their galleries. Inherited links are not echoed back.",
+    "type": "BOOLEAN", "group": "Performer directions", "module": "links"
+  },
+  "links__galleryStudio": {
+    "displayName": "Also copy gallery studio to its images",
+    "description": "Separate studio inheritance, enabled if unset. Preserve different manually assigned studios. This does not transfer tags.",
+    "type": "BOOLEAN", "group": "Studio inheritance", "module": "links"
   },
   "tags_enabled": {
     "displayName": "Enable Tag Transfer",
@@ -322,8 +337,8 @@
     "module": "tags"
   },
   "tags__automatic": {
-    "displayName": "Process changes automatically",
-    "description": "Queue updates automatically when saved metadata changes. Preview before enabling.",
+    "displayName": "Automatically copy tags for changed items",
+    "description": "Copies labels, not performers. Only enabled routes run. A performer edit may check all media linked to that performer.",
     "type": "BOOLEAN",
     "group": "Automation & Safety",
     "module": "tags"
@@ -343,42 +358,42 @@
     "module": "tags"
   },
   "tags__performerScenes": {
-    "displayName": "Performer \u2192 Scenes",
+    "displayName": "Copy tags - Performer to scenes",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
     "module": "tags"
   },
   "tags__performerImages": {
-    "displayName": "Performer \u2192 Images",
+    "displayName": "Copy tags - Performer to images",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
     "module": "tags"
   },
   "tags__performerGalleries": {
-    "displayName": "Performer \u2192 Galleries",
+    "displayName": "Copy tags - Performer to galleries",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
     "module": "tags"
   },
   "tags__galleryImages": {
-    "displayName": "Gallery \u2192 Images",
+    "displayName": "Copy tags - Gallery to images",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
     "module": "tags"
   },
   "tags__galleryPerformerImages": {
-    "displayName": "Gallery performers \u2192 Images",
+    "displayName": "Copy tags - Gallery performers to images",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
     "module": "tags"
   },
   "tags__imagesGallery": {
-    "displayName": "Images \u2192 Gallery",
+    "displayName": "Copy tags - Images to gallery",
     "description": "Transfer source tags in this direction. Only enabled routes run; allow-lists and exclusions also apply.",
     "type": "BOOLEAN",
     "group": "Transfer Routes",
