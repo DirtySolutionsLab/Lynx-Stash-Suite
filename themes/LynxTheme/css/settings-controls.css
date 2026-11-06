@@ -58,3 +58,52 @@ body.stash-liquid-glass.refract-rating-style-playing-card.refract-rating-style-p
   outline: 2px solid var(--accent, #5899ed);
   outline-offset: 3px;
 }
+
+/* Scene synopsis visibility is independent of the rest of the card. */
+.stash-liquid-glass .scene-card .lynx-scene-card-synopsis {
+  min-width: 0;
+  color: var(--text-muted, #aeb9c8);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  margin: 0.2rem 0 0.3rem;
+}
+.stash-liquid-glass .scene-card .lynx-scene-card-synopsis-text {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.stash-liquid-glass .scene-card .lynx-scene-card-synopsis:not(.is-expanded) .lynx-scene-card-synopsis-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 2.8em;
+  overflow: hidden;
+}
+body.stash-liquid-glass:not(.refract-sc-hide-details) .scene-card .scene-card__details.lynx-scene-card-details {
+  display: block !important;
+  overflow: visible !important;
+  -webkit-line-clamp: unset !important;
+}
+.stash-liquid-glass .scene-card button.lynx-scene-card-synopsis-toggle {
+  display: inline-block;
+  padding: 0;
+  margin: 0.15rem 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent, #79adff);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.stash-liquid-glass .scene-card button.lynx-scene-card-synopsis-toggle:focus-visible {
+  outline: 2px solid var(--accent, #79adff);
+  outline-offset: 2px;
+}
+body.stash-liquid-glass.refract-sc-hide-details .scene-card :is(.scene-card__description, .lynx-scene-card-synopsis, .lynx-scene-card-synopsis-slot) {
+  display: none !important;
+}
+
+/* The plugin sorter sets CSS order without moving React-owned rows. */
+.setting-section .refract-plugin-list {
+  display: flex;
+  flex-direction: column;
+}

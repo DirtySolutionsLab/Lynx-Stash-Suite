@@ -1,25 +1,15 @@
-## Lynx Theme v0.2.12 — Public Preview
+## Lynx Theme v0.2.13 — Plugin Order & Scene Card Details
 
-The simplified transparent Lynx logo now appears automatically in the navbar home button. No Custom logo URL is needed for the bundled identity.
+Restores the enabled-first plugin list in **Settings → Plugins**. Enabled plugins appear first, followed by disabled plugins, with alphabetical ordering within each group.
 
-### What changed
+The sorting fix restores the list layout used by the existing sorter. It does not enable or disable plugins or move React-managed elements.
 
-- Use the bundled logo when Custom logo is empty instead of showing an empty orb.
-- Include the simplified transparent navbar image for better small-size readability.
-- Correct custom-logo rendering so a user-supplied image URL takes precedence over the bundled asset.
-- Preserve custom image colors and transparency.
-- Update the English setting description; existing settings and storage keys are retained.
+Under **Settings → Interface → Lynx → Scene card elements**, the new **Details** toggle lets you show or hide scene descriptions. It is off by default and works with both native cards and LynxSceneCard. The description sits between the title and performers. Long text starts as a two-line preview; **Show more / Show less** expands or collapses that card only, preserving line breaks. Scenes without a description do not gain placeholder text; scene detail pages are unaffected.
 
-To use the new default after updating, clear Custom logo under Settings → Interface → Lynx. Existing non-empty custom URLs are deliberately preserved.
+### Update
 
-### Installation and updates
+Use the Lynx plugin source once the new build is published, or update the existing theme with the release ZIP. Keep only one active theme copy. Reload plugins if needed and hard-refresh the browser.
 
-Update through the Lynx plugin source after its publication workflow succeeds, or copy the complete LynxTheme folder from the manual ZIP into Stash's plugins directory. Keep only one active copy. Reload plugins and hard-refresh the browser.
+### Preview status
 
-### Validation
-
-JavaScript syntax, manifest assets and mocked logo-selection tests checked, including default/custom/clear transitions, data URLs, repeated calls and anchor/button navigation variants. Fresh-install and live visual acceptance remain pending.
-
-### Credits and licenses
-
-Based in part on Refract by ordureconnoisseur. Theme code remains AGPL-3.0. Albert Sans retains the SIL Open Font License 1.1. See CREDITS.md and the bundled license notices.
+Checked with simulated plugin-list and scene-card tests and package validation. Live visual verification in Stash is still pending. Based in part on Refract by ordureconnoisseur; existing licenses and attribution are unchanged.

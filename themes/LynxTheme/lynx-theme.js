@@ -960,11 +960,10 @@
             '<div class="rating-banner">8.6</div>' +
             '<div class="card-section">' +
                 '<a><h5 class="card-section-title">Example Scene</h5></a>' +
-                /* Shown only in Classic card style (refract-minimal-cards
-                   hides .scene-card__details); lets the "Scene card style"
-                   segmented control visibly flip the preview. */
+                /* Match the live card's independent description control. */
                 '<div class="scene-card__details">' +
                     '<span class="scene-card__date">2026-01-01</span>' +
+                    '<div class="lynx-scene-card-synopsis"><div class="lynx-scene-card-synopsis-text">An example scene description for the card preview.</div></div>' +
                     '<span class="file-path extra-scene-info">D:\\Media\\Example Scene.mp4</span>' +
                 '</div>' +
                 '<div class="stash-performer-circles">' +
@@ -1124,8 +1123,8 @@
     /* ── Card element visibility ─────────────────────────────────────
        Ground-up model (2026-07-26, replacing the ad-hoc per-request
        toggle pile from 1.19): every element a scene / performer card
-       shows is a chip in the customiser, grouped per card type, all
-       defaulting to SHOWN. This one table drives the storage keys, the
+       shows is a chip in the customiser, grouped per card type.
+       This one table drives the defaults, storage keys, the
        body classes, and the settings UI. Resolution is deliberately
        absent: the res chip follows the Scene card style (Classic shows
        it, the tidy layout hides it) and is not an independent choice. */
@@ -1135,12 +1134,17 @@
         { key: "refract.scHideDuration",   cls: "refract-sc-hide-duration",   group: "scene",     label: "Duration" },
         { key: "refract.scHidePerformers", cls: "refract-sc-hide-performers", group: "scene",     label: "Performers" },
         { key: "refract.scHideCounts",     cls: "refract-sc-hide-counts",     group: "scene",     label: "Tag pills" },
+        { key: "refract.scHideDetails",    cls: "refract-sc-hide-details",    group: "scene",     label: "Details", hiddenByDefault: true },
         { key: "refract.pcHideRating",     cls: "refract-pc-hide-rating",     group: "performer", label: "Rating banner" },
         { key: "refract.pcHideCountry",    cls: "refract-pc-hide-country",    group: "performer", label: "Country" },
         { key: "refract.pcHideStats",      cls: "refract-pc-hide-stats",      group: "performer", label: "Stat pills" }
     ];
     function isCardElemHidden(key) {
-        try { return localStorage.getItem(key) === "1"; } catch (e) { return false; }
+        try {
+            var saved = localStorage.getItem(key);
+            if (saved === "1" || saved === "0") { return saved === "1"; }
+        } catch (e) { /* use the element default */ }
+        return CARD_ELEMS.some(function (d) { return d.key === key && d.hiddenByDefault; });
     }
     function applyCardElemClasses() {
         if (!document.body) { return; }
@@ -1170,6 +1174,94 @@
         } catch (e) { /* ignore */ }
     })();
     applyCardElemClasses();
+    /* Place the description under the title. For LynxSceneCard, use a
+       dedicated portal mount so React-owned title/performer nodes stay put. */
+    (function addLynxSceneCardSynopsis() {
+        var api = window.PluginApi;
+        if (!api || !api.React || !api.patch || typeof api.patch.after !== "function") { return; }
+        var react = api.React;
+        var h = react.createElement;
+        function Synopsis(props) {
+            var textRef = react.useRef(null);
+            var expandedState = react.useState(false), expanded = expandedState[0], setExpanded = expandedState[1];
+            var overflowState = react.useState(false), overflowing = overflowState[0], setOverflowing = overflowState[1];
+            react.useLayoutEffect(function () {
+                var text = textRef.current;
+                if (!text || expanded) { return; }
+                function measure() {
+                    if (text.clientWidth > 0) { setOverflowing(text.scrollHeight > text.clientHeight + 1); }
+                }
+                measure();
+                if (typeof ResizeObserver !== "function") { return; }
+                var observer = new ResizeObserver(measure);
+                observer.observe(text);
+                return function () { observer.disconnect(); };
+            }, [expanded, props.text]);
+            return h("div", { className: "lynx-scene-card-synopsis" + (expanded ? " is-expanded" : "") },
+                h("div", { className: "lynx-scene-card-synopsis-text", ref: textRef }, props.text),
+                (overflowing || expanded) && h("button", {
+                    type: "button", className: "lynx-scene-card-synopsis-toggle", "aria-expanded": expanded,
+                    onMouseDown: function (event) { event.stopPropagation(); },
+                    onClick: function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setExpanded(function (open) { return !open; });
+                    }
+                }, expanded ? "Show less" : "Show more"));
+        }
+        function CustomCardSynopsis(props) {
+            var anchor = react.useRef(null);
+            var slotState = react.useState(null), slot = slotState[0], setSlot = slotState[1];
+            react.useLayoutEffect(function () {
+                var host = anchor.current && anchor.current.parentElement;
+                if (!host) { return; }
+                var mount, observer;
+                function attach() {
+                    if (mount) { return; }
+                    var title = host.querySelector(".scene-card-content > .scene-title-wrapper");
+                    if (!title) { return; }
+                    mount = document.createElement("div");
+                    mount.className = "lynx-scene-card-synopsis-slot";
+                    title.after(mount);
+                    if (observer) { observer.disconnect(); }
+                    setSlot(mount);
+                }
+                attach();
+                if (!mount) {
+                    observer = new MutationObserver(attach);
+                    observer.observe(host, { childList: true, subtree: true });
+                }
+                return function () {
+                    if (observer) { observer.disconnect(); }
+                    if (mount) { mount.remove(); }
+                };
+            }, []);
+            return h(react.Fragment, null, props.card, h("span", { hidden: true, ref: anchor }),
+                slot && api.ReactDOM.createPortal(h(Synopsis, { text: props.text }), slot));
+        }
+        function hasClass(element, name) {
+            return react.isValidElement(element) && typeof element.props.className === "string" &&
+                element.props.className.split(/\s+/).indexOf(name) !== -1;
+        }
+        api.patch.after("SceneCard.Details", function (props) {
+            var result = arguments[arguments.length - 1];
+            var details = props && props.scene && props.scene.details;
+            if (!react.isValidElement(result) || typeof details !== "string" || !details.trim()) { return result; }
+            var sceneKey = "lynx-synopsis-" + props.scene.id;
+            if (hasClass(result, "scene-card__details")) {
+                var children = react.Children.toArray(result.props.children).filter(function (child) {
+                    return !hasClass(child, "scene-card__description");
+                });
+                return react.cloneElement(result, { className: result.props.className + " lynx-scene-card-details" },
+                    h(Synopsis, { key: sceneKey, text: details.trim() }), children);
+            }
+            if (typeof result.type === "function" && result.type.name === "WrappedSceneCardDetails" &&
+                api.ReactDOM && typeof api.ReactDOM.createPortal === "function") {
+                return h(CustomCardSynopsis, { key: sceneKey, card: result, text: details.trim() });
+            }
+            return result;
+        });
+    })();
     /* Explicit card-back labels are built but held back from public release:
        the toggle is hidden and isCardBackExplicit() is forced off while this is
        false. Flip to true to ship the feature (no other change needed). */
